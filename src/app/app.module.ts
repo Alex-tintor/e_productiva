@@ -8,6 +8,7 @@ import { CoordinacionComponent } from './views/principal/coordinacion/coordinaci
 import { ContratacionComponent } from './views/principal/contratacion/contratacion.component';
 import { InstructorComponent } from './views/principal/instructor/instructor.component';
 import { InputsComponent } from './core/inputs/inputs.component';
+import { WindowsComponent } from './core/inputs/windows/windows.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { InputsComponent } from './core/inputs/inputs.component';
     CoordinacionComponent,
     ContratacionComponent,
     InstructorComponent,
-    InputsComponent
+    InputsComponent,
+    WindowsComponent
   ],
   imports: [
     BrowserModule,

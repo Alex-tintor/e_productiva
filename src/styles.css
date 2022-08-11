@@ -2,3 +2,6 @@
 :root{
     --principal-color:#ff7100;
 }
+*{
+    margin: 0%;
+}

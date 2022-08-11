@@ -1,0 +1,18 @@
+svg{
+    max-width: 100px;
+    max-height: 100px;
+    transition: .5s ease;
+}
+svg:hover{
+    transform: scale(1.2);
+}
+.principal_container{
+    background: #ffffff !important;
+    
+}
+.tittle-text{
+    color: var(--principal-color);
+}
+.btn_login{
+    background-color:var(--principal-color);
+}

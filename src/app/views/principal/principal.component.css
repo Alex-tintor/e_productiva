@@ -1,5 +1,6 @@
-.general_container{
+body{
     height: 100vh;
-    background: rgb(255,113,0);
-    background: linear-gradient(90deg, rgba(255,113,0,1) 0%, rgba(255,214,161,1) 60%, rgba(255,236,214,1) 100%);
+    
+    background: rgb(255,153,71);
+    background: linear-gradient(180deg, rgba(255,153,71,1) 0%, rgba(255,205,140,1) 60%, rgba(250,207,158,1) 100%);
 }
