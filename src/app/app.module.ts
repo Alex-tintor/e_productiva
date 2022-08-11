@@ -7,6 +7,7 @@ import { PrincipalComponent } from './views/principal/principal.component';
 import { CoordinacionComponent } from './views/principal/coordinacion/coordinacion.component';
 import { ContratacionComponent } from './views/principal/contratacion/contratacion.component';
 import { InstructorComponent } from './views/principal/instructor/instructor.component';
+import { InputsComponent } from './core/inputs/inputs.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { InstructorComponent } from './views/principal/instructor/instructor.com
     PrincipalComponent,
     CoordinacionComponent,
     ContratacionComponent,
-    InstructorComponent
+    InstructorComponent,
+    InputsComponent
   ],
   imports: [
     BrowserModule,
