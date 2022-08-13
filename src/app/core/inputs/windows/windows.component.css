@@ -16,3 +16,6 @@ svg:hover{
 .btn_login{
     background-color:var(--principal-color);
 }
+*{
+    z-index: 10;
+}
