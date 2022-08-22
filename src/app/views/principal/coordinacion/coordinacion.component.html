@@ -1,1 +1,110 @@
-<p>coordinacion works!</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+
+    <title>Document</title>
+  </head>
+<body>
+    <input type="checkbox" id="check">
+
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>Menu<span></span></h3>
+      </div>
+      <div class="right_area">
+        <a href="#" class="logout_btn">Salir</a>
+      </div>
+    </header>
+    <div class="mobile_nav">
+      <div class="nav_bar">
+
+        <i class="fa fa-bars nav_btn"></i>
+      </div>
+      <div class="mobile_nav_items">
+        <a href="#"><i class="fas fa-desktop"></i><span>Información</span></a>
+        <a href="#"><i class="fas fa-cogs"></i><span>Información</span></a>
+        <a href="#"><i class="fas fa-table"></i><span>Información</span></a>
+        <a href="#"><i class="fas fa-th"></i><span>Información</span></a>
+        <a href="#"><i class="fas fa-info-circle"></i><span>Información</span></a>
+        <a href="#"><i class="fas fa-sliders-h"></i><span>Información</span></a>
+      </div>
+    </div>
+
+    <div class="sidebar">
+
+      <a href="#"><i class="fas fa-desktop"></i><span>Información</span></a>
+      <a href="#"><i class="fas fa-cogs"></i><span>Información</span></a>
+      <a href="#"><i class="fas fa-table"></i><span>Información</span></a>
+      <a href="#"><i class="fas fa-th"></i><span>Información</span></a>
+      <a href="#"><i class="fas fa-info-circle"></i><span>Información</span></a>
+      <a href="#"><i class="fas fa-sliders-h"></i><span>Información</span></a>
+    </div>
+
+    <div class="content">
+      <div class="main">
+        <div class="recent-grid">
+          <div class="card">
+            <div class="card-header"> 
+              <h3>Titulos</h3>
+            </div>
+            <div class="tabla-responsiva">
+              <table id="example" class="table table-striped table-bordered " style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>
+                      <button type="button" class="btn btn-danger" data-toggle="modal">
+                        <i class="fas fa-cogs"></i>
+                      </button>
+                      <button type="button" class="btn btn-success" data-toggle="modal">
+                        <i class="fas fa-desktop"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.nav_btn').click(function(){
+            $('.mobile_nav_items').toggleClass('active');
+          });
+        });
+        </script>
+  </body>
+
+
