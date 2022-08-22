@@ -6,8 +6,8 @@ svg{
 svg:hover{
     transform: scale(1.2);
 }
-.principal_container{
-    background: #ffffff !important;
+.principal-container{
+    max-width: 550px !important;
     
 }
 .tittle-text{
