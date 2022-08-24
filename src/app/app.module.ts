@@ -9,6 +9,8 @@ import { ContratacionComponent } from './views/principal/contratacion/contrataci
 import { InstructorComponent } from './views/principal/instructor/instructor.component';
 import { InputsComponent } from './core/inputs/inputs.component';
 import { WindowsComponent } from './core/inputs/windows/windows.component';
+import { ConsultarComponent } from './views/consultar/consultar.component';
+import { FormularioComponent } from './views/formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { WindowsComponent } from './core/inputs/windows/windows.component';
     ContratacionComponent,
     InstructorComponent,
     InputsComponent,
-    WindowsComponent
+    WindowsComponent,
+    ConsultarComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
