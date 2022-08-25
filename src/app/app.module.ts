@@ -8,7 +8,7 @@ import { CoordinacionComponent } from './views/principal/coordinacion/coordinaci
 import { ContratacionComponent } from './views/principal/contratacion/contratacion.component';
 import { InstructorComponent } from './views/principal/instructor/instructor.component';
 import { InputsComponent } from './core/inputs/inputs.component';
-import { WindowsComponent } from './core/inputs/windows/windows.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +18,12 @@ import { WindowsComponent } from './core/inputs/windows/windows.component';
     ContratacionComponent,
     InstructorComponent,
     InputsComponent,
-    WindowsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

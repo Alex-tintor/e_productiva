@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-principal',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  public loginForm:FormGroup;
 
-  ngOnInit(): void {
+  constructor() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('',[Validators.email]),
+      password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16)])
+    })
   }
 
-}
+  ngOnInit(): void {return}
+
+  public onSubmmit(){}
+
+    
+  }
