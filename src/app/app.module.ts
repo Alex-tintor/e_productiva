@@ -10,6 +10,7 @@ import { InstructorComponent } from './views/principal/instructor/instructor.com
 import { InputsComponent } from './core/inputs/inputs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,

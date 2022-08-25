@@ -12,10 +12,10 @@
 .icon-logo:hover{
     transform: scale(1.1);
 }
-.input-label{color: var(--text-color-bold) !important;}
+.input-label{color: var(--principal-color) !important;}
 
 .login-button{
-    background-color: var(--text-color-bold);
+    background-color: var(--principal-color);
 }
 
 .circles{z-index: 0;}

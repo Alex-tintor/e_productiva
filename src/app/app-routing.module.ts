@@ -9,8 +9,8 @@ import { PrincipalComponent } from './views/principal/principal.component';
 const routes: Routes = [
   {path:'', component: PrincipalComponent},
   {path:'contratacion', component: ContratacionComponent},
-  {path:'coordinacion', component: CoordinacionComponent},
-  {path:'instructor', component: InstructorComponent}
+  {path:'instructor', component: InstructorComponent},
+  {path:'coordinacion',component:CoordinacionComponent}
 ];
 
 @NgModule({
