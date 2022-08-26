@@ -1,23 +1,37 @@
+/* Cuerpo */
 .area{
-    background: #ff6a00d0;  
-    background: -webkit-linear-gradient(to left, #fbac8f, #c88d4e);  
+    background: rgb(194,69,0);
+    background: linear-gradient(99deg, rgba(194,69,0,1) 0%, rgba(255,101,0,1) 50%, rgba(255,151,67,1) 100%);
 }
 .body-login{z-index: 10;}
-.body-content{max-width: 500px;}
+.body-content{max-width: 580px;}
+
+/* Iconos */
 .icon-logo{
     width: 200px;
     height: 200px;
     transition: ease all 1s;
 }
-.icon-logo:hover{
-    transform: scale(1.1);
+.icon-color{color: rgb(255, 89, 0);}
+.icon-logo:hover{transform: scale(1.1);}
+
+/* Inputs */
+.input{
+    outline: none;
+    position: relative !important;
+}
+.input-info{
+    cursor: pointer;
 }
 .input-label{color: var(--principal-color) !important;}
 
-.login-button{
-    background-color: var(--principal-color);
+.login-button{background-color: var(--principal-color);}
+.login-button:disabled{
+    background-color: var(--principal-color-disabled);
+    cursor:not-allowed;
 }
 
+/* Fondo Animado */
 .circles{z-index: 0;}
 
 .circles li{
@@ -112,7 +126,7 @@
         border-radius: 0;
     }
     100%{
-        transform: translateY(-1000px) rotate(720deg);
+        transform: translateY(-1500px) rotate(720deg);
         opacity: 0;
         border-radius: 50%;
     }
