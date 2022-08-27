@@ -6,6 +6,14 @@
 .body-login{z-index: 10;}
 .body-content{max-width: 580px;}
 
+.status{
+    height: 100px;
+}
+
+.error-box{
+    height: 40px;
+}
+
 /* Iconos */
 .icon-logo{
     width: 200px;
@@ -19,16 +27,52 @@
 .input{
     outline: none;
     position: relative !important;
+    transition: outline ease .1s;
+    outline-style: solid;
+    outline-color: transparent;
+    outline-width: 3px;
+    border-color: rgb(197, 197, 197);;
+    
+}
+.input:focus,
+.input:hover{
+    outline-color: rgb(197, 197, 197);
+}
+
+.input.invalid ~ .input-info .invalid,
+.input.invalid{
+    outline-color: rgb(240, 74, 74) !important;
+    background-color: rgb(240, 74, 74) !important;
+    background-color: rgb(255, 217, 217) !important;
+    color: red !important;
+}
+
+.input.invalid ~ .input-info .invalid-info{
+    color: red !important; 
 }
 .input-info{
     cursor: pointer;
+    padding: 8px;
+    padding-top: 4px;
+}
+.input-info:hover .tooltip-box{
+    visibility: visible;
 }
 .input-label{color: var(--principal-color) !important;}
 
-.login-button{background-color: var(--principal-color);}
+.login-button{
+    background-color: var(--principal-color);
+}
 .login-button:disabled{
     background-color: var(--principal-color-disabled);
     cursor:not-allowed;
+}
+/* Tooltip */
+.tooltip-box{
+    z-index: 30;
+    visibility: hidden;
+    transition: all ease 0.3;
+    width:max-content;
 }
 
 /* Fondo Animado */
@@ -129,5 +173,43 @@
         transform: translateY(-1500px) rotate(720deg);
         opacity: 0;
         border-radius: 50%;
+    }
+}
+
+/* Loader */
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: rgb(255, 89, 0);
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+@keyframes lds-facebook {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
     }
 }
