@@ -1,5 +1,6 @@
 :root{
     --principal-color:#ff7100;
+    --principal-color-disabled:#fc9f54;
     --principal-color-shadow:#ff730041;
     --text-color-bold: #c4691e;
 }
