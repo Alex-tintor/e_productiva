@@ -9,6 +9,8 @@ import { ContratacionComponent } from './views/principal/contratacion/contrataci
 import { InstructorComponent } from './views/principal/instructor/instructor.component';
 import { InputsComponent } from './core/inputs/inputs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PruebaDataComponent } from './components/prueba-data/prueba-data.component';
+import { HijoDataComponent } from './components/prueba-data/hijo-data/hijo-data.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContratacionComponent,
     InstructorComponent,
     InputsComponent,
+    PruebaDataComponent,
+    HijoDataComponent,
   ],
   imports: [
     BrowserModule,
