@@ -1,0 +1,23 @@
+<div class="row rounded-4 overflow-hidden ms-5 my-5 justify-content-between shadow w-100">
+    <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Instructores</p>
+    <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
+    <div class="col-6 p-0 w-auto h-auto align-self-center">
+        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Crear</button>
+        <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
+        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
+    </div>
+    <div class="row row-cols-5 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
+        <p class="align-self-center fs-5 ">Nombre instrctor</p>
+        <p class="align-self-center fs-5 ">CC</p>
+        <p class="align-self-center fs-5 ">Centro correspondiente</p>
+        <p class="align-self-center fs-5 ">Modalidad</p>
+        <p class="align-self-center fs-5 ">Estado</p>
+    </div>
+    <td *ngFor="let instructor of instructor" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
+        <tr class="data-square rounded-3">{{instructor.nombre}}</tr>
+        <tr>{{instructor.cc}}</tr>
+        <tr class="data-square rounded-3">{{instructor.centro_correspondiente}}</tr>
+        <tr>{{instructor.modalidad}}</tr>
+        <tr class="data-square rounded-3">{{instructor.estado}}</tr>
+    </td>
+</div>

@@ -1,0 +1,9 @@
+.tittle{
+    background-color: var(--principal-color);
+}
+.order-data{
+    background-color: var(--principal-color);
+}
+.data-square{
+    background-color: rgba(0, 0, 0, 0.037);
+}
