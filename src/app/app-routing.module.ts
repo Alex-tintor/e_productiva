@@ -5,12 +5,14 @@ import {ContratacionComponent} from '../app/views/principal/contratacion/contrat
 import {CoordinacionComponent} from '../app/views/principal/coordinacion/coordinacion.component';
 import {InstructorComponent} from '../app/views/principal/instructor/instructor.component';
 import { PrincipalComponent } from './views/principal/principal.component';
+import { PruebaDataComponent } from './components/prueba-data/prueba-data.component';
 
 const routes: Routes = [
   {path:'', component: PrincipalComponent},
   {path:'contratacion', component: ContratacionComponent},
   {path:'instructor', component: InstructorComponent},
-  {path:'coordinacion',component:CoordinacionComponent}
+  {path:'coordinacion',component:CoordinacionComponent},
+  {path:'prueba',component:PruebaDataComponent}
 ];
 
 @NgModule({
