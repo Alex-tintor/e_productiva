@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HijoDataService } from './hijo-data.service';
+import { InstructoresService } from './instructores.service';
 
-describe('HijoDataService', () => {
-  let service: HijoDataService;
+describe('InstructoresService', () => {
+  let service: InstructoresService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HijoDataService);
+    service = TestBed.inject(InstructoresService);
   });
 
   it('should be created', () => {
