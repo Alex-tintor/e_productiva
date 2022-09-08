@@ -1,17 +1,22 @@
 export class CentrosFormacion{
+    private _uuid:string;
     private _nombre:string;
     private _direccion:string;
     private _regional:string;
     private _coordinador:string;
     private _numeroAprendices:number;
 
-    constructor(nombre:string, direccion:string, regional:string,coordinador:string,aprendices:number){
+    constructor(id:string,nombre:string, direccion:string, regional:string,coordinador:string,aprendices:number){
+        this._uuid=id;
         this._nombre=nombre;
         this._direccion=direccion;
         this._regional=regional;
         this._coordinador=coordinador;
         this._numeroAprendices=aprendices;
     }
+    public get id():string{return this._uuid;}
+    public set id(id:string){this._uuid=id;}
+
     public get nombre():string{return this._nombre;}
     public set nombre(nombre:string){this._nombre=nombre}
   

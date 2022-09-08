@@ -10,14 +10,14 @@
         <p class="align-self-center fs-5 ">Nombre centro</p>
         <p class="align-self-center fs-5 ">Direccion</p>
         <p class="align-self-center fs-5 ">Regional</p>
-        <p class="align-self-center fs-5 ">coordinador/p>   
-        <p class="align-self-center fs-5 ">Instructor</p>
+        <p class="align-self-center fs-5 ">coordinador   
+        <p class="align-self-center fs-5 ">Nro aprendices</p>
     </div>
-    <td *ngFor="let centros of centros" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-        <tr class="data-square rounded-3">{{centros.nombre}}</tr>
-        <tr>{{centros.direccion}}</tr>
-        <tr class="data-square rounded-3">{{centros.regional}}</tr>
-        <tr>{{centros.coordinador}}</tr>
-        <tr class="data-square rounded-3">{{centros.instrucor_s}}</tr>
+    <td *ngFor="let centro of centros" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
+        <tr class="data-square rounded-3">{{centro.nombre}}</tr>
+        <tr>{{centro.direccion}}</tr>
+        <tr class="data-square rounded-3">{{centro.regional}}</tr>
+        <tr>{{centro.coordinador}}</tr>
+        <tr class="data-square rounded-3">{{centro.aprendices}}</tr>
     </td>
 </div>
