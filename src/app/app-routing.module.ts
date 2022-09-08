@@ -1,18 +1,14 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {ContratacionComponent} from '../app/views/principal/contratacion/contratacion.component';
-import {CoordinacionComponent} from '../app/views/principal/coordinacion/coordinacion.component';
-import {InstructorComponent} from '../app/views/principal/instructor/instructor.component';
+
 import { PrincipalComponent } from './views/principal/principal.component';
-import { PruebaDataComponent } from './components/prueba-data/prueba-data.component';
+
+import { DashboardComponent } from './views/principal/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'', component: PrincipalComponent},
-  {path:'contratacion', component: ContratacionComponent},
-  {path:'instructor', component: InstructorComponent},
-  {path:'coordinacion',component:CoordinacionComponent},
-  {path:'prueba',component:PruebaDataComponent}
+  {path:'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({

@@ -4,25 +4,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './views/principal/principal.component';
-import { CoordinacionComponent } from './views/principal/coordinacion/coordinacion.component';
-import { ContratacionComponent } from './views/principal/contratacion/contratacion.component';
-import { InstructorComponent } from './views/principal/instructor/instructor.component';
 import { InputsComponent } from './core/inputs/inputs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PruebaDataComponent } from './components/prueba-data/prueba-data.component';
-import { HijoDataComponent } from './components/prueba-data/hijo-data/hijo-data.component';
+import { DashboardComponent } from './views/principal/dashboard/dashboard.component';
+import { SlidebarComponent } from './core/inputs/slidebar/slidebar.component';
+
+import { InstructoresComponent } from './views/principal/instructores/instructores.component';
+import { EncuestasComponent } from './views/principal/encuestas/encuestas.component';
+import { AprendicesComponent } from './views/principal/aprendices/aprendices.component';
+import { FichasComponent } from './views/principal/fichas/fichas.component';
+import { CentrosFormacionComponent } from './views/principal/centros-formacion/centros-formacion.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PrincipalComponent,
-    CoordinacionComponent,
-    ContratacionComponent,
-    InstructorComponent,
     InputsComponent,
-    PruebaDataComponent,
-    HijoDataComponent,
+    DashboardComponent,
+    SlidebarComponent,
+    InstructoresComponent,
+    EncuestasComponent,
+    AprendicesComponent,
+    FichasComponent,
+    CentrosFormacionComponent,
   ],
   imports: [
     BrowserModule,

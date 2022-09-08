@@ -1,0 +1,33 @@
+.principal-container{
+    background-color: var(--principal-color);
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.391);
+    width: 50px;
+    transition: .5s ease;
+    overflow: hidden;
+}
+.principal-container.open{
+    width: 180px;
+    overflow: hidden;
+}
+.principal-icon{
+    cursor: pointer;
+    transition: .5s ease;
+}
+.select-icon{
+    transition: .5s ease;
+    height: 30px;
+    align-items: center;
+}
+.select-icon:hover{
+    background-color: var(--principal-color-disabled);
+    cursor: pointer;
+    height: 70px;
+    transition: .5s ease;
+    border-radius: 100%;
+}
+.principal-container.open .select-icon{
+    border-radius: 0%;
+}
+hr{
+    height: 5px  ;
+}
