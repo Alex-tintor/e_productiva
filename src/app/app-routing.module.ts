@@ -3,11 +3,12 @@ import {Routes, RouterModule} from '@angular/router';
 
 
 import { PrincipalComponent } from './views/principal/principal.component';
+
 import { DashboardComponent } from './views/principal/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'', component: PrincipalComponent},
-  {path:'dashboard', component: DashboardComponent},
+  {path:'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({

@@ -16,6 +16,8 @@ import { FichasComponent } from './views/principal/fichas/fichas.component';
 import { CentrosFormacionComponent } from './views/principal/centros-formacion/centros-formacion.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
