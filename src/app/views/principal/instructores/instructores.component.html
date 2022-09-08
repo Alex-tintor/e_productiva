@@ -1,23 +1,35 @@
-<div class="row rounded-4 overflow-hidden ms-5 my-5 justify-content-between shadow w-100">
-    <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Instructores</p>
-    <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
-    <div class="col-6 p-0 w-auto h-auto align-self-center">
-        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Crear</button>
-        <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
-        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
+<div class="row m-0 p-4">
+    <div class="col-12 col-md-2 bg-primary order-md-last">
+        Filtros mamadicimos
     </div>
-    <div class="row row-cols-5 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
-        <p class="align-self-center fs-5 ">Nombre instrctor</p>
-        <p class="align-self-center fs-5 ">CC</p>
-        <p class="align-self-center fs-5 ">Centro correspondiente</p>
-        <p class="align-self-center fs-5 ">Modalidad</p>
-        <p class="align-self-center fs-5 ">Estado</p>
+    <div class="col-12 col-md-10">
+        <div class="shadow rounded-2 overflow-hidden">
+            <h5 class="pt-3 text-center fw-bold">Instructores</h5>
+            <table class="table table-striped table-hover m-0">
+                <caption class="p-0"></caption>
+                <thead>
+                  <tr>
+                    <th scope="row" class="col-label">Cedula</th>
+                    <th scope="col" class="col-label">Nombre</th>
+                    <th scope="col" class="col-label">Apellido</th>
+                    <th scope="col" class="col-label">Correo</th>
+                    <th scope="col" class="col-label">Telefono</th>
+                    <th scope="col" class="col-label">Centro de Formacion</th>
+                    <th scope="col" class="col-label">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let instructor of instructores">
+                    <th scope="row">{{instructor.cc}}</th>
+                    <td>{{instructor.nombre}}</td>
+                    <td>{{instructor.apellido}}</td>
+                    <td>{{instructor.correo}}</td>
+                    <td>{{instructor.telefono}}</td>
+                    <td>{{instructor.centro}}</td>
+                    <td>{{instructor.estado}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
     </div>
-    <td *ngFor="let instructor of instructor" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-        <tr class="data-square rounded-3">{{instructor.nombre}}</tr>
-        <tr>{{instructor.cc}}</tr>
-        <tr class="data-square rounded-3">{{instructor.centro_correspondiente}}</tr>
-        <tr>{{instructor.modalidad}}</tr>
-        <tr class="data-square rounded-3">{{instructor.estado}}</tr>
-    </td>
-</div>
+</div> 

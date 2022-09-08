@@ -1,41 +1,34 @@
 import { Injectable } from '@angular/core';
-import {FichasComponent} from '../views/principal/fichas/fichas.component';
+import { Ficha } from 'src/app/modules/fichas/Ficha'
 
 @Injectable({
   providedIn: 'root'
 })
-export class FichasService {
+export class FichaService {
 
-  // public fichas=[
-  //   {
-  //     nombre: "ADSI",
-  //     n_ficha:2233518,
-  //     centro_correspondiente:"Servicios financieros",
-  //     etapa:"productiva",
-  //     estado:"En formacion"
-  //   },
-  //   {
-  //     nombre: "Tecnico en programación",
-  //     n_ficha:2233497,
-  //     centro_correspondiente:"Ni idea",
-  //     etapa:"productiva",
-  //     estado:"En formacion"
-  //   },
-  //   {
-  //     nombre: "Tecnico en redes",
-  //     n_ficha:4458799,
-  //     centro_correspondiente:"Centro",
-  //     etapa:"Lectiva",
-  //     estado:"desertado"
-  //   },
-  //   {
-  //     nombre: "Tecnico en mantenimiento",
-  //     n_ficha:3164887,
-  //     centro_correspondiente:"El el sena :D",
-  //     etapa:"Lectiva",
-  //     estado:"desertado"
-  //   }
-  // ] 
-  
-  constructor() { }
+  constructor(){
+    this.loadFichas();
+  }
+
+  private _fichas:Ficha[] = []
+
+  public fichas(){
+    return this._fichas;
+  }
+
+  public fichaById(id:number){
+    return this._fichas.filter(ficha => ficha.numero == id);
+  }
+
+  public addFicha(ficha:Ficha){
+    this._fichas.push(ficha);
+  }
+
+  public loadFichas(){
+    let ficha1 = new Ficha('programa A',123,'CEET','PRACTICA',true);
+    let ficha2 = new Ficha('programa B',124,'CEET','PRACTICA',false);
+    this._fichas.push(ficha1)
+    this._fichas.push(ficha2)
+  }
+
 }

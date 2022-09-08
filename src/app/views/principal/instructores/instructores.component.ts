@@ -7,38 +7,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructoresComponent implements OnInit {
 
-  constructor() { }
+  constructor() {return}
 
-  ngOnInit(): void {
-  }
-  public instructor=[
+  ngOnInit(): void {return}
+  public instructores=[
     {
-      nombre: "Rafael nuñez",
+      nombre: "Rafael",
       cc:123456789,
-      centro_correspondiente:"Servicios financieros",
+      centro:"Servicios financieros",
+      apellido: "nuñez",
+      telefono: "3262256654",
       modalidad:"presencial",
-      estado:"Contratado"
+      estado:"Contratado",
+      correo:"rafale@gmail.com"
     },
     {
-      nombre: "Carolina Martinez",
+      nombre: "Carolina ",
       cc:98765431,
-      centro_correspondiente:"Ni idea",
+      centro:"Ni idea",
+      apellido: "Martinez",
+      telefono: "3262234223",
       modalidad:"virtual",
-      estado:"No contratado"
+      estado:"No contratado",
+      correo:"carolina@gmail.com"
     },
     {
-      nombre: "Alejandro Diaz",
+      nombre: "Alejandro",
       cc:159786423,
-      centro_correspondiente:"Centro",
+      centro:"Centro",
+      apellido: "Diaz",
+      telefono: "3262234224",
       modalidad:"presencial",
-      estado:"No contratado"
+      estado:"No contratado",
+      correo:"alejandro@gmail.com"
     },
     {
-      nombre: "Gabriela Torres",
+      nombre: "Gabriela",
       cc:147852369,
-      centro_correspondiente:"El el sena :D",
+      centro:"El el sena :D",
+      apellido: "Torres",
+      telefono: "3262223434",
       modalidad:"virtual",
-      estado:"contratado"
+      estado:"contratado",
+      correo:"gabriela@gmail.com"
     }
   ] 
 }

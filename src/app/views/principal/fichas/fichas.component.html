@@ -2,11 +2,7 @@
     <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Fichas</p>
     <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
     <div class="col-6 p-0 w-auto h-auto align-self-center">
-<<<<<<< Updated upstream
-        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Crear</button>
-=======
-        <button type="submit" class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" (click)="addFichas()">Crear</button>
->>>>>>> Stashed changes
+        <button type="submit" class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" >Crear</button>
         <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
         <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
     </div>
@@ -17,11 +13,18 @@
         <p class="align-self-center fs-5 ">Etapa</p>
         <p class="align-self-center fs-5 ">Estado</p>
     </div>
-    <td *ngFor="let fichas of fichas" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-        <tr class="data-square rounded-3">{{fichas.nombre}}</tr>
-        <tr>{{fichas.n_ficha}}</tr>
-        <tr class="data-square rounded-3">{{fichas.centro_correspondiente}}</tr>
-        <tr>{{fichas.etapa}}</tr>
-        <tr class="data-square rounded-3">{{fichas.estado}}</tr>
+    <td>
+        <tr><input type="text" name="" id="" placeholder="a"></tr>
+        <tr><input type="text" name="" id="" placeholder="b"></tr>
+        <tr><input type="text" name="" id="" placeholder="c"></tr>
+        <tr><input type="text" name="" id="" placeholder="d"></tr>
+        <tr><button (click)="addFicha()"></button></tr>
+    </td>
+    <td *ngFor="let ficha of fichas" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
+        <tr class="data-square rounded-3">{{ficha.programa}}</tr>
+        <tr>{{ficha.numero}}</tr>
+        <tr class="data-square rounded-3">{{ficha.centro}}</tr>
+        <tr>{{ficha.etapa}}</tr>
+        <tr class="data-square rounded-3">{{ficha.estado}}</tr>
     </td>
 </div>

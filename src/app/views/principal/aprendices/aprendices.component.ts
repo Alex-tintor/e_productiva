@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import {Aprendices} from 'src/app/modules/fichas/aprendices';
+import {AprendicesService} from "src/app/services/aprendices.service";
+
 @Component({
   selector: 'app-aprendices',
   templateUrl: './aprendices.component.html',
@@ -7,39 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AprendicesComponent implements OnInit {
 
-  constructor() { }
+  public aprendices:Aprendices[];
+
+  constructor(private aprendizService:AprendicesService) { 
+    this.aprendices= aprendizService.aprendices()
+  }
 
   ngOnInit(): void {
   }
-  public aprendices=[
-    {
-      nombre: "alexis ramirez cicedo",
-      cc:678454563,
-      ficha_correspondiente:2394657,
-      etapa:"productiva",
-      estado:"desertado"
-    },
-    {
-      nombre: "juan ramirez lara",
-      cc:45643645,
-      ficha_correspondiente:2394657,
-      etapa:"productiva",
-      estado:"contratado/sedido"
-    },
-    {
-      nombre: "sebastian hernesto sepulveda lopez",
-      cc:1578634,
-      ficha_correspondiente:2394657,
-      etapa:"productiva",
-      estado:"en espera"
-    },
-    {
-      nombre: "dalien hernesto forigua",
-      cc:23457621,
-      ficha_correspondiente:2394657,
-      etapa:"productiva",
-      estado:"contratado"
-    }
-  ] 
+  
+  addAprendiz(){
+    let aprendiz = new Aprendices("alexander",317284738,35434,"practica","contratado");
+
+    this.aprendizService.addAprendiz(aprendiz)
+  }
 
 }

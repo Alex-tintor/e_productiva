@@ -2,7 +2,7 @@
     <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Aprendices</p>
     <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
     <div class="col-6 p-0 w-auto h-auto align-self-center">
-        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Crear</button>
+        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" (click)="addAprendiz()">Crear</button>
         <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
         <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
     </div>
@@ -16,7 +16,7 @@
     <td *ngFor="let aprendiz of aprendices" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
         <tr class="data-square rounded-3">{{aprendiz.nombre}}</tr>
         <tr>{{aprendiz.cc}}</tr>
-        <tr class="data-square rounded-3">{{aprendiz.ficha_correspondiente}}</tr>
+        <tr class="data-square rounded-3">{{aprendiz.ficha}}</tr>
         <tr>{{aprendiz.etapa}}</tr>
         <tr class="data-square rounded-3">{{aprendiz.estado}}</tr>
     </td>

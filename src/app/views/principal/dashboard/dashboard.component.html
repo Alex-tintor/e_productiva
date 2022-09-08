@@ -1,9 +1,8 @@
-<div class="row row-cols-2 w-100">
-    <app-slidebar class="col-2 w-auto h-auto" (EventSeccion)="seccionValue($event)"></app-slidebar>
-    
-    <app-fichas *ngIf="Seccion == 'FICHAS'" class="w-75"></app-fichas>
-    <app-instructores *ngIf="Seccion == 'INSTRUCTOR'" class="w-75"></app-instructores>
-    <app-centros-formacion *ngIf="Seccion == 'CENTROFORMACION'" class="w-75"></app-centros-formacion>
-   <app-encuestas *ngIf="Seccion == 'ENCUESTAS'" class="w-75"></app-encuestas>
-    <app-aprendices *ngIf="Seccion == 'APRENDICES'" class="w-75"></app-aprendices>
+<div class="row m-0">
+    <app-slidebar class="col-auto p-0" (EventSeccion)="seccionValue($event)"></app-slidebar>
+    <app-fichas *ngIf="Seccion == 'FICHAS' " class="col p-0"></app-fichas>
+    <app-instructores *ngIf="Seccion == 'INSTRUCTOR' || Seccion == ''" class="col p-0"></app-instructores>
+    <app-centros-formacion *ngIf="Seccion == 'CENTROFORMACION'" class="col p-0"></app-centros-formacion>
+    <app-encuestas *ngIf="Seccion == 'ENCUESTAS'" class="col p-0"></app-encuestas>
+    <app-aprendices *ngIf="Seccion == 'APRENDICES'" class="col p-0"></app-aprendices>
 </div>
