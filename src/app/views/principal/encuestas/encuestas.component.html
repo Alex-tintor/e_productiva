@@ -2,7 +2,7 @@
     <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Encuestas</p>
     <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
     <div class="col-6 p-0 w-auto h-auto align-self-center">
-        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Crear</button>
+        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" (click)="addEncuestas()">Crear</button>
         <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
         <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
     </div>
@@ -13,12 +13,12 @@
         <p class="align-self-center fs-5 ">Nro Contacto</p>
         <p class="align-self-center fs-5 ">Correo de contacto</p>
     </div>
-    <td *ngFor="let empresas of empresas" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center text-break w-100 ">
-        <tr class="data-square rounded-3">{{empresas.nombre}}</tr>
-        <tr>{{empresas.id}}</tr>
-        <tr class="data-square rounded-3">{{empresas.representante}}</tr>
-        <tr>{{empresas.telefono}}</tr>
-        <tr class="data-square rounded-3 ">{{empresas.correo}}</tr>
+    <td *ngFor="let encuesta of encuestas" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center text-break w-100 ">
+        <tr class="data-square rounded-3">{{encuesta.nombre}}</tr>
+        <tr>{{encuesta.id}}</tr>
+        <tr class="data-square rounded-3">{{encuesta.representante}}</tr>
+        <tr>{{encuesta.contacto}}</tr>
+        <tr class="data-square rounded-3 ">{{encuesta.email}}</tr>
     </td>
 </div>
 

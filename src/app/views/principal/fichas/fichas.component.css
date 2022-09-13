@@ -7,3 +7,6 @@
 .data-square{
     background-color: rgba(0, 0, 0, 0.037);
 }
+.modal-header{
+    background-color: var(--principal-color);
+}

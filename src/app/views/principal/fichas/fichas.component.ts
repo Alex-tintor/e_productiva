@@ -9,16 +9,22 @@ import { FichaService} from 'src/app/services/fichas.service'
 })
 export class FichasComponent implements OnInit {
 
+  public nombre:string="";
+  public numero:number=0;
+  public centro:string="";
+  public etapa:string="";
+  public estado:boolean=true;
+
   public fichas:Ficha[];
 
   constructor(private fichaService:FichaService) {
     this.fichas = fichaService.fichas();
   }
-
   ngOnInit(): void {return}
 
   addFicha(){
-    let ficha = new Ficha('Programa XXX',12312312,'oliwis','durmiente',false);
+    let ficha = new Ficha(this.nombre,this.numero,this.centro,this.etapa,this.estado);
     this.fichaService.addFicha(ficha)
   }
+  
 }
