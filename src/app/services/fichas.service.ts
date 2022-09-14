@@ -17,7 +17,7 @@ export class FichaService {
   }
 
   public fichaById(id:number){
-    return this._fichas.filter(ficha => ficha.numero == id);
+    return this._fichas.filter(ficha => ficha.id == id);
   }
 
   public addFicha(ficha:Ficha){
@@ -25,10 +25,10 @@ export class FichaService {
   }
 
   public loadFichas(){
-    let ficha1 = new Ficha('programa A',123,'CEET','PRACTICA',true);
-    let ficha2 = new Ficha('programa B',124,'CEET','PRACTICA',false);
-    this._fichas.push(ficha1)
-    this._fichas.push(ficha2)
+    let ficha1 = new Ficha(2141342,'programacion de software','precencial',12839430,'C.E.E.T','10/09/2021#','10/09/2021','productiva',true);
+    let ficha2 = new Ficha(212445634,'programacion de software','precencial',12345,'C.E.E.T','10/09/2021','10/09/2021','productiva',true);
+    this._fichas.push(ficha1);
+    this._fichas.push(ficha2);
   }
 
 }
