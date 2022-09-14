@@ -12,17 +12,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <input type="text" id="nombre" >
-                <input type="number" id="numero" >
-                <input type="text" id="centro" >
-                <input type="text" id="etapa" >
-                <select id="estado">
-                  <option></option>
-                </select>
+                <form [formGroup]="fichasData">
+                  <input formControlName="idFicha" type="number">
+                  <input formControlName="nombre" type="text">
+                  <input formControlName="modalidad" type="text">
+                  <input formControlName="instructorN" type="text">
+                  <input formControlName="instructorA" type="text">
+                  <input formControlName="centroFormacion" type="text">
+                  <input formControlName="fechaInicio" type="date">
+                  <input formControlName="fechaFin" type="date">
+                  <input formControlName="etapa" type="text">
+                  <select formControlName="estado">
+                    <option></option>
+                  </select>
+                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                <button type="button" class="btn btn-primary">Crear Ficha</button>
+                <button type="button" class="btn btn-primary" (click)="addFicha()" (click)="show()">Crear Ficha</button>
               </div>
             </div>
           </div>
