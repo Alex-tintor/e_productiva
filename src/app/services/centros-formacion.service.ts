@@ -23,17 +23,17 @@ export class CentrosFormacionService {
   }
 
   public loadCentros(){
-    let centrosTemp0 = new CentrosFormacion("a1dw56da32s1","Centro de electricidad,electronica y telecomunicaciones","avenida 30 #1","bogota distrito capital","juan prieto",8520);
+    let centrosTemp0 = new CentrosFormacion("1j23k12j","cenigraf","willirex" ,true);
     this._centros.push(centrosTemp0);
-    let centrosTemp1 = new CentrosFormacion("879dwqd56a","cenigraf","avenida 30 #1","bogota distrito capital","juan prieto",2200);
+    let centrosTemp1 = new CentrosFormacion("1j23k12j","cenigraf","8cho" ,true);
     this._centros.push(centrosTemp1);
-    let centrosTemp2 = new CentrosFormacion("4jk5g64jh","Centro de Hoteleria","avenida 30 #1","bogota distrito capital","juan prieto",159);
+    let centrosTemp2 = new CentrosFormacion("1j23k12j","cenigraf","vegetta" ,true);
     this._centros.push(centrosTemp2);
-    let centrosTemp3 = new CentrosFormacion("15xz6cs","Centro Agropecuario","avenida 30 #1","bogota distrito capital","juan prieto",3695);
+    let centrosTemp3 = new CentrosFormacion("1j23k12j","cenigraf","natalan" ,true);
     this._centros.push(centrosTemp3);
-    let centrosTemp4 = new CentrosFormacion("15hj6k41","Centro de electricidad,electronica y telecomunicaciones","avenida 30 #1","bogota distrito capital","juan prieto",1596);
+    let centrosTemp4 = new CentrosFormacion("1j23k12j","cenigraf","missa" ,true);
     this._centros.push(centrosTemp4);
-    let centrosTemp5 = new CentrosFormacion("1c9v19bc51","Centro de electricidad,electronica y telecomunicaciones","avenida 30 #1","bogota distrito capital","juan prieto",2245);
+    let centrosTemp5 = new CentrosFormacion("1j23k12j","cenigraf","50cent" ,true);
     this._centros.push(centrosTemp5);
   }
 }

@@ -2,7 +2,37 @@
     <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Aprendices</p>
     <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
     <div class="col-6 p-0 w-auto h-auto align-self-center">
-        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" (click)="addAprendiz()">Crear</button>
+        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#addFichaModal" >Crear</button>
+          <!-- Modal -->
+          <div class="modal fade" id="addFichaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-white" id="exampleModalLabel">Crear una nueva ficha</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="aprendizData">
+                    <label for="input_id" class="fw-bold mb-1 input-label">ingrese el numero de identificacion para el Centro <strong class="text-danger">*</strong></label>
+                    <input formControlName="cc" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                    <label for="input_nombre" class="fw-bold mb-1 input-label">Ingrese el nombre del Centro <strong class="text-danger">*</strong></label>
+                    <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre">
+                    <label for="input_coordinador" class="fw-bold mb-1 input-label">Ingrese el nombre del Coordinador <strong class="text-danger">*</strong></label>
+                    <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_coordinador">
+                    <label for="input_estado" class="fw-bold mb-1 input-label">Estado del Centro <strong class="text-danger">*</strong></label>
+                    <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                      <option>Activo</option>
+                      <option>inactivo</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+                  <button type="button" class="btn btn-primary"(click)="addAprendiz()" (click)="show()" [disabled]="aprendizData.invalid" >Crear Centro</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
         <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
     </div>

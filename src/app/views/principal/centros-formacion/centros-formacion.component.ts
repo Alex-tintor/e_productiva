@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import {CentrosFormacion} from 'src/app/modules/fichas/CentrosFormacion';
 import {CentrosFormacionService} from 'src/app/services/centros-formacion.service';
@@ -14,11 +15,28 @@ export class CentrosFormacionComponent implements OnInit {
   constructor(private centrosService:CentrosFormacionService) {
     this.centros = centrosService.centros();
    }
+   centrosData = new FormGroup({
+    id:new FormControl('',[Validators.required,Validators.maxLength(11)]),
+    nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
+    coordinador:new FormControl('',[Validators.required,Validators.maxLength(90)]),
+    estado:new FormControl('Activo',[Validators.required])
+  })
 
   ngOnInit(): void {
   }
+
   addCentro(){
-    let centro = new CentrosFormacion("as21dfa3s","Cenigraf","cra30#1","bogota distrito capital","marwuin",1268);
-    this.centros.push(centro);
+    let estado:any = this.centrosData.controls['estado'].value;
+    let id:any = this.centrosData.controls['id'].value;
+    let nombre:any = this.centrosData.controls['nombre'].value;
+    let coordinador:any = this.centrosData.controls['coordinador'].value;
+    let centro = new CentrosFormacion(id,nombre,coordinador,estado);
+    this.centrosService.addCentros(centro)
+  }
+
+  show(){
+    console.log(this.centrosData.value)
   }
 }
+
+
