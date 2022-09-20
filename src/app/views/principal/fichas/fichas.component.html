@@ -14,29 +14,32 @@
               <div class="modal-body">
                 <form [formGroup]="fichasData">
                   <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el numero de la Ficha <strong class="text-danger">*</strong></label>
-                  <input formControlName="idFicha" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                  <input formControlName="idFicha" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id" >
                   <label for="input_id" class="fw-bold mb-1 input-label">ingrese el Nombre del Programa <strong class="text-danger">*</strong></label>
-                  <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre">
+                  <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre" >
                   <label for="input_id" class="fw-bold mb-1 input-label">Seleccione la modalidad de la Ficha <strong class="text-danger">*</strong></label>
-                  <select formControlName="modalidad" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <select formControlName="modalidad" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" >
                     <option>Precencial</option>
                     <option>Virtual</option>
                     <option>Alternancia</option>
                   </select>
                   <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
-                  <input formControlName="instructorN" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <input formControlName="instructorN" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" >
                   <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el Apellido del Instructor <strong class="text-danger">*</strong></label>
-                  <input formControlName="instructorA" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <input formControlName="instructorA" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" >
                   <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el Centro de Formacion <strong class="text-danger">*</strong></label>
-                  <input formControlName="centroFormacion" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <input formControlName="centroFormacion" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" >
                   <label for="input_id" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
-                  <input formControlName="fechaInicio" type="date" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <input formControlName="fechaInicio" type="date" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" >
                   <label for="input_id" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
-                  <input formControlName="fechaFin" type="date" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
-                  <label for="input_id" class="fw-bold mb-1 input-label">Seleccione la Etapa <strong class="text-danger">*</strong></label>
-                  <input formControlName="etapa" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <input formControlName="fechaFin" type="date" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" >
+                  <label for="input_etapa" class="fw-bold mb-1 input-label">Seleccione la Etapa <strong class="text-danger">*</strong></label>
+                  <select formControlName="etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_etapa" >
+                    <option>Lectiva</option>
+                    <option>Productiva</option>
+                  </select>
                   <label for="input_id" class="fw-bold mb-1 input-label">seleccione el Estado <strong class="text-danger">*</strong></label>
-                  <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" >
                     <option>Activo</option>
                     <option>inactivo</option>
                   </select>

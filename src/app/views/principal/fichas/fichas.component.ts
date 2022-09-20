@@ -11,6 +11,7 @@ import { FichaService} from 'src/app/services/fichas.service'
 })
 export class FichasComponent implements OnInit {
   public fichas:Ficha[];
+  
 
   constructor(private fichaService:FichaService) {
     this.fichas = fichaService.fichas();
@@ -25,11 +26,12 @@ export class FichasComponent implements OnInit {
     centroFormacion:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     fechaInicio:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     fechaFin:new FormControl('',[Validators.required,Validators.maxLength(10)]),
-    etapa:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    etapa:new FormControl('Lectiva',[Validators.required,Validators.maxLength(10)]),
     estado:new FormControl('Activo',[Validators.required])
   })
 
   ngOnInit(): void {return}
+
 
   addFicha(){
     let numero:any = this.fichasData.controls['idFicha'].value;
