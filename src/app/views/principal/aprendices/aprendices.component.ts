@@ -22,7 +22,7 @@ export class AprendicesComponent implements OnInit {
     nombre:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     apellido:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     ficha:new FormControl('',[Validators.required,Validators.maxLength(11)]),
-    etapa:new FormControl('',[Validators.required]),
+    etapa:new FormControl('Lectiva',[Validators.required]),
     estado:new FormControl('Activo',[Validators.required])
   })
 
@@ -30,14 +30,8 @@ export class AprendicesComponent implements OnInit {
   }
   
   addAprendiz(){
-    let cc:any = this.aprendizData.controls['cc'].value;
-    let nombre:any = this.aprendizData.controls['nombre'].value;
-    let apellido:any = this.aprendizData.controls['apellido'].value;
-    let ficha:any = this.aprendizData.controls['ficha'].value;
-    let etapa:any = this.aprendizData.controls['etapa'].value;
-    let estado:any = this.aprendizData.controls['estado'].value;
-    let centro = new Aprendices(cc,nombre,apellido,ficha,etapa,estado);
-    this.aprendizService.addAprendiz(centro)
+    let aprendiz:Aprendices = Object.assign(this.aprendizData.value);
+    this.aprendizService.addAprendiz(aprendiz)
   }
 
   show(){

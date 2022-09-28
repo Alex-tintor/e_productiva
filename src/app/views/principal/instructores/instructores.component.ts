@@ -18,26 +18,19 @@ export class InstructoresComponent implements OnInit {
   }
 
   instructorData = new FormGroup({
-    id:new FormControl('',[Validators.required,Validators.maxLength(11)]),
-    instructorN:new FormControl('',[Validators.required,Validators.maxLength(45)]),
-    instructorA:new FormControl('',[Validators.required,Validators.maxLength(45)]),
+    cc:new FormControl('',[Validators.required,Validators.maxLength(11)]),
+    nombre:new FormControl('',[Validators.required,Validators.maxLength(45)]),
+    apellido:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     email:new FormControl('',[Validators.required,Validators.email]),
-    phone:new FormControl('',[Validators.required,Validators.maxLength(10)]),
-    centroFormacion:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    telefono:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    centro:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     estado:new FormControl('Activo',[Validators.required])
   })
 
   ngOnInit(): void {return}
 
   addFicha(){
-    let id:any = this.instructorData.controls['id'].value;
-    let instructorN:any = this.instructorData.controls['instructorN'].value;
-    let instructorA:any = this.instructorData.controls['instructorA'].value;
-    let email:any = this.instructorData.controls['email'].value;
-    let phone:any = this.instructorData.controls['phone'].value;
-    let centro:any = this.instructorData.controls['centroFormacion'].value;
-    let estado:any = this.instructorData.controls['estado'].value;
-    let instructor = new Instructores(id,instructorN,instructorA,email,phone,centro,estado);
+    let instructor:Instructores = Object.assign(this.instructorData.value)
     this.instructoresService.addInstructor(instructor)
   }
   

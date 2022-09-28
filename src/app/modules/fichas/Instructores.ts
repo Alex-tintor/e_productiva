@@ -7,8 +7,8 @@ export class Instructores{
     private _centro:string;
     private _estado:boolean;
 
-    constructor(id:number,nombre:string,apellido:string,email:string,telefono:number,centro:string,estado:boolean){
-        this._cc=id;
+    constructor(cc:number,nombre:string,apellido:string,email:string,telefono:number,centro:string,estado:boolean){
+        this._cc=cc;
         this._nombre=nombre;
         this._apellido=apellido;
         this._enail=email;

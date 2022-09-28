@@ -26,16 +26,13 @@ export class CentrosFormacionComponent implements OnInit {
   }
 
   addCentro(){
-    let estado:any = this.centrosData.controls['estado'].value;
-    let id:any = this.centrosData.controls['id'].value;
-    let nombre:any = this.centrosData.controls['nombre'].value;
-    let coordinador:any = this.centrosData.controls['coordinador'].value;
-    let centro = new CentrosFormacion(id,nombre,coordinador,estado);
+    let centro:CentrosFormacion = Object.assign(this.centrosData.value)
     this.centrosService.addCentros(centro)
   }
 
   show(){
-    console.log(this.centrosData.value)
+    console.log(this.centrosData.value);
+    console.log(this.addCentro());
   }
 }
 

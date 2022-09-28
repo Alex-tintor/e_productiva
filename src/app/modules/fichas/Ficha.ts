@@ -12,7 +12,7 @@ export class Ficha {
   constructor(id:number,
     programa:string,
     modalidad:string,
-    instructor:number,
+    instructorCc:number,
     centro:string,
     fechaInicio:string,
     fechaFin:string,
@@ -22,7 +22,7 @@ export class Ficha {
     this._id = id;
     this._programa = programa;
     this._modalidad = modalidad;
-    this._instructorId = instructor;
+    this._instructorId = instructorCc;
     this._centro = centro;
     this._fechaInicio = fechaInicio;
     this._fechaFin = fechaFin;
@@ -39,8 +39,8 @@ export class Ficha {
   public get modalidad():string{return this._modalidad;}
   public set modalidad(modalidad:string){this._modalidad=modalidad}
   
-  public get instructor():number{return this._instructorId;}
-  public set instructor(instructor:number){this._instructorId=instructor}
+  public get instructorCc():number{return this._instructorId;}
+  public set instructorCc(instructorCc:number){this._instructorId=instructorCc}
 
   public get centro():string{return this._centro;}
   public set centro(centro:string){this._centro=centro}
