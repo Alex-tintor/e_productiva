@@ -17,8 +17,8 @@
                     <input formControlName="id" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
                     <label for="input_nombre" class="fw-bold mb-1 input-label">Ingrese el nombre del Centro <strong class="text-danger">*</strong></label>
                     <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre">
-                    <label for="input_coordinador" class="fw-bold mb-1 input-label">Ingrese el nombre del Coordinador <strong class="text-danger">*</strong></label>
-                    <input formControlName="coordinador" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_coordinador">
+                    <!-- <label for="input_coordinador" class="fw-bold mb-1 input-label">Ingrese el nombre del Coordinador <strong class="text-danger">*</strong></label>
+                    <input formControlName="coordinador" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_coordinador"> -->
                     <label for="input_estado" class="fw-bold mb-1 input-label">Estado del Centro <strong class="text-danger">*</strong></label>
                     <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
                       <option>Activo</option>
@@ -46,6 +46,6 @@
         <tr class="data-square rounded-3">{{centro.id}}</tr>
         <tr>{{centro.nombre}}</tr>
         <tr class="data-square rounded-3">{{centro.estado}}</tr>
-        <tr>{{centro.coordinador}}</tr>
+        <!-- <tr>{{centro.coordinador}}</tr> -->
     </td>
 </div>

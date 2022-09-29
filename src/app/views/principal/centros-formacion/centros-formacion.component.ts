@@ -18,7 +18,7 @@ export class CentrosFormacionComponent implements OnInit {
    centrosData = new FormGroup({
     id:new FormControl('',[Validators.required,Validators.maxLength(11)]),
     nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
-    coordinador:new FormControl('',[Validators.required,Validators.maxLength(90)]),
+    // coordinador:new FormControl('',[Validators.required,Validators.maxLength(90)]),
     estado:new FormControl('Activo',[Validators.required])
   })
 
