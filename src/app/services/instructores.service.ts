@@ -24,13 +24,13 @@ export class InstructoresService {
   }
 
   public loadInstructores(){
-    let instructorTemp0 = new Instructores(1234532,"Jose ", "Ovalle Rodriguez","jeovalle@misena.edu.co",43209128,"Cenigraf",true);
+    let instructorTemp0 = new Instructores(1234532,"Jose ", "Ovalle Rodriguez","jeovalle@misena.edu.co",43209128,true);
     this._instructor.push(instructorTemp0);
-    let instructorTemp1 = new Instructores(1234532,"anres ", "Ovalle montecarlo","daniel@dasda.edu.co",123423523412,"ceet",true);
+    let instructorTemp1 = new Instructores(1234532,"anres ", "Ovalle montecarlo","daniel@dasda.edu.co",123423523412,true);
     this._instructor.push(instructorTemp1);
-    let instructorTemp2 = new Instructores(1234532,"Jose ", "Ovalle Rodriguez","jeovalle@misena.edu.co",43209128,"Cenigraf",true);
+    let instructorTemp2 = new Instructores(1234532,"Jose ", "Ovalle Rodriguez","jeovalle@misena.edu.co",43209128,true);
     this._instructor.push(instructorTemp2);
-    let instructorTemp3 = new Instructores(1234532,"pipe ", "Ovalle diaz","diaz@misena.edu.co",67856,"Cenigraf",true);
+    let instructorTemp3 = new Instructores(1234532,"pipe ", "Ovalle diaz","diaz@misena.edu.co",67856,true);
     this._instructor.push(instructorTemp3);
   }
 }

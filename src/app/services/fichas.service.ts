@@ -25,8 +25,8 @@ export class FichaService {
   }
 
   public loadFichas(){
-    let ficha1 = new Ficha(2141342,'programacion de software','precencial',12839430,'C.E.E.T','10/09/2021#','10/09/2021','productiva',true);
-    let ficha2 = new Ficha(212445634,'programacion de software','precencial',12345,'C.E.E.T','10/09/2021','10/09/2021','productiva',true);
+    let ficha1 = new Ficha(2141342,'precencial','2022-10-30','10/09/2021',true);
+    let ficha2 = new Ficha(212445634,'precencial','10/09/2021','10/09/2021',true);
     this._fichas.push(ficha1);
     this._fichas.push(ficha2);
   }

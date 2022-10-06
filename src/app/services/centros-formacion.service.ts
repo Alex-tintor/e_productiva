@@ -7,11 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CentrosFormacionService {
-
-  // aca debe de ir el end point de la apirest
-  private url:string="http://localhost:8080/api/v1/centrodeformacion";
-
+  
   constructor(private http:HttpClient ) { }
+  // aca debe de ir el end point de la apirest
+  private url:string="http://localhost:8080/api/centrodeformacion";
 
   getAllCentrosFormacion():Observable<CentrosFormacion[]>{
     return this.http.get<CentrosFormacion[ ]>(this.url);
@@ -48,17 +47,17 @@ export class CentrosFormacionService {
   }
 
   public loadCentros(){
-    let centrosTemp0 = new CentrosFormacion("1j23k12j","cenigraf",/*"willirex"*/true);
+    let centrosTemp0 = new CentrosFormacion("1j23k12j","cenigraf",true);
     this._centros.push(centrosTemp0);
-    let centrosTemp1 = new CentrosFormacion("1j23k12j","cenigraf"/*,"8cho"*/ ,true);
+    let centrosTemp1 = new CentrosFormacion("1j23k12j","cenigraf",true);
     this._centros.push(centrosTemp1);
-    let centrosTemp2 = new CentrosFormacion("1j23k12j","cenigraf"/*,"vegetta" */,true);
+    let centrosTemp2 = new CentrosFormacion("1j23k12j","cenigraf",true);
     this._centros.push(centrosTemp2);
-    let centrosTemp3 = new CentrosFormacion("1j23k12j","cenigraf"/*,"natalan" */,true);
+    let centrosTemp3 = new CentrosFormacion("1j23k12j","cenigraf",true);
     this._centros.push(centrosTemp3);
-    let centrosTemp4 = new CentrosFormacion("1j23k12j","cenigraf"/*,"missa"*/ ,true);
+    let centrosTemp4 = new CentrosFormacion("1j23k12j","cenigraf" ,true);
     this._centros.push(centrosTemp4);
-    let centrosTemp5 = new CentrosFormacion("1j23k12j","cenigraf"/*,"50cent"*/ ,true);
+    let centrosTemp5 = new CentrosFormacion("1j23k12j","cenigraf" ,true);
     this._centros.push(centrosTemp5);
   }
 }

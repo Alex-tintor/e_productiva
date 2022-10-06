@@ -1,7 +1,6 @@
 export class CentrosFormacion{
     private _uuid:string;
     private _nombre:string;
-    // private _coordinador:string;
     private _enabled:boolean;
     
     
@@ -10,7 +9,6 @@ export class CentrosFormacion{
     constructor(id:string,nombre:string/*,coordinador:string*/, estado:boolean){
         this._uuid=id;
         this._nombre=nombre;
-        // this._coordinador= coordinador;
         this._enabled=estado;
     }
     public get id():string{return this._uuid;}

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Aprendices} from 'src/app/modules/fichas/Aprendices'
 
@@ -6,9 +7,10 @@ import {Aprendices} from 'src/app/modules/fichas/Aprendices'
 })
 export class AprendicesService {
 
-  constructor() { 
-    this.loadAprendiz();
+  constructor(private http:HttpClient ) { 
   }
+
+  private url:string="http://localhost:8080/api/aprendices"
 
   private _aprendiz: Aprendices[] =[];
 
@@ -25,13 +27,13 @@ export class AprendicesService {
   }
 
   public loadAprendiz(){
-    let aprendizTemp0 = new Aprendices(1016944420,"alexis ","Morales",2394657,"productiva","contratado");
-    let aprendizTemp1 = new Aprendices(1016944420,"alexis ","Morales",2394657,"productiva","contratado");
-    let aprendizTemp2 = new Aprendices(1016944420,"alexis ","Morales",2394657,"productiva","contratado");
-    let aprendizTemp3 = new Aprendices(1016944420,"alexis ","Morales",2394657,"productiva","contratado");
-    let aprendizTemp4 = new Aprendices(1016944420,"alexis ","Morales",2394657,"productiva","contratado");
-    let aprendizTemp5 = new Aprendices(1016944420,"alexis ","Morales",2394657,"productiva","contratado");
-    let aprendizTemp6 = new Aprendices(1016944420,"alexis ","Morales",2394657,"productiva","contratado");
+    let aprendizTemp0 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
+    let aprendizTemp1 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
+    let aprendizTemp2 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
+    let aprendizTemp3 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
+    let aprendizTemp4 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
+    let aprendizTemp5 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
+    let aprendizTemp6 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
     this._aprendiz.push(aprendizTemp0);
     this._aprendiz.push(aprendizTemp1);
     this._aprendiz.push(aprendizTemp2);
