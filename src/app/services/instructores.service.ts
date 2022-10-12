@@ -1,36 +1,41 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Instructores} from 'src/app/modules/fichas/Instructores'
+import { Observable } from 'rxjs';
+import {Instructores} from 'src/app/modules/Entidades/Instructores'
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstructoresService {
 
-  constructor() { this.loadInstructores()}
+  constructor(private http:HttpClient) {}
 
-  private _instructor:Instructores[]=[]
+  private _instructor:Instructores[]=[];
+
+  private url:string ="http://localhost:8080/api/instructor";
 
   public instructor(){
     return this._instructor
   }
-
-  public instructorById(id:number){
-    return  this._instructor.filter(Instructores => Instructores.cc == id)
-  }
-
   
-  public addInstructor(instructor:Instructores){
-    this._instructor.push(instructor);
+  public getAllInstructores():Observable<Instructores[]>{
+    return this.http.get<Instructores[]>(this.url + "/");
   }
 
-  public loadInstructores(){
-    let instructorTemp0 = new Instructores(1234532,"Jose ", "Ovalle Rodriguez","jeovalle@misena.edu.co",43209128,true);
-    this._instructor.push(instructorTemp0);
-    let instructorTemp1 = new Instructores(1234532,"anres ", "Ovalle montecarlo","daniel@dasda.edu.co",123423523412,true);
-    this._instructor.push(instructorTemp1);
-    let instructorTemp2 = new Instructores(1234532,"Jose ", "Ovalle Rodriguez","jeovalle@misena.edu.co",43209128,true);
-    this._instructor.push(instructorTemp2);
-    let instructorTemp3 = new Instructores(1234532,"pipe ", "Ovalle diaz","diaz@misena.edu.co",67856,true);
-    this._instructor.push(instructorTemp3);
+  public getInstructorById(id :number):Observable <Instructores>{
+    return this.http.get<Instructores>(this.url + "/id");
   }
+
+  public createInstructor(instructor:Instructores):Observable<Instructores>{
+    return this.http.post<Instructores>(this.url + "/" , instructor)
+  }
+
+  public updateInstructor(instructor :Instructores):Observable<Instructores>{
+    return this.http.put<Instructores>(this.url + "/", instructor)
+  }
+
+  public deleteInstructor(id : number):Observable<Instructores>{
+    return this.http.delete<Instructores>(this.url + "/")
+  }
+
 }

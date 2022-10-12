@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Encuestas } from 'src/app/modules/fichas/Encuestas';
+import { Encuestas } from 'src/app/modules/Entidades/Encuestas';
 import {EncuestasService} from 'src/app/services/encuestas.service';
 
 @Component({

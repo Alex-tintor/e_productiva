@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Encuestas} from 'src/app/modules/fichas/Encuestas'
+import {Encuestas} from 'src/app/modules/Entidades/Encuestas'
 
 @Injectable({
   providedIn: 'root'

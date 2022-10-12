@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Ficha } from 'src/app/modules/fichas/Ficha'
+import { Ficha } from 'src/app/modules/Entidades/Ficha'
 import { FichaService} from 'src/app/services/fichas.service'
 
 @Component({
@@ -10,11 +10,17 @@ import { FichaService} from 'src/app/services/fichas.service'
   styleUrls: ['./fichas.component.css']
 })
 export class FichasComponent implements OnInit {
+
   public fichas:Ficha[];
   
-
   constructor(private fichaService:FichaService) {
     this.fichas = fichaService.fichas();
+  }
+  
+  ngOnInit(): void {
+    this.fichaService.getAllFichas().subscribe(
+      fichas=>this.fichas=fichas
+    );
   }
 
   fichasDataCreate = new FormGroup({
@@ -40,7 +46,6 @@ export class FichasComponent implements OnInit {
     estado:new FormControl('Activo',[Validators.required])
   })
 
-  ngOnInit(): void {return}
 
   public fichaSelected():void{
     let value:any;
@@ -50,13 +55,13 @@ export class FichasComponent implements OnInit {
 
   public foundFichas():boolean {
     let id:any = this.fichasDataCreate.controls['id'].value;
-    return id.parseInt == this.fichaService.fichaById(id);
+    return id.parseInt == this.fichaService.getFichaById(id);
   }
   
   public addFicha():void{
     let ficha:Ficha = Object.assign(this.fichasDataCreate.value)
     if(this.fichasDataCreate.valid && !this.foundFichas() ){
-      this.fichaService.addFicha(ficha)
+      this.fichaService.createFicha(ficha)
       console.log('ficha creada con exito')
     }
     else{
@@ -66,6 +71,7 @@ export class FichasComponent implements OnInit {
   show(){
     console.log(this.fichaSelected())
     console.log(this.foundFichas());
+    console.log(this.fichas)
   }
   
 }

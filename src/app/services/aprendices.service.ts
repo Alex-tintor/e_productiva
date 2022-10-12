@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Aprendices} from 'src/app/modules/fichas/Aprendices'
+import { Observable } from 'rxjs';
+import {Aprendiz} from 'src/app/modules/Entidades/Aprendiz';
 
 @Injectable({
   providedIn: 'root'
@@ -12,36 +13,34 @@ export class AprendicesService {
 
   private url:string="http://localhost:8080/api/aprendices"
 
-  private _aprendiz: Aprendices[] =[];
+  private _aprendiz: Aprendiz[] =[];
 
   public aprendices(){
     return this._aprendiz
   }
 
-  public aprendicesById(id:number){
-    return this._aprendiz.filter(Aprendices => Aprendices.cc == id)
+  public loadAprendices(res:string){
+    console.log(res)
   }
 
-  public addAprendiz(aprendiz:Aprendices){
-    this._aprendiz.push(aprendiz)
+  public getAllAprendices():Observable<Aprendiz[]>{
+    return this.http.get<Aprendiz[]>(this.url);
   }
 
-  public loadAprendiz(){
-    let aprendizTemp0 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
-    let aprendizTemp1 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
-    let aprendizTemp2 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
-    let aprendizTemp3 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
-    let aprendizTemp4 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
-    let aprendizTemp5 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
-    let aprendizTemp6 = new Aprendices(1016944420,"alexis ","Morales","morales@gmail.com","productiva",126582,true);
-    this._aprendiz.push(aprendizTemp0);
-    this._aprendiz.push(aprendizTemp1);
-    this._aprendiz.push(aprendizTemp2);
-    this._aprendiz.push(aprendizTemp3);
-    this._aprendiz.push(aprendizTemp4);
-    this._aprendiz.push(aprendizTemp5);
-    this._aprendiz.push(aprendizTemp6);
-
-
+  public getAprendizById(id :number):Observable<Aprendiz>{
+    return this.http.get<Aprendiz>(this.url + "/id");
   }
+
+  public createAprendiz( aprendiz :Aprendiz):Observable<Aprendiz>{
+    return this.http.post<Aprendiz>(this.url, aprendiz);
+  }
+
+  public updateAprendiz( aprendiz :Aprendiz):Observable<Aprendiz>{
+    return this.http.put<Aprendiz>(this.url, aprendiz);
+  }
+
+  public deleteAprendiz(id:number):Observable<Aprendiz>{
+    return this.http.delete<Aprendiz>(this.url + "/id");
+  }
+
 }

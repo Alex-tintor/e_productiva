@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import {Aprendices} from 'src/app/modules/fichas/Aprendices';
+import {Aprendiz} from 'src/app/modules/Entidades/Aprendiz';
 import {AprendicesService} from "src/app/services/aprendices.service";
 
 @Component({
@@ -11,12 +11,18 @@ import {AprendicesService} from "src/app/services/aprendices.service";
 })
 export class AprendicesComponent implements OnInit {
 
-  public aprendices:Aprendices[];
+  public aprendices:Aprendiz[];
 
   constructor(private aprendizService:AprendicesService) { 
     this.aprendices= aprendizService.aprendices()
   }
-
+  
+  ngOnInit(): void {
+    this.aprendizService.getAllAprendices().subscribe((res) => {
+        this.aprendices = res;
+      }
+    );
+  }
   aprendizData = new FormGroup({
     cc:new FormControl('',[Validators.required,Validators.maxLength(11)]),
     nombre:new FormControl('',[Validators.required,Validators.maxLength(45)]),
@@ -26,12 +32,9 @@ export class AprendicesComponent implements OnInit {
     estado:new FormControl('Activo',[Validators.required])
   })
 
-  ngOnInit(): void {
-  }
-  
   addAprendiz(){
-    let aprendiz:Aprendices = Object.assign(this.aprendizData.value);
-    this.aprendizService.addAprendiz(aprendiz)
+    let aprendiz:Aprendiz = Object.assign(this.aprendizData.value);
+    this.aprendizService.createAprendiz(aprendiz)
   }
 
   show(){

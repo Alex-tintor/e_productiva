@@ -34,7 +34,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-              <button type="button" class="btn btn-primary"(click)="addFicha()" (click)="show()" [disabled]="instructorData.invalid" >Agregar Instructor</button>
+              <button type="button" class="btn btn-primary"(click)="addInstructor()" (click)="show()" [disabled]="instructorData.invalid" >Agregar Instructor</button>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
       <tr class="data-square rounded-3">{{instructor.cc}}</tr>
       <tr>{{instructor.nombre}}</tr>
       <tr class="data-square rounded-3">{{instructor.apellido}}</tr>
-      <tr>{{instructor.centro}}</tr>
+      <tr>{{instructor.centroId}}</tr>
       <tr class="data-square rounded-3">{{instructor.email}}</tr>
       <tr >{{instructor.telefono}}</tr>
   </td>

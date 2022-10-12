@@ -43,9 +43,9 @@
         <p class="align-self-center fs-5 ">coordinador</p>
     </div>
     <td *ngFor="let centro of centros" class="row row-cols-4 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-        <tr class="data-square rounded-3">{{centro.id}}</tr>
+        <tr class="data-square rounded-3">{{centro.uuid}}</tr>
         <tr>{{centro.nombre}}</tr>
-        <tr class="data-square rounded-3">{{centro.estado}}</tr>
+        <tr class="data-square rounded-3">{{centro.enabled}}</tr>
         <!-- <tr>{{centro.coordinador}}</tr> -->
     </td>
 </div>

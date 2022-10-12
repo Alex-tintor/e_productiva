@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import {Instructores} from 'src/app/modules/fichas/Instructores';
+import {Instructores} from 'src/app/modules/Entidades/Instructores';
 import {InstructoresService} from 'src/app/services/instructores.service';
 
 @Component({
@@ -16,6 +16,11 @@ export class InstructoresComponent implements OnInit {
   constructor(private instructoresService: InstructoresService) {
     this.instructores = instructoresService.instructor()
   }
+  ngOnInit(): void {
+    this.instructoresService.getAllInstructores().subscribe(
+      instructor => this.instructores = instructor
+    );
+  }
 
   instructorData = new FormGroup({
     cc:new FormControl('',[Validators.required,Validators.maxLength(11)]),
@@ -27,11 +32,9 @@ export class InstructoresComponent implements OnInit {
     estado:new FormControl('Activo',[Validators.required])
   })
 
-  ngOnInit(): void {return}
-
-  addFicha(){
+  addInstructor(){
     let instructor:Instructores = Object.assign(this.instructorData.value)
-    this.instructoresService.addInstructor(instructor)
+    this.instructoresService.createInstructor(instructor)
   }
   
   show(){

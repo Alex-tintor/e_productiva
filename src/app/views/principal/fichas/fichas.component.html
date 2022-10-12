@@ -84,12 +84,13 @@
         <p class="align-self-center fs-5 ">Estado</p>
     </div>
     <td *ngFor="let ficha of fichas" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-        <tr class="data-square rounded-3">{{ficha.programa}}</tr>
+        <tr class="data-square rounded-3">{{ficha.programaId}}</tr>
         <tr>{{ficha.id}}</tr>
-        <tr class="data-square rounded-3">{{ficha.centro}}</tr>
+        <tr class="data-square rounded-3">{{ficha.centroId}}</tr>
         <tr>{{ficha.instructorCc}}</tr>
-        <tr class="data-square rounded-3">{{ficha.etapa}}</tr>
-        <tr >{{ficha.estado}}</tr>
+        <tr class="data-square rounded-3">{{ficha.modalidad}}</tr>
+        <tr >{{ficha.enabled}}</tr>
     </td>
+    <p>{{show()}}</p>
       
 </div>

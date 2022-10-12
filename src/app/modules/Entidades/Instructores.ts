@@ -4,16 +4,17 @@ export class Instructores{
     private _apellido:string;
     private _email:string;
     private _telefono:number;
-    private _estado:boolean;
+    private _centroId:number;
+    private _enabled:boolean;
 
-    constructor(cc:number,nombre:string,apellido:string,email:string,telefono:number,estado:boolean){
-        estado=true;
+    constructor(cc:number,nombre:string,apellido:string,email:string,telefono:number,centroId:number,enabled:boolean){
         this._cc=cc;
         this._nombre=nombre;
         this._apellido=apellido;
         this._email=email;
         this._telefono=telefono;
-        this._estado=estado;
+        this._centroId = centroId;
+        this._enabled=enabled;
     }
     public get cc():number{return this._cc;}
     public set cc(cc:number){this._cc=cc}
@@ -30,8 +31,11 @@ export class Instructores{
     public get telefono():number{return this._telefono;}
     public set telefono(telefono:number){this._telefono=telefono}
 
-    public get estado():boolean{return this._estado;}
-    public set estado(estado:boolean){this._estado=estado;}
+    public get centroId():number{return this._centroId;}
+    public set centroId(centroId:number){this._centroId=centroId}
+
+    public get enabled():boolean{return this._enabled;}
+    public set enabled(enabled:boolean){this._enabled=enabled;}
   
   
   

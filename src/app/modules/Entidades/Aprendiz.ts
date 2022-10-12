@@ -1,22 +1,26 @@
-export class Aprendices{
+export class Aprendiz{
     private _cc:number;
     private _nombre:string;
     private _apellido:string;
     private _email:string;
-    private _etapa:string;
     private _telefono:number;
+    private _fichaId:number;
+    private _etapa:string;
     private _enabled:boolean;
 
-    constructor(cc:number,nombre:string,apellido:string,email:string,etapa:string, telefono:number, enabled:boolean){
-        enabled = true;
-        this._cc=cc;
-        this._nombre=nombre;
-        this._apellido=apellido;
-        this._email=email;
-        this._etapa=etapa;
-        this._telefono = telefono;
-        this._enabled = enabled;
+    constructor(){
+        this._cc=0;
+        this._nombre = ''
+        this._apellido = ''
+        this._email = ''
+        this._telefono = 0
+        this._fichaId = 0
+        this._etapa = ''
+        this._enabled = true;
     }
+    public get cc():number{return this._cc;}
+    public set cc(cc:number){this._cc=cc}
+
     public get nombre():string{return this._nombre;}
     public set nombre(nombre:string){this._nombre=nombre}
 
@@ -25,12 +29,12 @@ export class Aprendices{
 
     public get email():string{return this._email;}
     public set email(email:string){this._email=email}
+
+    public get telefono():number{return this._telefono;}
+    public set telefono(telefono:number){this._telefono=telefono}
   
-    public get ficha():number{return this._telefono;}
-    public set ficha(telefono:number){this._telefono=telefono}
-  
-    public get cc():number{return this._cc;}
-    public set cc(cc:number){this._cc=cc}
+    public get fichaId():number{return this._fichaId;}
+    public set fichaId(fichaId:number){this._fichaId=fichaId}
   
     public get etapa():string{return this._etapa;}
     public set etapa(etapa:string){this._etapa=etapa;}
