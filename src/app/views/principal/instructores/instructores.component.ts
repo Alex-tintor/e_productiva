@@ -28,16 +28,17 @@ export class InstructoresComponent implements OnInit {
     apellido:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     email:new FormControl('',[Validators.required,Validators.email]),
     telefono:new FormControl('',[Validators.required,Validators.maxLength(10)]),
-    centro:new FormControl('',[Validators.required,Validators.maxLength(10)]),
-    estado:new FormControl('Activo',[Validators.required])
+    centroId:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    enabled:new FormControl(true,[Validators.required])
   })
 
   addInstructor(){
     let instructor:Instructores = Object.assign(this.instructorData.value)
     this.instructoresService.createInstructor(instructor)
+    console.log(instructor)
   }
   
   show(){
-    console.log(this.instructorData.value)
+    console.log(this.instructoresService.createInstructor)
   }
 }

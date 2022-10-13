@@ -27,7 +27,7 @@ export class InstructoresService {
   }
 
   public createInstructor(instructor:Instructores):Observable<Instructores>{
-    return this.http.post<Instructores>(this.url + "/" , instructor)
+    return this.http.post<Instructores>(this.url , instructor)
   }
 
   public updateInstructor(instructor :Instructores):Observable<Instructores>{
