@@ -22,8 +22,8 @@ export class CentrosFormacionService {
     return this.http.get<CentrosFormacion>(this.url+"/"+id);
   }
 
-  public createCentrosFormacion(centro:CentrosFormacion):Observable<CentrosFormacion>{
-    return this.http.post<CentrosFormacion>(this.url,centro);
+  public createCentrosFormacion(centro:any):Observable<any>{
+    return this.http.post<any>(this.url,centro);
   }
 
   public updateCentrosFormacion(centro:CentrosFormacion):Observable<CentrosFormacion>{

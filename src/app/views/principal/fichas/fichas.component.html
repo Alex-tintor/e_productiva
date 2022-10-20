@@ -24,9 +24,13 @@
                     <option>Alternancia</option>
                   </select>
                   <label for="input_instructor" class="fw-bold mb-1 input-label">Ingrese la C.c del Instructor <strong class="text-danger">*</strong></label>
-                  <input formControlName="instructorCc" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_instructor">
+                  <select formControlName="instructorCc" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_instructor" >
+                    <option *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                  </select>
                   <label for="input_centro" class="fw-bold mb-1 input-label">Ingrese el Centro de Formacion <strong class="text-danger">*</strong></label>
-                  <input formControlName="centro" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                  <select formControlName="centro" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro" >
+                    <option *ngFor="let centro of centros" value="">{{centro.uuid}}</option>
+                  </select>
                   <label for="input_fechaI" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
                   <input formControlName="fechaInicio" type="date" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaI">
                   <label for="input_fechaF" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
@@ -45,7 +49,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                <button type="button" class="btn btn-primary"(click)="addFicha()" (click)="show()" [disabled]="fichasDataCreate.invalid" >Crear Ficha</button>
+                <button type="button" class="btn btn-primary"(click)="addFicha()" (click)="show()"  >Crear Ficha</button>
               </div>
             </div>
           </div>
@@ -56,7 +60,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Crear una nueva Ficha</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -68,7 +72,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Borrar Ficha</button>
               </div>
             </div>
           </div>
@@ -80,8 +84,8 @@
         <p class="align-self-center fs-5 ">Nro ficha</p>
         <p class="align-self-center fs-5 ">Centro correspondiente</p>
         <p class="align-self-center fs-5 ">Instructor designado</p>
-        <p class="align-self-center fs-5 ">Etapa</p>
-        <p class="align-self-center fs-5 ">Estado</p>
+        <p class="align-self-center fs-5 ">Modalidad</p>
+        <p class="align-self-center fs-5 ">Inicio/Fin</p>
     </div>
     <td *ngFor="let ficha of fichas" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
         <tr class="data-square rounded-3">{{ficha.programaId}}</tr>
@@ -89,7 +93,7 @@
         <tr class="data-square rounded-3">{{ficha.centroId}}</tr>
         <tr>{{ficha.instructorCc}}</tr>
         <tr class="data-square rounded-3">{{ficha.modalidad}}</tr>
-        <tr >{{ficha.enabled}}</tr>
+        <tr >{{ficha.inicio +"/"+ ficha.fin }}</tr>
     </td>
     <p>{{show()}}</p>
       

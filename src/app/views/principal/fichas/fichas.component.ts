@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CentrosFormacion } from 'src/app/modules/Entidades/CentrosFormacion';
 
 import { Ficha } from 'src/app/modules/Entidades/Ficha'
+import { Instructores } from 'src/app/modules/Entidades/Instructores';
+import { CentrosFormacionService } from 'src/app/services/centros-formacion.service';
 import { FichaService} from 'src/app/services/fichas.service'
+import { InstructoresService } from 'src/app/services/instructores.service';
 
 @Component({
   selector: 'app-fichas',
@@ -12,23 +16,28 @@ import { FichaService} from 'src/app/services/fichas.service'
 export class FichasComponent implements OnInit {
 
   public fichas:Ficha[];
+  public centros:CentrosFormacion[];
+  public instructores:Instructores[];
   
-  constructor(private fichaService:FichaService) {
+  constructor(private centroService:CentrosFormacionService,private fichaService:FichaService,private instructorService:InstructoresService ) {
     this.fichas = fichaService.fichas();
+    this.centros = centroService.centros();
+    this.instructores = instructorService.instructor();
   }
   
   ngOnInit(): void {
-    this.fichaService.getAllFichas().subscribe(
-      fichas=>this.fichas=fichas
-    );
+    this.fichaService.getAllFichas().subscribe(fichas=>this.fichas=fichas);
+    this.centroService.getAllCentrosFormacion().subscribe(centros=>this.centros=centros);
+    this.instructorService.getAllInstructores().subscribe(instructores=>this.instructores =instructores)
   }
+  
 
   fichasDataCreate = new FormGroup({
     id:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     programa:new FormControl('',[Validators.required,Validators.maxLength(255)]),
     modalidad:new FormControl('',[Validators.required]),
     instructorCc:new FormControl('',[Validators.required,Validators.maxLength(45)]),
-    centro:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    centro:new FormControl('',[Validators.required,Validators.maxLength(20)]),
     fechaInicio:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     fechaFin:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     etapa:new FormControl('Lectiva',[Validators.required,Validators.maxLength(10)]),
@@ -60,18 +69,14 @@ export class FichasComponent implements OnInit {
   
   public addFicha():void{
     let ficha:Ficha = Object.assign(this.fichasDataCreate.value)
-    if(this.fichasDataCreate.valid && !this.foundFichas() ){
       this.fichaService.createFicha(ficha)
       console.log('ficha creada con exito')
-    }
-    else{
-      console.log('ficha duplicada')
-    }
   }
   show(){
-    console.log(this.fichaSelected())
-    console.log(this.foundFichas());
-    console.log(this.fichas)
+    // console.log(this.fichaSelected())
+    // console.log(this.foundFichas());
+    // console.log(this.fichas)
   }
   
 }
+// ejecutar repository . save

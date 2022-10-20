@@ -13,7 +13,7 @@
     <div class="position-absolute vw-100 vh-100 body-login">
         <div class="row m-0 w-100 h-100 align-items-center justify-content-center">
             <div class="col-auto">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmmit()" class="bg-white shadow-lg rounded-3 p-4 row m-0 justify-content-center body-content">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmmit()" (ngSubmit)="onLogin(loginForm.value)" class="bg-white shadow-lg rounded-3 p-4 row m-0 justify-content-center body-content">
                     <div class="icon-logo col-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184.98 180.36" fill="currentColor" class="icon-color">
                             <g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1">
@@ -30,13 +30,13 @@
                     </div>
                     <div class="m-3 p-0 col-12 position-relative">
                         <label for="input_email" class="fw-bold mb-1 input-label">Correo Electronico o Documento de Identidad <strong class="text-danger">*</strong></label>
-                        <input type="email" formControlName="email" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" [ngClass]="{'invalid':isInvalid('email')}" id="input_email" autocomplete="off">
+                        <input type="email" formControlName="user" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" [ngClass]="{'invalid':isInvalid('user')}" id="input_email" autocomplete="off">
                         <span class="position-absolute position-relative bottom-0 end-0 m-2 input-info">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle-fill text-secondary invalid-info" viewBox="0 0 16 16">
                                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
                             </svg>
                             <span class="tooltip-box position-absolute bg-white rounded-2 p-2 text-secondary shadow me-2 end-100 top-50 translate-middle-y invalid">
-                                <p class="m-0 p-0 w-auto">{{getErrors('email')}}</p>
+                                <p class="m-0 p-0 w-auto">{{getErrors('user')}}</p>
                             </span>
                         </span>
                     </div>

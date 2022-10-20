@@ -1,23 +1,30 @@
 export class Instructores{
-    private _cc:number;
-    private _nombre:string;
-    private _apellido:string;
-    private _email:string;
-    private _telefono:number;
-    private _centroId:number;
-    private _enabled:boolean;
+    private _uuId :string;
+    private _documento: string;
+    private _nombre: string;
+    private _apellido :string;
+    private _email :string;
+    private _telefono :string;
+    private _centro: number;
+    private _documentoType:string;
+    private _enabled :boolean;
 
-    constructor(cc:number,nombre:string,apellido:string,email:string,telefono:number,centroId:number,enabled:boolean){
-        this._cc=cc;
+    constructor(uuId:string,documento:string,nombre:string,apellido:string,email:string,telefono:string,centro:number,tipo_documento:any,enabled:boolean){
+        this._uuId=uuId;
+        this._documento=documento;
         this._nombre=nombre;
         this._apellido=apellido;
         this._email=email;
         this._telefono=telefono;
-        this._centroId = centroId;
+        this._centro=centro;
+        this._documentoType=tipo_documento;
         this._enabled=enabled;
     }
-    public get cc():number{return this._cc;}
-    public set cc(cc:number){this._cc=cc}
+    public get uuId():string{return this._uuId;}
+    public set uuId(uuId:string){this._uuId=uuId}
+
+    public get documento():string{return this._documento;}
+    public set documento(documento:string){this._documento=documento}
 
     public get nombre():string{return this._nombre;}
     public set nombre(nombre:string){this._nombre=nombre}
@@ -28,11 +35,14 @@ export class Instructores{
     public get email():string{return this._email;}
     public set email(email:string){this._email=email;}
 
-    public get telefono():number{return this._telefono;}
-    public set telefono(telefono:number){this._telefono=telefono}
+    public get telefono():string{return this._telefono;}
+    public set telefono(telefono:string){this._telefono=telefono}
 
-    public get centroId():number{return this._centroId;}
-    public set centroId(centroId:number){this._centroId=centroId}
+    public get centro():number{return this._centro;}
+    public set centro(centro_id:number){this._centro=centro_id}
+
+    public get documentoType():string{return this._documentoType;}
+    public set documentoType(tipo_documento:string){this._documentoType=tipo_documento}
 
     public get enabled():boolean{return this._enabled;}
     public set enabled(enabled:boolean){this._enabled=enabled;}

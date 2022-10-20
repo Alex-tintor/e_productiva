@@ -14,7 +14,7 @@
             <div class="modal-body">
               <form [formGroup]="instructorData">
                 <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el C.C del Instructor <strong class="text-danger">*</strong></label>
-                <input formControlName="cc" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                <input formControlName="documento" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
                 <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
                 <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
                 <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Instructor <strong class="text-danger">*</strong></label>
@@ -51,10 +51,10 @@
       <p class="align-self-center fs-5 ">telefono</p>
   </div>
   <td *ngFor="let instructor of instructores" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-      <tr class="data-square rounded-3">{{instructor.cc}}</tr>
+      <tr class="data-square rounded-3">{{instructor.documento}}</tr>
       <tr>{{instructor.nombre}}</tr>
       <tr class="data-square rounded-3">{{instructor.apellido}}</tr>
-      <tr>{{instructor.centroId}}</tr>
+      <tr>{{instructor.centro}}</tr>
       <tr class="data-square rounded-3">{{instructor.email}}</tr>
       <tr >{{instructor.telefono}}</tr>
   </td>

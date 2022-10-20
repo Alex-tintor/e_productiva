@@ -28,7 +28,7 @@ export class FichaService {
   }
 
   public createFicha(ficha:Ficha):Observable<Ficha>{
-    return this.http.post<Ficha>(this.url+"/",ficha);
+    return this.http.post<Ficha>(this.url,ficha);
   }
 
   public updateFicha(ficha:Ficha):Observable<Ficha>{

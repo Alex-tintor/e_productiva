@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Instructores} from 'src/app/modules/Entidades/Instructores'
@@ -12,14 +12,18 @@ export class InstructoresService {
 
   private _instructor:Instructores[]=[];
 
-  private url:string ="http://localhost:8080/api/instructor";
+  private url:string ="http://localhost:8080/api/instructores";
 
   public instructor(){
     return this._instructor
   }
   
-  public getAllInstructores():Observable<Instructores[]>{
-    return this.http.get<Instructores[]>(this.url + "/");
+  public getAllInstructores():Observable<any>{
+    const headers = new HttpHeaders({
+      'page-number':"0",
+      'page-size':"5"
+    })
+    return this.http.get<any>(this.url,{headers:headers});
   }
 
   public getInstructorById(id :number):Observable <Instructores>{

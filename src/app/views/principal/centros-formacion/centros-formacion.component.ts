@@ -18,10 +18,13 @@ export class CentrosFormacionComponent implements OnInit {
    }
 
    centrosData = new FormGroup({
-    id:new FormControl('',[Validators.required,Validators.maxLength(11)]),
+    uuid:new FormControl(0),
     nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
-    // coordinador:new FormControl('',[Validators.required,Validators.maxLength(90)]),
-    estado:new FormControl('Activo',[Validators.required])
+    enabled:new FormControl<boolean>(false,[Validators.required])
+  });
+
+  centrosDelete = new FormGroup({
+    uuId:new FormControl('',[Validators.required])
   });
 
   ngOnInit(): void {
@@ -31,14 +34,14 @@ export class CentrosFormacionComponent implements OnInit {
   }
  
   addCentro(){
-    let centro:CentrosFormacion = Object.assign(this.centrosData.value)
-    this.centrosService.createCentrosFormacion(centro);
+    var centro = this.centrosData.value
+    console.log(centro);
+    this.centrosService.createCentrosFormacion(centro).subscribe(rec=>{
+      console.log(rec)
+    })
   }
 
-  show(){
-    console.log(this.centrosData.value);
-    console.log(this.addCentro());
-  }
+  
 }
 
 

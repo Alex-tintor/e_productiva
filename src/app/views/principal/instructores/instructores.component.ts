@@ -18,12 +18,12 @@ export class InstructoresComponent implements OnInit {
   }
   ngOnInit(): void {
     this.instructoresService.getAllInstructores().subscribe(
-      instructor => this.instructores = instructor
+      req => this.instructores = req.content
     );
   }
 
   instructorData = new FormGroup({
-    cc:new FormControl('',[Validators.required,Validators.maxLength(11)]),
+    documento:new FormControl('',[Validators.required,Validators.maxLength(11)]),
     nombre:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     apellido:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     email:new FormControl('',[Validators.required,Validators.email]),
@@ -34,11 +34,18 @@ export class InstructoresComponent implements OnInit {
 
   addInstructor(){
     let instructor:Instructores = Object.assign(this.instructorData.value)
-    this.instructoresService.createInstructor(instructor)
-    console.log(instructor)
+    // let data :FormData = new FormData()
+    // data.append('document',this.instructorData.value.cc)
+    // console.log(data.getAll)
+    this.instructoresService.createInstructor(instructor).subscribe(
+      req =>{
+        console.log(req);
+      }
+    )
   }
   
   show(){
     console.log(this.instructoresService.createInstructor)
   }
 }
+ 

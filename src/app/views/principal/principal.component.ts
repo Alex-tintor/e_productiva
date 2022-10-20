@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from 'src/app/modules/Entidades/User';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-principal',
@@ -12,10 +14,10 @@ export class PrincipalComponent implements OnInit {
   public isLoading:boolean = false;
   public loginFailed = false;
 
-  constructor() {
+  constructor( private userService:UserService ) {
     this.loginForm = new FormGroup({
-      email: new FormControl('',[Validators.required,Validators.email]),
-      password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16)])
+      user: new FormControl('',[Validators.required,Validators.minLength(5)]),
+      password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16)]),
     })
   }
   ngOnInit(): void {
@@ -66,6 +68,10 @@ export class PrincipalComponent implements OnInit {
       return;
     }
     this.loginFailed = true;
+  }
+
+  public onLogin(form :User){
+    this.userService.login(form)
   }
 
 }
