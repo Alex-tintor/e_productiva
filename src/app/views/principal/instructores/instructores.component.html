@@ -13,6 +13,12 @@
             </div>
             <div class="modal-body">
               <form [formGroup]="instructorData">
+                <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
+                <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <option >CC</option>
+                  <option >TI</option>
+                  <option >CE</option>
+                </select>
                 <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el C.C del Instructor <strong class="text-danger">*</strong></label>
                 <input formControlName="documento" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
                 <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
