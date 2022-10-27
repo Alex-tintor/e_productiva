@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CentrosFormacion} from 'src/app/modules/Entidades/CentrosFormacion'
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,12 +10,16 @@ export class CentrosFormacionService {
   
   constructor(private http:HttpClient ) { }
   // aca debe de ir el end point de la apirest
-  private url:string="http://localhost:8080/api/centrodeformacion";
+  private url:string="http://localhost:8080/api/centros";
   
   private _centros:CentrosFormacion[]=[];
 
-  public getAllCentrosFormacion():Observable<CentrosFormacion[]>{
-    return this.http.get<CentrosFormacion[]>(this.url + "/");
+  public getAllCentrosFormacion():Observable<any>{
+    const headers = new HttpHeaders({
+      'page-number':"0",
+      'page-size':"7"
+    })
+    return this.http.get<any>(this.url,{headers:headers});
   }
 
   public getCentrosFormacionById(id:number):Observable<CentrosFormacion>{

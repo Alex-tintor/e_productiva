@@ -1,25 +1,25 @@
 export class Aprendiz{
-    private _cc:number;
+    private _documento:string;
     private _nombre:string;
     private _apellido:string;
     private _email:string;
-    private _telefono:number;
+    private _telefono:string;
     private _fichaId:number;
     private _etapa:string;
     private _enabled:boolean;
 
-    constructor(){
-        this._cc=0;
-        this._nombre = ''
-        this._apellido = ''
-        this._email = ''
-        this._telefono = 0
-        this._fichaId = 0
-        this._etapa = ''
-        this._enabled = true;
+    constructor(documento:string,nombre:string,apellido:string,email:string,telefono:string,fichaId:number,etapa:string,enabled:boolean){
+        this._documento=documento;
+        this._nombre = nombre;
+        this._apellido = apellido;
+        this._email = email;
+        this._telefono = telefono;
+        this._fichaId = fichaId;
+        this._etapa = etapa;
+        this._enabled = enabled;
     }
-    public get cc():number{return this._cc;}
-    public set cc(cc:number){this._cc=cc}
+    public get documento():string{return this._documento;}
+    public set documento(cc:string){this._documento=cc}
 
     public get nombre():string{return this._nombre;}
     public set nombre(nombre:string){this._nombre=nombre}
@@ -30,8 +30,8 @@ export class Aprendiz{
     public get email():string{return this._email;}
     public set email(email:string){this._email=email}
 
-    public get telefono():number{return this._telefono;}
-    public set telefono(telefono:number){this._telefono=telefono}
+    public get telefono():string{return this._telefono;}
+    public set telefono(telefono:string){this._telefono=telefono}
   
     public get fichaId():number{return this._fichaId;}
     public set fichaId(fichaId:number){this._fichaId=fichaId}

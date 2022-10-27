@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,14 +13,18 @@ export class FichaService {
   
   private _fichas:Ficha[]=[];
 
-  private url:string="http://localhost:8080/api/ficha";
+  private url:string="http://localhost:8080/api/fichas";
 
   public fichas(){
     return this._fichas;
   }
 
-  public getAllFichas():Observable<Ficha[]>{
-    return this.http.get<Ficha[]>(this.url + "/");
+  public getAllFichas():Observable<any>{
+    const headers = new HttpHeaders({
+      'page-number':"0",
+      'page-size':"3"
+    })
+    return this.http.get<any>(this.url,{headers:headers});
   }
 
   public getFichaById(id:number):Observable<Ficha>{

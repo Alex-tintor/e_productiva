@@ -53,7 +53,7 @@
     </div>
     <td *ngFor="let aprendiz of aprendices" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 " [ngClass]="{'d-none':!aprendiz.enabled}">
         <tr class="data-square rounded-3">{{aprendiz.apellido +" "+ aprendiz.nombre}}</tr>
-        <tr>{{aprendiz.cc}}</tr>
+        <tr>{{aprendiz.documento}}</tr>
         <tr class="data-square rounded-3">{{aprendiz.fichaId}}</tr>
         <tr>{{aprendiz.etapa}}</tr>
         <tr class="data-square rounded-3">{{aprendiz.email}}</tr>

@@ -18,9 +18,8 @@ export class AprendicesComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.aprendizService.getAllAprendices().subscribe((res) => {
-        this.aprendices = res;
-      }
+    this.aprendizService.getAllAprendices().subscribe(
+      req => this.aprendices = req.content
     );
   }
   aprendizData = new FormGroup({

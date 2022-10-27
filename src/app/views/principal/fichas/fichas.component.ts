@@ -26,7 +26,7 @@ export class FichasComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.fichaService.getAllFichas().subscribe(fichas=>this.fichas=fichas);
+    this.fichaService.getAllFichas().subscribe(req => this.fichas = req.content);
     this.centroService.getAllCentrosFormacion().subscribe(centros=>this.centros=centros);
     this.instructorService.getAllInstructores().subscribe(instructores=>this.instructores =instructores)
   }

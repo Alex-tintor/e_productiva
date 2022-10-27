@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Aprendiz} from 'src/app/modules/Entidades/Aprendiz';
@@ -19,12 +19,12 @@ export class AprendicesService {
     return this._aprendiz
   }
 
-  public loadAprendices(res:string){
-    console.log(res)
-  }
-
-  public getAllAprendices():Observable<Aprendiz[]>{
-    return this.http.get<Aprendiz[]>(this.url);
+  public getAllAprendices():Observable<any>{
+    const headers = new HttpHeaders({
+      'page-number':"0",
+      'page-size':"2"
+    })
+    return this.http.get<any>(this.url,{headers:headers});
   }
 
   public getAprendizById(id :number):Observable<Aprendiz>{

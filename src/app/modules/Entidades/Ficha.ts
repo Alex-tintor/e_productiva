@@ -2,7 +2,7 @@ export class Ficha {
   private _id:number;
   private _programaId:number;
   private _modalidad:string;
-  private _instructorCc:number;
+  private _instructor:number;
   private _centroId:number;
   private _inicio:Date;
   private _fin:Date;
@@ -11,7 +11,7 @@ export class Ficha {
   constructor(id:number,
     programaId:number,
     modalidad:string,
-    instructorCc:number,
+    instructor:number,
     centroId:number,
     inicio:string,
     fin:string,
@@ -20,7 +20,7 @@ export class Ficha {
     this._id = id;
     this._programaId = programaId;
     this._modalidad = modalidad;
-    this._instructorCc = instructorCc;
+    this._instructor = instructor;
     this._centroId = centroId;
     this._inicio = new Date(Date.parse(inicio));
     this._fin = new Date(Date.parse(fin));
@@ -36,8 +36,8 @@ export class Ficha {
   public get modalidad():string{return this._modalidad;}
   public set modalidad(modalidad:string){this._modalidad=modalidad}
 
-  public get instructorCc():number{return this._instructorCc;}
-  public set instructorCc(instructorCc:number){this._instructorCc=instructorCc}
+  public get instructor():number{return this._instructor;}
+  public set instructor(instructor:number){this._instructor=instructor}
 
   public get centroId():number{return this._centroId;}
   public set centroId(centroId:number){this._centroId=centroId}

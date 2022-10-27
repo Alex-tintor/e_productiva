@@ -29,7 +29,7 @@ export class CentrosFormacionComponent implements OnInit {
 
   ngOnInit(): void {
     this.centrosService.getAllCentrosFormacion().subscribe(
-      centrosFormacion=>this.centros=centrosFormacion
+      req => this.centros = req.content
     );
   }
  

@@ -12,9 +12,6 @@ export class CentrosFormacion{
     public get uuid():number{return this._uuid;}
     public set uuid(uuid:number){this._uuid=uuid;}
 
-    // public get coordinador():string{return this._coordinador;}
-    // public set coordinador(coordinador:string){this._coordinador=coordinador;}
-
     public get nombre():string{return this._nombre;}
     public set nombre(nombre:string){this._nombre=nombre}
   
