@@ -22,7 +22,7 @@ export class FichaService {
   public getAllFichas():Observable<any>{
     const headers = new HttpHeaders({
       'page-number':"0",
-      'page-size':"3"
+      'page-size':"10"
     })
     return this.http.get<any>(this.url,{headers:headers});
   }

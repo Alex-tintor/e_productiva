@@ -10,7 +10,7 @@ import { DashboardComponent } from './views/principal/dashboard/dashboard.compon
 import { SlidebarComponent } from './core/inputs/slidebar/slidebar.component';
 
 import { InstructoresComponent } from './views/principal/instructores/instructores.component';
-import { EncuestasComponent } from './views/principal/encuestas/encuestas.component';
+import { FormatosComponent } from './views/principal/formatos/formatoscomponent';
 import { AprendicesComponent } from './views/principal/aprendices/aprendices.component';
 import { FichasComponent } from './views/principal/fichas/fichas.component';
 import { CentrosFormacionComponent } from './views/principal/centros-formacion/centros-formacion.component';
@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     SlidebarComponent,
     InstructoresComponent,
-    EncuestasComponent,
+    FormatosComponent,
     AprendicesComponent,
     FichasComponent,
     CentrosFormacionComponent,

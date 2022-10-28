@@ -1,4 +1,4 @@
 export class Response{
-    status:string | undefined;
+    status:string | undefined;  	
     result:any;
 }

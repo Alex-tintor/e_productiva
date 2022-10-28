@@ -15,20 +15,19 @@ import { InstructoresService } from 'src/app/services/instructores.service';
 })
 export class FichasComponent implements OnInit {
 
-  public fichas:Ficha[];
-  public centros:CentrosFormacion[];
-  public instructores:Instructores[];
-  
-  constructor(private centroService:CentrosFormacionService,private fichaService:FichaService,private instructorService:InstructoresService ) {
+  public fichas:Ficha[]=[];
+  public centros:CentrosFormacion[]=[];
+  public instructores:Instructores[]=[];
+
+  constructor(private fichaService:FichaService,private centrosService:CentrosFormacionService,private instructoresService:InstructoresService){
     this.fichas = fichaService.fichas();
-    this.centros = centroService.centros();
-    this.instructores = instructorService.instructor();
+    this.centros =  centrosService.centros();
+    this.instructores = instructoresService.instructor();
   }
   
   ngOnInit(): void {
     this.fichaService.getAllFichas().subscribe(req => this.fichas = req.content);
-    this.centroService.getAllCentrosFormacion().subscribe(centros=>this.centros=centros);
-    this.instructorService.getAllInstructores().subscribe(instructores=>this.instructores =instructores)
+    
   }
   
 
@@ -56,27 +55,6 @@ export class FichasComponent implements OnInit {
   })
 
 
-  public fichaSelected():void{
-    let value:any;
-    value = this.fichasDataUpdate.controls['id'].value;
-    return value;
-  }
-
-  public foundFichas():boolean {
-    let id:any = this.fichasDataCreate.controls['id'].value;
-    return id.parseInt == this.fichaService.getFichaById(id);
-  }
-  
-  public addFicha():void{
-    let ficha:Ficha = Object.assign(this.fichasDataCreate.value)
-      this.fichaService.createFicha(ficha)
-      console.log('ficha creada con exito')
-  }
-  show(){
-    // console.log(this.fichaSelected())
-    // console.log(this.foundFichas());
-    // console.log(this.fichas)
-  }
   
 }
 // ejecutar repository . save
