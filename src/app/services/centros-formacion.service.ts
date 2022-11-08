@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {CentrosFormacion} from 'src/app/modules/Entidades/CentrosFormacion'
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CentroInterface } from '../interfaces/CentroInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CentrosFormacionService {
   public getAllCentrosFormacion():Observable<any>{
     const headers = new HttpHeaders({
       'page-number':"0",
-      'page-size':"7"
+      'page-size':"20"
     })
     return this.http.get<any>(this.url,{headers:headers});
   }
@@ -26,8 +27,8 @@ export class CentrosFormacionService {
     return this.http.get<CentrosFormacion>(this.url+"/"+id);
   }
 
-  public createCentrosFormacion(centro:any):Observable<any>{
-    return this.http.post<any>(this.url,centro);
+  public createCentrosFormacion(centro:CentrosFormacion):Observable<CentrosFormacion>{
+    return this.http.post<CentrosFormacion>(this.url,centro);
   }
 
   public updateCentrosFormacion(centro:CentrosFormacion):Observable<CentrosFormacion>{

@@ -1,16 +1,16 @@
 export class CentrosFormacion{
-    private _uuid:number;
+    private _uuid:string;
     private _nombre:string;
     private _enabled:boolean;
 
-    constructor(uuid:number,nombre:string, enabled:boolean){
+    constructor(uuid:string,nombre:string, enabled:boolean){
         this._uuid=uuid;
         this._nombre=nombre;
         this._enabled=enabled;
     }
 
-    public get uuid():number{return this._uuid;}
-    public set uuid(uuid:number){this._uuid=uuid;}
+    public get uuid():string{return this._uuid;}
+    public set uuid(uuid:string){this._uuid=uuid;}
 
     public get nombre():string{return this._nombre;}
     public set nombre(nombre:string){this._nombre=nombre}
