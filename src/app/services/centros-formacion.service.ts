@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {CentrosFormacion} from 'src/app/modules/Entidades/CentrosFormacion'
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CentroInterface } from '../interfaces/CentroInterface';
+import { CentroFormacionDto } from '../modules/Entidades/dtos/CentroFormacionDto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,9 @@ export class CentrosFormacionService {
     return this.http.get<CentrosFormacion>(this.url+"/"+id);
   }
 
-  public createCentrosFormacion(centro:CentrosFormacion):Observable<CentrosFormacion>{
+  public createCentrosFormacion(centro:CentroFormacionDto):Observable<CentrosFormacion>{
+    console.log("valor del servicio")
+    console.log( centro);
     return this.http.post<CentrosFormacion>(this.url,centro);
   }
 

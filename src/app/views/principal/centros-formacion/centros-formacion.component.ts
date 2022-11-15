@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { from } from 'rxjs';
-import { CentroInterface } from 'src/app/interfaces/CentroInterface';
 
 import {CentrosFormacion} from 'src/app/modules/Entidades/CentrosFormacion';
+import { CentroFormacionDto } from 'src/app/modules/Entidades/dtos/CentroFormacionDto';
 import {CentrosFormacionService} from 'src/app/services/centros-formacion.service';
 
 @Component({
@@ -38,10 +38,17 @@ export class CentrosFormacionComponent implements OnInit {
   
 
   addCentro(){
-    const form = document.getElementById("centroData");
-    let centroForm = new FormData(form);
-    let centro:CentrosFormacion  = new CentrosFormacion(0,centroForm.get(nombre),centroForm.get(enabled))
-    this.centrosService.createCentrosFormacion(centro).subscribe(rec=>{
+    let centro :CentrosFormacion = new CentrosFormacion()
+    centro.enabled = true
+    centro.nombre = "asdas"
+    centro.uuid = "5as34hj5g6"
+    let dto : CentroFormacionDto = new CentroFormacionDto()
+    dto.enabled = centro.enabled
+    dto.nombre = centro.nombre
+    dto.uuid = centro.uuid
+    console.log( centro);
+    console.log(dto)
+    this.centrosService.createCentrosFormacion(dto).subscribe(rec=>{
       console.log(rec)
     })
   }
