@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { from } from 'rxjs';
 
-import {CentrosFormacion} from 'src/app/modules/Entidades/CentrosFormacion';
+import {CentroFormacion} from 'src/app/modules/Entidades/CentroFormacion';
 import { CentroFormacionDto } from 'src/app/modules/Entidades/dtos/CentroFormacionDto';
 import {CentrosFormacionService} from 'src/app/services/centros-formacion.service';
 
@@ -13,7 +12,7 @@ import {CentrosFormacionService} from 'src/app/services/centros-formacion.servic
 })
 export class CentrosFormacionComponent implements OnInit {
 
-  public centros:CentrosFormacion[];
+  public centros:CentroFormacion[];
 
   constructor(private centrosService:CentrosFormacionService) {
     this.centros = centrosService.centros();
@@ -38,22 +37,18 @@ export class CentrosFormacionComponent implements OnInit {
   
 
   addCentro(){
-    let centro :CentrosFormacion = new CentrosFormacion()
-    centro.enabled = true
-    centro.nombre = "asdas"
-    centro.uuid = "5as34hj5g6"
-    let dto : CentroFormacionDto = new CentroFormacionDto()
-    dto.enabled = centro.enabled
-    dto.nombre = centro.nombre
-    dto.uuid = centro.uuid
-    console.log( centro);
-    console.log(dto)
-    this.centrosService.createCentrosFormacion(dto).subscribe(rec=>{
-      console.log(rec)
+    let centro:CentroFormacion | any = new CentroFormacion()
+    centro.enable = true
+    centro.nombre = "Pedro Navajas"
+    centro.uuid = "eebe92b5-ebf0-4863-8ac8-c431c5a707b4"
+    let data = new FormData()
+    Object.keys(centro).forEach(key => data.append(key, centro[key]));
+    data.append("nombre",centro.nombre)
+    data.append("uuid",centro.uuid)
+    data.append("enable",String(centro.enabled))
+    this.centrosService.createCentrosFormacion(data).subscribe(req=>{
+      console.log("mensaje respuesta",req)
     })
   }
 
-  
 }
-
-

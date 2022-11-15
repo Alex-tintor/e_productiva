@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CentrosFormacion } from 'src/app/modules/Entidades/CentrosFormacion';
+import { CentroFormacion } from 'src/app/modules/Entidades/CentroFormacion';
 
 import { Ficha } from 'src/app/modules/Entidades/Ficha'
 import { Instructores } from 'src/app/modules/Entidades/Instructores';
@@ -16,7 +16,7 @@ import { InstructoresService } from 'src/app/services/instructores.service';
 export class FichasComponent implements OnInit {
 
   public fichas:Ficha[]=[];
-  public centros:CentrosFormacion[]=[];
+  public centros:CentroFormacion[]=[];
   public instructores:Instructores[]=[];
 
   constructor(private fichaService:FichaService,private centrosService:CentrosFormacionService,private instructoresService:InstructoresService){

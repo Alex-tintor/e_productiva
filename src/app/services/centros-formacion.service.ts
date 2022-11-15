@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {CentrosFormacion} from 'src/app/modules/Entidades/CentrosFormacion'
+import {CentroFormacion} from 'src/app/modules/Entidades/CentroFormacion'
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CentroFormacionDto } from '../modules/Entidades/dtos/CentroFormacionDto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class CentrosFormacionService {
   // aca debe de ir el end point de la apirest
   private url:string="http://localhost:8080/api/centros";
   
-  private _centros:CentrosFormacion[]=[];
+  private _centros:CentroFormacion[]=[];
 
   public getAllCentrosFormacion():Observable<any>{
     const headers = new HttpHeaders({
@@ -23,22 +22,20 @@ export class CentrosFormacionService {
     return this.http.get<any>(this.url,{headers:headers});
   }
 
-  public getCentrosFormacionById(id:number):Observable<CentrosFormacion>{
-    return this.http.get<CentrosFormacion>(this.url+"/"+id);
+  public getCentrosFormacionById(id:number):Observable<CentroFormacion>{
+    return this.http.get<CentroFormacion>(this.url+"/"+id);
   }
 
-  public createCentrosFormacion(centro:CentroFormacionDto):Observable<CentrosFormacion>{
-    console.log("valor del servicio")
-    console.log( centro);
-    return this.http.post<CentrosFormacion>(this.url,centro);
+  public createCentrosFormacion(data:FormData):Observable<CentroFormacion>{
+    return this.http.post<CentroFormacion>(this.url,data);
   }
 
-  public updateCentrosFormacion(centro:CentrosFormacion):Observable<CentrosFormacion>{
-    return this.http.put<CentrosFormacion>(this.url,centro);
+  public updateCentrosFormacion(centro:CentroFormacion):Observable<CentroFormacion>{
+    return this.http.put<CentroFormacion>(this.url,centro);
   }
 
-  public deleteCentrosFormacion(id:number):Observable<CentrosFormacion>{
-    return this.http.delete<CentrosFormacion>(this.url+"/"+id)
+  public deleteCentrosFormacion(id:number):Observable<CentroFormacion>{
+    return this.http.delete<CentroFormacion>(this.url+"/"+id)
   }
 
   public centros(){
