@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 import {CentroFormacion} from 'src/app/modules/Entidades/CentroFormacion';
-import { CentroFormacionDto } from 'src/app/modules/Entidades/dtos/CentroFormacionDto';
 import {CentrosFormacionService} from 'src/app/services/centros-formacion.service';
+import { v4 } from 'uuid';
 
 @Component({
   selector: 'app-centros-formacion',
@@ -21,7 +22,7 @@ export class CentrosFormacionComponent implements OnInit {
    centrosData = new FormGroup({
     uuid:new FormControl(""),
     nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
-    enabled:new FormControl<boolean>(false,[Validators.required])
+    enabled:new FormControl('',[Validators.required])
   });
 
   centrosDelete = new FormGroup({
@@ -35,10 +36,16 @@ export class CentrosFormacionComponent implements OnInit {
   }
  
   addCentro(){
+    let uuid = v4()
     let centro:CentroFormacion | any = new CentroFormacion()
-    centro.enable = true
-    centro.nombre = "Pedro Navajas"
-    centro.uuid = "eebe92b5-ebf0-4863-8ac8-c431c5a707b4"
+     if(this.centrosData.controls.enabled.value == "activo"){
+      centro.enabled = true
+     }
+     else{
+      centro.enabled=  false
+     }
+    centro.nombre = this.centrosData.controls.nombre.value
+    centro.uuid = uuid
     let data = new FormData()
     Object.keys(centro).forEach(key => data.append(key, centro[key]));
     this.centrosService.createCentrosFormacion(data).subscribe(req=>{
