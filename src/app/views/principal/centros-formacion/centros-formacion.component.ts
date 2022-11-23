@@ -20,7 +20,6 @@ export class CentrosFormacionComponent implements OnInit {
    }
 
    centrosData = new FormGroup({
-    uuid:new FormControl(""),
     nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
     enabled:new FormControl('',[Validators.required])
   });
@@ -38,12 +37,7 @@ export class CentrosFormacionComponent implements OnInit {
   addCentro(){
     let uuid = v4()
     let centro:CentroFormacion | any = new CentroFormacion()
-     if(this.centrosData.controls.enabled.value == "activo"){
-      centro.enabled = true
-     }
-     else{
-      centro.enabled=  false
-     }
+    centro.enabled = (this.centrosData.controls.enabled.value == "activo")
     centro.nombre = this.centrosData.controls.nombre.value
     centro.uuid = uuid
     let data = new FormData()
@@ -51,6 +45,10 @@ export class CentrosFormacionComponent implements OnInit {
     this.centrosService.createCentrosFormacion(data).subscribe(req=>{
       console.log("mensaje respuesta",req)
     })
+  }
+
+  public enabled(enabled:boolean):string{
+    return  enabled ? "Activo":"Inactivo"
   }
 
 }

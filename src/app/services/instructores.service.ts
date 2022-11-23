@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Instructores} from 'src/app/modules/Entidades/Instructores'
+import {Instructor} from 'src/app/modules/Entidades/Instructores'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class InstructoresService {
 
   constructor(private http:HttpClient) {}
 
-  private _instructor:Instructores[]=[];
+  private _instructor:Instructor[]=[];
 
   private url:string ="http://localhost:8080/api/instructores";
 
@@ -26,20 +26,20 @@ export class InstructoresService {
     return this.http.get<any>(this.url,{headers:headers});
   }
 
-  public getInstructorById(id :number):Observable <Instructores>{
-    return this.http.get<Instructores>(this.url + "/id");
+  public getInstructorById(id :number):Observable <Instructor>{
+    return this.http.get<Instructor>(this.url + "/id");
   }
 
-  public createInstructor(instructor:Instructores):Observable<Instructores>{
-    return this.http.post<Instructores>(this.url , instructor)
+  public createInstructor(data:FormData):Observable<Instructor>{
+    return this.http.post<Instructor>(this.url , data)
   }
 
-  public updateInstructor(instructor :Instructores):Observable<Instructores>{
-    return this.http.put<Instructores>(this.url + "/", instructor)
+  public updateInstructor(instructor :Instructor):Observable<Instructor>{
+    return this.http.put<Instructor>(this.url + "/", instructor)
   }
 
-  public deleteInstructor(id : number):Observable<Instructores>{
-    return this.http.delete<Instructores>(this.url + "/")
+  public deleteInstructor(id : number):Observable<Instructor>{
+    return this.http.delete<Instructor>(this.url + "/")
   }
 
 }

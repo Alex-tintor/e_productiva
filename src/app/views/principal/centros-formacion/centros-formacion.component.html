@@ -62,6 +62,6 @@
     <td *ngFor="let centro of centros" class="row row-cols-3 fs-6 fw-semibold mx-1 my-1 text-center w-100 " [ngClass]="{'d-none':!centro.enabled}">
         <tr class="data-square rounded-3">{{centro.uuid}}</tr>
         <tr>{{centro.nombre}}</tr>
-        <tr class="data-square rounded-3">{{centro.enabled}}</tr>
+        <tr class="data-square rounded-3">{{enabled(centro.enabled)}}</tr>
     </td>
 </div>

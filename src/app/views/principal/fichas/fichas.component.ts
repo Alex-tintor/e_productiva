@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CentroFormacion } from 'src/app/modules/Entidades/CentroFormacion';
 
 import { Ficha } from 'src/app/modules/Entidades/Ficha'
-import { Instructores } from 'src/app/modules/Entidades/Instructores';
+import { Instructor } from 'src/app/modules/Entidades/Instructores';
 import { CentrosFormacionService } from 'src/app/services/centros-formacion.service';
 import { FichaService} from 'src/app/services/fichas.service'
 import { InstructoresService } from 'src/app/services/instructores.service';
@@ -17,7 +17,7 @@ export class FichasComponent implements OnInit {
 
   public fichas:Ficha[]=[];
   public centros:CentroFormacion[]=[];
-  public instructores:Instructores[]=[];
+  public instructores:Instructor[]=[];
 
   constructor(private fichaService:FichaService,private centrosService:CentrosFormacionService,private instructoresService:InstructoresService){
     this.fichas = fichaService.fichas();
