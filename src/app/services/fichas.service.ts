@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ficha } from 'src/app/modules/Entidades/Ficha'
@@ -31,8 +30,8 @@ export class FichaService {
     return this.http.get<Ficha>(this.url + "/id");
   }
 
-  public createFicha(ficha:Ficha):Observable<Ficha>{
-    return this.http.post<Ficha>(this.url,ficha);
+  public createFicha(data:FormData):Observable<Ficha>{
+    return this.http.post<Ficha>(this.url,data);
   }
 
   public updateFicha(ficha:Ficha):Observable<Ficha>{

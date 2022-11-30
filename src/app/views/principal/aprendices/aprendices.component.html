@@ -8,34 +8,47 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title text-white" id="exampleModalLabel">Crear una nueva ficha</h5>
+                  <h5 class="modal-title text-white" id="exampleModalLabel">Agregar un Instructor</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form [formGroup]="aprendizData">
-                    <label for="input_id" class="fw-bold mb-1 input-label">ingrese el Numero de identificacion del Aprendiz <strong class="text-danger">*</strong></label>
-                    <input formControlName="cc" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
-                    <label for="input_nombre" class="fw-bold mb-1 input-label">Ingrese el Nombre del Aprendiz <strong class="text-danger">*</strong></label>
-                    <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre">
-                    <label for="input_coordinador" class="fw-bold mb-1 input-label">Ingrese el Apellido del Aprendiz <strong class="text-danger">*</strong></label>
-                    <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_coordinador">
-                    <label for="input_ficha" class="fw-bold mb-1 input-label">Ingrese la Ficha del Aprendiz <strong class="text-danger">*</strong></label>
-                    <input formControlName="ficha" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_ficha">
-                    <label for="input_etapa" class="fw-bold mb-1 input-label">Ingrese La Etapa del Aprendiz <strong class="text-danger">*</strong></label>
-                    <select formControlName="etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_etapa">
-                      <option>Lectiva</option>
-                      <option>Productiva</option>
+                  <form [formGroup]="  aprendizData">
+                    <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
+                    <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                      <option >TI</option>
+                      <option >CC</option>
+                      <option >CE</option>
                     </select>
-                    <label for="input_estado" class="fw-bold mb-1 input-label">Estado del Aprendiz <strong class="text-danger">*</strong></label>
-                    <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                    <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el Documento del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="documento" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                    <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
+                    <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_A">
+                    <label for="input_email" class="fw-bold mb-1 input-label">Ingrese el Correo electronico del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
+                    <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
+                    <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione la Ficha del Aprendiz <strong class="text-danger">*</strong></label>
+                    <select formControlName="fichaId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                      <option *ngFor="let ficha of fichas">{{ficha.id}}</option>
+                    </select>
+                    <label  class="fw-bold mb-1 input-label" for="input_etapa">Seleccione la Etapa del Aprendiz <strong class="text-danget">*</strong></label>
+                    <select formControlName="etapa" id="input_etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                      <option>LECTIVA</option>
+                      <option>PRODUCTIVA</option>
+                      <option >DESERTADO</option>
+                    </select>
+                    <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Aprendiz <strong class="text-danger">*</strong></label>
+                    <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
                       <option>Activo</option>
-                      <option>inactivo</option>
+                      <option>Inactivo</option>
                     </select>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-                  <button type="button" class="btn btn-primary"(click)="addAprendiz()" (click)="show()" [disabled]="aprendizData.invalid" >Agregar Aprendiz</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-primary"(click)="addAprendiz()" [disabled]="  aprendizData.invalid" >Agregar Aprendiz</button>
                 </div>
               </div>
             </div>

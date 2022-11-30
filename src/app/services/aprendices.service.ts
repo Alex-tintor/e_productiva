@@ -31,8 +31,8 @@ export class AprendicesService {
     return this.http.get<Aprendiz>(this.url + "/id");
   }
 
-  public createAprendiz( aprendiz :Aprendiz):Observable<Aprendiz>{
-    return this.http.post<Aprendiz>(this.url, aprendiz);
+  public createAprendiz( data:FormData):Observable<Aprendiz>{
+    return this.http.post<Aprendiz>(this.url,data);
   }
 
   public updateAprendiz( aprendiz :Aprendiz):Observable<Aprendiz>{

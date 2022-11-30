@@ -13,10 +13,10 @@
               </div>
               <div class="modal-body">
                 <form [formGroup]="fichasDataCreate">
-                  <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el numero de la Ficha <strong class="text-danger">*</strong></label>
-                  <input formControlName="id" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id" >
                   <label for="input_nombre" class="fw-bold mb-1 input-label">ingrese el Nombre del Programa <strong class="text-danger">*</strong></label>
-                  <input formControlName="programa" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre" >
+                  <select formControlName="programa" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre"  >
+                    <option *ngFor="let programa of programas">{{programa.id}}</option>
+                  </select>
                   <label for="input_modalidad" class="fw-bold mb-1 input-label">Seleccione la modalidad de la Ficha <strong class="text-danger">*</strong></label>
                   <select formControlName="modalidad" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_modalidad">
                     <option>Precencial</option>
@@ -29,12 +29,12 @@
                   </select>
                   <label for="input_centro" class="fw-bold mb-1 input-label">Ingrese el Centro de Formacion <strong class="text-danger">*</strong></label>
                   <select formControlName="centro" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro" >
-                    <option *ngFor="let centro of centros" value="">{{centro.uuid}}</option>
+                    <option *ngFor="let centro of centros" value="">{{centro.nombre}}</option>
                   </select>
                   <label for="input_fechaI" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
-                  <input formControlName="fechaInicio" type="date" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaI">
+                  <input formControlName="fechaInicio" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaI">
                   <label for="input_fechaF" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
-                  <input formControlName="fechaFin" type="date" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaF">
+                  <input formControlName="fechaFin" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaF">
                   <label for="input_etapa" class="fw-bold mb-1 input-label">Seleccione la Etapa <strong class="text-danger">*</strong></label>
                   <select formControlName="etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_etapa" >
                     <option>Lectiva</option>
@@ -49,7 +49,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                <button type="button" class="btn btn-primary" >Crear Ficha</button>
+                <button type="button" class="btn btn-primary" (click)="addFicha()" >Crear Ficha</button>
               </div>
             </div>
           </div>

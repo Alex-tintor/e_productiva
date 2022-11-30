@@ -28,8 +28,10 @@
                 <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
                 <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Instructor <strong class="text-danger">*</strong></label>
                 <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
-                <label for="input_centro" class="fw-bold mb-1 input-label">Ingrese el Centro de Formacion del Instructor <strong class="text-danger">*</strong></label>
-                <input formControlName="centroId" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="centroId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                  <option *ngFor="let centro of centros">{{centro.nombre}}</option>
+                </select>
                 <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Instructor <strong class="text-danger">*</strong></label>
                 <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
                   <option>Activo</option>
@@ -39,7 +41,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-              <button type="button" class="btn btn-primary"(click)="addInstructor()" (click)="show()" [disabled]="instructorData.invalid" >Agregar Instructor</button>
+              <button type="button" class="btn btn-primary"(click)="addInstructor()" [disabled]="instructorData.invalid" >Agregar Instructor</button>
             </div>
           </div>
         </div>

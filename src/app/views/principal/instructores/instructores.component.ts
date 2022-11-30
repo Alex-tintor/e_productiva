@@ -1,8 +1,10 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CentroFormacion } from 'src/app/modules/Entidades/CentroFormacion';
 
 import {Instructor} from 'src/app/modules/Entidades/Instructores';
+import { CentrosFormacionService } from 'src/app/services/centros-formacion.service';
 import {InstructoresService} from 'src/app/services/instructores.service';
 import { v4 } from 'uuid';
 
@@ -14,14 +16,19 @@ import { v4 } from 'uuid';
 export class InstructoresComponent implements OnInit {
 
   public instructores : Instructor[];
+  public centros:CentroFormacion[];
 
-  constructor(private instructoresService: InstructoresService) {
+  constructor(private instructoresService: InstructoresService,private centroService:CentrosFormacionService) {
     this.instructores = instructoresService.instructor()
+    this.centros = centroService.centros()
   }
   ngOnInit(): void {
     this.instructoresService.getAllInstructores().subscribe(
       req => this.instructores = req.content
     );
+    this.centroService.getAllCentrosFormacion().subscribe(
+      req => this.centros = req.content
+    )
   }
 
   instructorData = new FormGroup({
@@ -30,8 +37,8 @@ export class InstructoresComponent implements OnInit {
     nombre:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     apellido:new FormControl('',[Validators.required,Validators.maxLength(45)]),
     email:new FormControl('',[Validators.required,Validators.email]),
-    telefono:new FormControl('',[Validators.required,Validators.maxLength(11)]),
-    centroId:new FormControl<number> (2,[Validators.required,Validators.maxLength(10)]),
+    telefono:new FormControl('',[Validators.required,Validators.maxLength(10),Validators.minLength(10)]),
+    centroId:new FormControl ('',[Validators.required,Validators.maxLength(36)]),
     enabled:new FormControl('',[Validators.required])
   })
 
@@ -45,7 +52,7 @@ export class InstructoresComponent implements OnInit {
     instructor.email = this.instructorData.controls.email.value
     instructor.telefono = this.instructorData.controls.telefono.value
     instructor.enabled = (this.instructorData.controls.enabled.value == "Activo")
-    instructor.centro = 2;
+    instructor.centro = this.instructorData.controls.centroId.value;
     instructor.documentoType = this.instructorData.controls.documentoType.value
    let data = new FormData()
    Object.keys(instructor).forEach(key=> data.append(key,instructor[key]))
@@ -55,13 +62,6 @@ export class InstructoresComponent implements OnInit {
       }
     )
   }
-  
-  show(){
-    let data = new Instructor()
-    
-    console.log(this.instructoresService.createInstructor)
-  }
-
 
 }
  
