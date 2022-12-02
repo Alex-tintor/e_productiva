@@ -39,8 +39,8 @@ export class AprendicesService {
     return this.http.put<Aprendiz>(this.url, aprendiz);
   }
 
-  public deleteAprendiz(id:number):Observable<Aprendiz>{
-    return this.http.delete<Aprendiz>(this.url + "/id");
+  public deleteAprendiz(id:string):Observable<Aprendiz>{
+    return this.http.delete<Aprendiz>(this.url + "/"+id);
   }
 
 }

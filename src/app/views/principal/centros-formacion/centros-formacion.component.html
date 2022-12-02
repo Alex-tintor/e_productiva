@@ -29,25 +29,25 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteCentro">Borrar</button>
+          <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteCentro">Inhabilitar</button>
               <!-- Modal -->
         <div class="modal fade" id="deleteCentro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Crear un Nuevo Centro</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">InhabilitarCentro</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form [formGroup]="centrosDelete">
                   <select formControlName="uuId"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
-                    <option  *ngFor="let centro of centros">{{centro.uuid}}</option>
+                    <option  *ngFor="let centro of centros">{{centro.nombre}}</option>
                   </select>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Borrar Ficha</button>
+                <button type="button" class="btn btn-primary" (click)="unabledCentro()">Inhabilitar</button>
               </div>
             </div>
           </div>

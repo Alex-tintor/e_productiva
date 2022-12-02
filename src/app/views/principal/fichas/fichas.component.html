@@ -54,25 +54,25 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteFicha">Borrar</button>
+        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteFicha">Inhabilitar</button>
         <!-- Modal -->
         <div class="modal fade" id="deleteFicha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Crear una nueva Ficha</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Inhabilitar una Ficha</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form [formGroup]="fichasDataUpdate">
-                  <select formControlName="id"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                <form [formGroup]="fichasDelete">
+                  <select formControlName="nameId"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
                     <option  *ngFor="let ficha of fichas">{{ficha.id}}</option>
                   </select>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Borrar Ficha</button>
+                <button type="button" class="btn btn-primary"(click)="unabled()"  [disabled]="fichasDelete.invalid">Inhabilitar</button>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@
         <p class="align-self-center fs-5 ">Modalidad</p>
         <p class="align-self-center fs-5 ">Inicio/Fin</p>
     </div>
-    <td *ngFor="let ficha of fichas" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
+    <td *ngFor="let ficha of fichas"  class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 "  [ngClass]="{'d-none':!ficha.enabled}">
         <tr class="data-square rounded-3">{{ficha.programaId}}</tr>
         <tr>{{ficha.id}}</tr>
         <tr class="data-square rounded-3">{{ficha.centroId}}</tr>

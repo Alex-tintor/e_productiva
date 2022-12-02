@@ -42,6 +42,10 @@ export class AprendicesComponent implements OnInit {
     enabled:new FormControl('',[Validators.required])
   })
 
+  aprendizDelete = new FormGroup({
+    documento : new FormControl('',Validators.required)
+  })
+
   addAprendiz(){
     let uuid = v4()
     let aprendiz:Aprendiz | any = new Aprendiz ()
@@ -62,8 +66,9 @@ export class AprendicesComponent implements OnInit {
       } )
   }
 
-  show(){
-    console.log(this.aprendizData.value)
+  unableAprendiz(){
+    let documento:string|any = this.aprendizDelete.controls.documento.value
+    this.aprendizService.deleteAprendiz(documento).subscribe(req => {console.log(req)})
   }
 
 }

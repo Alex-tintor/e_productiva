@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ficha } from 'src/app/modules/Entidades/Ficha'
@@ -38,8 +38,8 @@ export class FichaService {
     return this.http.put<Ficha>(this.url+"/",ficha);
   }
 
-  public deleteFicha(id:number):Observable<Ficha>{
-    return this.http.delete<Ficha>(this.url + "/id");
+  public deleteFicha(id:HttpParams):Observable<Ficha>{
+    return this.http.delete<Ficha>(this.url + "/" + id);
   }
 
   // public loadFichas(){

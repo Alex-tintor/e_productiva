@@ -50,6 +50,7 @@ export class FichasComponent implements OnInit {
     etapa:new FormControl('Lectiva',[Validators.required,Validators.maxLength(10)]),
     estado:new FormControl('Activo',[Validators.required])
   })
+
   fichasDataUpdate = new FormGroup({
     id:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     programa:new FormControl('',[Validators.required,Validators.maxLength(255)]),
@@ -60,6 +61,10 @@ export class FichasComponent implements OnInit {
     fechaFin:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     etapa:new FormControl('Lectiva',[Validators.required,Validators.maxLength(10)]),
     estado:new FormControl('Activo',[Validators.required])
+  })
+
+  fichasDelete = new FormGroup({
+    nameId : new FormControl('',Validators.required)
   })
 
   addFicha(){
@@ -76,10 +81,13 @@ export class FichasComponent implements OnInit {
     ficha.enabled = (this.fichasDataCreate.controls.estado.value =="Activo");
     let data = new FormData()
     Object.keys(ficha).forEach(key => data.append(key, ficha[key]))
-      this.fichaService.createFicha(data).subscribe(req => (console.log(req)))
-    
+      this.fichaService.createFicha(data).subscribe(req => (console.log(req))) 
+  }
+
+  public unabled(){
+    let id :string |any  = this.fichasDelete.controls.nameId.value;
+    this.fichaService.deleteFicha(id).subscribe(req => {console.log(req)})
   }
 
   
 }
-// ejecutar repository . save

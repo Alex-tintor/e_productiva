@@ -1,4 +1,3 @@
-import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CentroFormacion } from 'src/app/modules/Entidades/CentroFormacion';
@@ -6,7 +5,7 @@ import { CentroFormacion } from 'src/app/modules/Entidades/CentroFormacion';
 import {Instructor} from 'src/app/modules/Entidades/Instructores';
 import { CentrosFormacionService } from 'src/app/services/centros-formacion.service';
 import {InstructoresService} from 'src/app/services/instructores.service';
-import { v4 } from 'uuid';
+import { v4, validate } from 'uuid';
 
 @Component({
   selector: 'app-instructores',
@@ -42,6 +41,10 @@ export class InstructoresComponent implements OnInit {
     enabled:new FormControl('',[Validators.required])
   })
 
+  instructorDelete = new FormGroup({
+    documento: new FormControl('',Validators.required)
+  })
+
   addInstructor(){
     let uuid = v4()
     let instructor :Instructor | any = new Instructor()
@@ -61,6 +64,11 @@ export class InstructoresComponent implements OnInit {
         console.log(req);
       }
     )
+  }
+
+  unableInstructor(){
+    let documento:string | any = this.instructorDelete.controls.documento.value
+    this.instructoresService.deleteInstructor(documento).subscribe(req => console.log(req))
   }
 
 }

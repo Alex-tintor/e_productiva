@@ -14,7 +14,7 @@ export class InstructoresService {
 
   private url:string ="http://localhost:8080/api/instructores";
 
-  public instructor(){
+  public instructor(){ 
     return this._instructor
   }
   
@@ -38,8 +38,8 @@ export class InstructoresService {
     return this.http.put<Instructor>(this.url + "/", instructor)
   }
 
-  public deleteInstructor(id : number):Observable<Instructor>{
-    return this.http.delete<Instructor>(this.url + "/")
+  public deleteInstructor(id : string):Observable<Instructor>{
+    return this.http.delete<Instructor>(this.url + "/" + id)
   }
 
 }

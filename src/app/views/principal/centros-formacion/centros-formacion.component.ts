@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-
 import {CentroFormacion} from 'src/app/modules/Entidades/CentroFormacion';
 import {CentrosFormacionService} from 'src/app/services/centros-formacion.service';
 import { v4 } from 'uuid';
@@ -22,7 +20,7 @@ export class CentrosFormacionComponent implements OnInit {
    centrosData = new FormGroup({
     nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
     enabled:new FormControl('',[Validators.required])
-  });
+    });
 
   centrosDelete = new FormGroup({
     uuId:new FormControl('',[Validators.required])
@@ -51,4 +49,8 @@ export class CentrosFormacionComponent implements OnInit {
     return  enabled ? "Activo":"Inactivo"
   }
 
+  public unabledCentro(){
+    let id :string|any = this.centrosDelete.controls.uuId.value
+    this.centrosService.deleteCentrosFormacion(id).subscribe(req => {console.log(req)})
+  }
 }

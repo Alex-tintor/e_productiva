@@ -15,6 +15,7 @@ import { AprendicesComponent } from './views/principal/aprendices/aprendices.com
 import { FichasComponent } from './views/principal/fichas/fichas.component';
 import { CentrosFormacionComponent } from './views/principal/centros-formacion/centros-formacion.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProgramasComponent } from './views/principal/programas/programas.component';
 
 
 
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     AprendicesComponent,
     FichasComponent,
     CentrosFormacionComponent,
+    ProgramasComponent,
   ],
   imports: [
     BrowserModule,

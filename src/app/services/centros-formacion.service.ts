@@ -34,7 +34,7 @@ export class CentrosFormacionService {
     return this.http.put<CentroFormacion>(this.url,centro);
   }
 
-  public deleteCentrosFormacion(id:number):Observable<CentroFormacion>{
+  public deleteCentrosFormacion(id:string):Observable<CentroFormacion>{
     return this.http.delete<CentroFormacion>(this.url+"/"+id)
   }
 
