@@ -1,34 +1,45 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Ficha } from 'src/app/modules/fichas/Ficha'
+import { Observable } from 'rxjs';
+import { Ficha } from 'src/app/modules/Entidades/Ficha'
 
 @Injectable({
   providedIn: 'root'
 })
 export class FichaService {
 
-  constructor(){
-    this.loadFichas();
-  }
+  constructor(private http:HttpClient){}
+  
+  private _fichas:Ficha[]=[];
 
-  private _fichas:Ficha[] = []
+  private url:string="http://localhost:8080/api/fichas";
 
   public fichas(){
     return this._fichas;
   }
 
-  public fichaById(id:number){
-    return this._fichas.filter(ficha => ficha.id == id);
+  public getAllFichas():Observable<any>{
+    const headers = new HttpHeaders({
+      'page-number':"0",
+      'page-size':"20"
+    })
+    return this.http.get<any>(this.url,{headers:headers});
   }
 
-  public addFicha(ficha:Ficha){
-    this._fichas.push(ficha);
+  public getFichaById(id:number):Observable<Ficha>{
+    return this.http.get<Ficha>(this.url + "/id");
   }
 
-  public loadFichas(){
-    let ficha1 = new Ficha(2141342,'programacion de software','precencial',12839430,'C.E.E.T','10/09/2021#','10/09/2021','productiva',true);
-    let ficha2 = new Ficha(212445634,'programacion de software','precencial',12345,'C.E.E.T','10/09/2021','10/09/2021','productiva',true);
-    this._fichas.push(ficha1);
-    this._fichas.push(ficha2);
+  public createFicha(data:FormData):Observable<Ficha>{
+    return this.http.post<Ficha>(this.url,data);
+  }
+
+  public updateFicha(id:string|any,data:FormData):Observable<Ficha>{
+    return this.http.put<Ficha>(this.url+"/"+id ,data);
+  }
+
+  public deleteFicha(id:HttpParams):Observable<Ficha>{
+    return this.http.delete<Ficha>(this.url + "/" + id);
   }
 
 }

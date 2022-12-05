@@ -2,9 +2,9 @@
     <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Fichas</p>
     <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
     <div class="col-6 p-0 w-auto h-auto align-self-center">
-        <button type="submit" class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#addFichaModal" >Crear</button>
+        <button type="submit" class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#addFicha" >Crear</button>
           <!-- Modal -->
-        <div class="modal fade" id="addFichaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addFicha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -12,39 +12,143 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <input type="text" id="nombre" >
-                <input type="number" id="numero" >
-                <input type="text" id="centro" >
-                <input type="text" id="etapa" >
-                <select id="estado">
-                  <option></option>
-                </select>
+                <form [formGroup]="fichasDataCreate">
+                  <label for="input_nombre" class="fw-bold mb-1 input-label">ingrese el Nombre del Programa <strong class="text-danger">*</strong></label>
+                  <select formControlName="programa" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre"  >
+                    <option *ngFor="let programa of programas">{{programa.id}}</option>
+                  </select>
+                  <label for="input_modalidad" class="fw-bold mb-1 input-label">Seleccione la modalidad de la Ficha <strong class="text-danger">*</strong></label>
+                  <select formControlName="modalidad" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_modalidad">
+                    <option>Precencial</option>
+                    <option>Virtual</option>
+                    <option>Alternancia</option>
+                  </select>
+                  <label for="input_instructor" class="fw-bold mb-1 input-label">Ingrese la C.c del Instructor <strong class="text-danger">*</strong></label>
+                  <select formControlName="instructorCc" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_instructor" >
+                    <option *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                  </select>
+                  <label for="input_centro" class="fw-bold mb-1 input-label">Ingrese el Centro de Formacion <strong class="text-danger">*</strong></label>
+                  <select formControlName="centro" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro" >
+                    <option *ngFor="let centro of centros" value="">{{centro.nombre}}</option>
+                  </select>
+                  <label for="input_fechaI" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
+                  <input formControlName="fechaInicio" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaI">
+                  <label for="input_fechaF" class="fw-bold mb-1 input-label">Seleccione la Fecha de Inicio <strong class="text-danger">*</strong></label>
+                  <input formControlName="fechaFin" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaF">
+                  <label for="input_etapa" class="fw-bold mb-1 input-label">Seleccione la Etapa <strong class="text-danger">*</strong></label>
+                  <select formControlName="etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_etapa" >
+                    <option>Lectiva</option>
+                    <option>Productiva</option>
+                  </select>
+                  <label for="input_estado" class="fw-bold mb-1 input-label">seleccione el Estado <strong class="text-danger">*</strong></label>
+                  <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                    <option>Activo</option>
+                    <option>Inactivo</option>
+                  </select>
+                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                <button type="button" class="btn btn-primary">Crear Ficha</button>
+                <button type="button" class="btn btn-primary" (click)="addFicha()" >Crear Ficha</button>
               </div>
             </div>
           </div>
         </div>
-        <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
-        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
+        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteFicha">Inhabilitar</button>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteFicha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Inhabilitar una Ficha</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="fichasDelete">
+                  <select formControlName="nameId"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                    <option  *ngFor="let ficha of fichas">{{ficha.id}}</option>
+                  </select>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary"(click)="unabled()"  [disabled]="fichasDelete.invalid">Inhabilitar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-target="#updateFicha" data-bs-toggle="modal">Actualizar</button>
+          <!-- Modal -->
+          <div class="modal fade" id="updateFicha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-white" id="exampleModalLabel">Crear una nueva ficha</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="fichasUpdate">
+                    <label for="inputId" class="fw-bold mb-1 input-label">Seleccione la Ficha <strong class="text-danger">*</strong></label>
+                    <select formControlName="id"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="inputId">
+                      <option *ngFor="let ficha of fichas">{{ficha.id}}</option>
+                    </select>
+                    <label for="input_nombre" class="fw-bold mb-1 input-label">Seleccione el Programa <strong class="text-danger">*</strong></label>
+                    <select formControlName="programa" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre"  >
+                      <option *ngFor="let programa of programas">{{programa.id}}</option>
+                    </select>
+                    <label for="input_modalidad" class="fw-bold mb-1 input-label">Seleccione la modalidad de la Ficha <strong class="text-danger">*</strong></label>
+                    <select formControlName="modalidad" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_modalidad">
+                      <option>Precencial</option>
+                      <option>Virtual</option>
+                      <option>Alternancia</option>
+                    </select>
+                    <label for="input_instructor" class="fw-bold mb-1 input-label">Seleccione la C.c del Instructor <strong class="text-danger">*</strong></label>
+                    <select formControlName="instructorCc" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_instructor" >
+                      <option *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                    </select>
+                    <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion <strong class="text-danger">*</strong></label>
+                    <select formControlName="centro" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro" >
+                      <option *ngFor="let centro of centros" value="">{{centro.nombre}}</option>
+                    </select>
+                    <label for="input_fechaI" class="fw-bold mb-1 input-label">Ingrese la Fecha de Inicio <strong class="text-danger">*</strong></label>
+                    <input formControlName="fechaInicio" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaI">
+                    <label for="input_fechaF" class="fw-bold mb-1 input-label">Ingrese la Fecha de Fin <strong class="text-danger">*</strong></label>
+                    <input formControlName="fechaFin" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaF">
+                    <label for="input_etapa" class="fw-bold mb-1 input-label">Seleccione la Etapa <strong class="text-danger">*</strong></label>
+                    <select formControlName="etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_etapa" >
+                      <option>Lectiva</option>
+                      <option>Productiva</option>
+                    </select>
+                    <label for="input_estado" class="fw-bold mb-1 input-label">seleccione el Estado <strong class="text-danger">*</strong></label>
+                    <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                      <option>Activo</option>
+                      <option>Inactivo</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
+                  <button type="button" class="btn btn-primary" (click)="updateFicha()" >Actualizar FIcha</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
     <div class="row row-cols-6 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
-        <p class="align-self-center fs-5 ">Nombre Programa</p>
+        <p class="align-self-center fs-5 ">Id del Programa</p>
         <p class="align-self-center fs-5 ">Nro ficha</p>
         <p class="align-self-center fs-5 ">Centro correspondiente</p>
         <p class="align-self-center fs-5 ">Instructor designado</p>
-        <p class="align-self-center fs-5 ">Etapa</p>
-        <p class="align-self-center fs-5 ">Estado</p>
+        <p class="align-self-center fs-5 ">Modalidad</p>
+        <p class="align-self-center fs-5 ">Inicio/Fin</p>
     </div>
-    <td *ngFor="let ficha of fichas" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-        <tr class="data-square rounded-3">{{ficha.programa}}</tr>
+    <td *ngFor="let ficha of fichas"  class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 "  [ngClass]="{'d-none':!ficha.enabled}">
+        <tr class="data-square rounded-3">{{ficha.programaId}}</tr>
         <tr>{{ficha.id}}</tr>
-        <tr class="data-square rounded-3">{{ficha.centro}}</tr>
+        <tr class="data-square rounded-3">{{ficha.centroId}}</tr>
         <tr>{{ficha.instructor}}</tr>
-        <tr class="data-square rounded-3">{{ficha.etapa}}</tr>
-        <tr >{{ficha.estado}}</tr>
+        <tr class="data-square rounded-3">{{ficha.modalidad}}</tr>
+        <tr >{{ficha.inicio +"/"+ ficha.fin }}</tr>
     </td>
       
 </div>

@@ -1,35 +1,136 @@
-<div class="row m-0 p-4">
-    <div class="col-12 col-md-2 bg-primary order-md-last">
-        Filtros mamadicimos
-    </div>
-    <div class="col-12 col-md-10">
-        <div class="shadow rounded-2 overflow-hidden">
-            <h5 class="pt-3 text-center fw-bold">Instructores</h5>
-            <table class="table table-striped table-hover m-0">
-                <caption class="p-0"></caption>
-                <thead>
-                  <tr>
-                    <th scope="row" class="col-label">Cedula</th>
-                    <th scope="col" class="col-label">Nombre</th>
-                    <th scope="col" class="col-label">Apellido</th>
-                    <th scope="col" class="col-label">Correo</th>
-                    <th scope="col" class="col-label">Telefono</th>
-                    <th scope="col" class="col-label">Centro de Formacion</th>
-                    <th scope="col" class="col-label">Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let instructor of instructores">
-                    <th scope="row">{{instructor.cc}}</th>
-                    <td>{{instructor.nombre}}</td>
-                    <td>{{instructor.apellido}}</td>
-                    <td>{{instructor.correo}}</td>
-                    <td>{{instructor.telefono}}</td>
-                    <td>{{instructor.centro}}</td>
-                    <td>{{instructor.estado}}</td>
-                  </tr>
-                </tbody>
-              </table>
+<div class="row rounded-4 overflow-hidden ms-5 my-5 justify-content-between shadow w-100">
+  <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Instructores</p>
+  <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
+  <div class="col-6 p-0 w-auto h-auto align-self-center">
+      <button type="submit" class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#addFichaModal" >Crear</button>
+        <!-- Modal -->
+      <div class="modal fade" id="addFichaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-white" id="exampleModalLabel">Agregar un Instructor</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="instructorData">
+                <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
+                <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <option >CC</option>
+                  <option >CE</option>
+                </select>
+                <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el C.C del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="documento" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
+                <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_A">
+                <label for="input_email" class="fw-bold mb-1 input-label">Ingrese el Correo electronico del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
+                <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
+                <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="centroId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                  <option *ngFor="let centro of centros">{{centro.nombre}}</option>
+                </select>
+                <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                </select>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+              <button type="button" class="btn btn-primary"(click)="addInstructor()" [disabled]="instructorData.invalid" >Agregar Instructor</button>
+            </div>
+          </div>
         </div>
-    </div>
-</div> 
+      </div>
+      <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteCentro">Inhabilitar</button>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteCentro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-white" id="exampleModalLabel">InhabilitarCentro</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="instructorDelete">
+                <select formControlName="documento"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <option  *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                </select>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="unableInstructor()">Inhabilitar</button>
+            </div>
+          </div>
+        </div>
+      </div>      
+      <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#updateFicha">Actualizar</button>
+      <!-- Modal -->
+      <div class="modal fade" id="updateFicha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-white" id="exampleModalLabel">Agregar un Instructor</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="updateInstructorData">
+                <label for="input_id" class="fw-bold mb-1 input-label">Seleccione el Documento del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="documento" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                  <option *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                </select>
+                <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
+                <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <option >CC</option>
+                  <option >CE</option>
+                </select>
+                <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
+                <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_A">
+                <label for="input_email" class="fw-bold mb-1 input-label">Ingrese el Correo electronico del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
+                <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Instructor <strong class="text-danger">*</strong></label>
+                <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
+                <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="centroId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                  <option *ngFor="let centro of centros">{{centro.nombre}}</option>
+                </select>
+                <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                </select>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
+              <button type="button" class="btn btn-primary"(click)="updateInstructor()" [disabled]="updateInstructorData.invalid" >Actualizar Instructor</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row row-cols-6 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
+      <p class="align-self-center fs-5 ">C.C</p>
+      <p class="align-self-center fs-5 ">Nombre</p>
+      <p class="align-self-center fs-5 ">Apellido</p>
+      <p class="align-self-center fs-5 ">Centro</p>
+      <p class="align-self-center fs-5 ">email</p>
+      <p class="align-self-center fs-5 ">telefono</p>
+  </div>
+  <td *ngFor="let instructor of instructores" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 " [ngClass]="{'d-none':!instructor.enabled}">
+      <tr class="data-square rounded-3">{{instructor.documento}}</tr>
+      <tr>{{instructor.nombre}}</tr>
+      <tr class="data-square rounded-3">{{instructor.apellido}}</tr>
+      <tr>{{instructor.centro}}</tr>
+      <tr class="data-square rounded-3">{{instructor.email}}</tr>
+      <tr >{{instructor.telefono}}</tr>
+  </td>
+    
+</div>

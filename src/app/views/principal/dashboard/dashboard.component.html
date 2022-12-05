@@ -1,8 +1,9 @@
 <div class="row m-0">
     <app-slidebar class="col-auto p-0" (EventSeccion)="seccionValue($event)"></app-slidebar>
     <app-fichas *ngIf="Seccion == 'FICHAS' " class="col p-0"></app-fichas>
-    <app-instructores *ngIf="Seccion == 'INSTRUCTOR' || Seccion == ''" class="col p-0"></app-instructores>
+    <app-instructores *ngIf="Seccion == 'INSTRUCTOR'" class="col p-0"></app-instructores>
     <app-centros-formacion *ngIf="Seccion == 'CENTROFORMACION'" class="col p-0"></app-centros-formacion>
-    <app-encuestas *ngIf="Seccion == 'ENCUESTAS'" class="col p-0"></app-encuestas>
+    <app-formatos *ngIf="Seccion == 'FORMATO'" class="col p-0"></app-formatos>
     <app-aprendices *ngIf="Seccion == 'APRENDICES'" class="col p-0"></app-aprendices>
+    <app-programas *ngIf="Seccion == 'PROGRAMAS'" class="col p-0"></app-programas>
 </div>

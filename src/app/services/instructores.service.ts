@@ -1,25 +1,45 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Instructores} from 'src/app/modules/fichas/Instructores'
+import { Observable } from 'rxjs';
+import {Instructor} from 'src/app/modules/Entidades/Instructores'
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstructoresService {
 
-  constructor() { }
+  constructor(private http:HttpClient) {}
 
-  private _instructor:Instructores[]=[]
+  private _instructor:Instructor[]=[];
 
-  public instructor(){
+  private url:string ="http://localhost:8080/api/instructores";
+
+  public instructor(){ 
     return this._instructor
   }
-
-  public instructorById(id:number){
-    return  this._instructor.filter(Instructores => Instructores.cc == id)
+  
+  public getAllInstructores():Observable<any>{
+    const headers = new HttpHeaders({
+      'page-number':"0",
+      'page-size':"20"
+    })
+    return this.http.get<any>(this.url,{headers:headers});
   }
 
-  public loadInstructores(){
-    let instructorTemp = new Instructores(1234532,"Jose ", "Ovalle Rodriguez","jeovalle@misena.edu.co",43209128,"Cenigraf",true);
-    this._instructor.push(instructorTemp);
+  public getInstructorById(id :number):Observable <Instructor>{
+    return this.http.get<Instructor>(this.url + "/id");
   }
+
+  public createInstructor(data:FormData):Observable<Instructor>{
+    return this.http.post<Instructor>(this.url , data)
+  }
+
+  public updateInstructor(id:string|any,data:FormData):Observable<Instructor>{
+    return this.http.put<Instructor>(this.url + "/"+id,data)
+  }
+
+  public deleteInstructor(id : string):Observable<Instructor>{
+    return this.http.delete<Instructor>(this.url + "/" + id)
+  }
+
 }

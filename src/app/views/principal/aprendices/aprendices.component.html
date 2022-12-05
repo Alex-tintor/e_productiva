@@ -2,22 +2,148 @@
     <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Aprendices</p>
     <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
     <div class="col-6 p-0 w-auto h-auto align-self-center">
-        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" (click)="addAprendiz()">Crear</button>
-        <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
-        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
+        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#addFichaModal" >Crear</button>
+          <!-- Modal -->
+          <div class="modal fade" id="addFichaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-white" id="exampleModalLabel">Agregar un Instructor</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="  aprendizData">
+                    <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
+                    <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                      <option >TI</option>
+                      <option >CC</option>
+                      <option >CE</option>
+                    </select>
+                    <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el Documento del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="documento" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                    <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
+                    <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_A">
+                    <label for="input_email" class="fw-bold mb-1 input-label">Ingrese el Correo electronico del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
+                    <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
+                    <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione la Ficha del Aprendiz <strong class="text-danger">*</strong></label>
+                    <select formControlName="fichaId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                      <option *ngFor="let ficha of fichas">{{ficha.id}}</option>
+                    </select>
+                    <label  class="fw-bold mb-1 input-label" for="input_etapa">Seleccione la Etapa del Aprendiz <strong class="text-danget">*</strong></label>
+                    <select formControlName="etapa" id="input_etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                      <option>LECTIVA</option>
+                      <option>PRODUCTIVA</option>
+                      <option >DESERTADO</option>
+                    </select>
+                    <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Aprendiz <strong class="text-danger">*</strong></label>
+                    <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                      <option>Activo</option>
+                      <option>Inactivo</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-primary"(click)="addAprendiz()" [disabled]="  aprendizData.invalid" >Agregar Aprendiz</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteAprendiz">Inhabilitar</button>
+          <!-- Modal -->
+          <div class="modal fade" id="deleteAprendiz" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-white" id="exampleModalLabel">InhabilitarCentro</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="aprendizDelete">
+                    <select formControlName="documento"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                      <option  *ngFor="let aprendiz of aprendices">{{aprendiz.documento}}</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="unableAprendiz()">Inhabilitar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#updateFicha">Actualizar</button>
+          <!-- Modal -->
+          <div class="modal fade" id="updateFicha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-white" id="exampleModalLabel">Agregar un Instructor</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="  aprendizUpdate">
+                    <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
+                    <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                      <option >TI</option>
+                      <option >CC</option>
+                      <option >CE</option>
+                    </select>
+                    <label for="input_id" class="fw-bold mb-1 input-label">Seleccione el Documento del Aprendiz <strong class="text-danger">*</strong></label>
+                    <select formControlName="documento" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id" >
+                      <option *ngFor="let aprendiz of aprendices">{{aprendiz.documento}}</option>
+                    </select>
+                    <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
+                    <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_A">
+                    <label for="input_email" class="fw-bold mb-1 input-label">Ingrese el Correo electronico del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
+                    <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Aprendiz <strong class="text-danger">*</strong></label>
+                    <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
+                    <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione la Ficha del Aprendiz <strong class="text-danger">*</strong></label>
+                    <select formControlName="fichaId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                      <option *ngFor="let ficha of fichas">{{ficha.id}}</option>
+                    </select>
+                    <label  class="fw-bold mb-1 input-label" for="input_etapa">Seleccione la Etapa del Aprendiz <strong class="text-danget">*</strong></label>
+                    <select formControlName="etapa" id="input_etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                      <option>LECTIVA</option>
+                      <option>PRODUCTIVA</option>
+                      <option >DESERTADO</option>
+                    </select>
+                    <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Aprendiz <strong class="text-danger">*</strong></label>
+                    <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                      <option>Activo</option>
+                      <option>Inactivo</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
+                  <button type="button" class="btn btn-primary"(click)="updateAprendiz()" [disabled]="  aprendizUpdate.invalid" >Agregar Aprendiz</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
-    <div class="row row-cols-5 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
+    <div class="row row-cols-6 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
         <p class="align-self-center fs-5 ">Nombre</p>
         <p class="align-self-center fs-5 ">Nro identificacion</p>
         <p class="align-self-center fs-5 ">Ficha correspondiente</p>
         <p class="align-self-center fs-5 ">Etapa</p>
-        <p class="align-self-center fs-5 ">Estado</p>
+        <p class="align-self-center fs-5 ">Correo</p>
+        <p class="align-self-center fs-5 ">Telefono</p>
     </div>
-    <td *ngFor="let aprendiz of aprendices" class="row row-cols-5 fs-6 fw-semibold mx-1 my-1 text-center w-100 ">
-        <tr class="data-square rounded-3">{{aprendiz.nombre}}</tr>
-        <tr>{{aprendiz.cc}}</tr>
-        <tr class="data-square rounded-3">{{aprendiz.ficha}}</tr>
+    <td *ngFor="let aprendiz of aprendices" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 " [ngClass]="{'d-none':!aprendiz.enabled}">
+        <tr class="data-square rounded-3">{{aprendiz.apellido +" "+ aprendiz.nombre}}</tr>
+        <tr>{{aprendiz.documento}}</tr>
+        <tr class="data-square rounded-3">{{aprendiz.fichaId}}</tr>
         <tr>{{aprendiz.etapa}}</tr>
-        <tr class="data-square rounded-3">{{aprendiz.estado}}</tr>
+        <tr class="data-square rounded-3">{{aprendiz.email}}</tr>
+        <tr>{{aprendiz.telefono}}</tr>
     </td>
 </div>
