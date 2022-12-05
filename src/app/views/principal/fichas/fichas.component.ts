@@ -40,7 +40,6 @@ export class FichasComponent implements OnInit {
   
 
   fichasDataCreate = new FormGroup({
-    id:new FormControl('',[Validators.required,Validators.maxLength(10)]),
     programa:new FormControl('',[Validators.required,Validators.maxLength(255)]),
     modalidad:new FormControl('',[Validators.required]),
     instructorCc:new FormControl('',[Validators.required,Validators.maxLength(45)]),
@@ -67,6 +66,18 @@ export class FichasComponent implements OnInit {
     nameId : new FormControl('',Validators.required)
   })
 
+  fichasUpdate = new FormGroup({
+    id:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    programa:new FormControl('',[Validators.required,Validators.maxLength(255)]),
+    modalidad:new FormControl('',[Validators.required]),
+    instructorCc:new FormControl('',[Validators.required,Validators.maxLength(45)]),
+    centro:new FormControl('',[Validators.required,Validators.maxLength(20)]),
+    fechaInicio:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    fechaFin:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    etapa:new FormControl('Lectiva',[Validators.required,Validators.maxLength(10)]),
+    estado:new FormControl('Activo',[Validators.required])
+  })
+
   addFicha(){
     let uuid = v4()
     let ficha:Ficha | any = new Ficha();
@@ -82,6 +93,22 @@ export class FichasComponent implements OnInit {
     let data = new FormData()
     Object.keys(ficha).forEach(key => data.append(key, ficha[key]))
       this.fichaService.createFicha(data).subscribe(req => (console.log(req))) 
+  }
+
+  public updateFicha(){
+    let ficha:Ficha|any = new Ficha()
+    ficha.centroId = this.fichasUpdate.controls.centro.value;
+    ficha.programa = this.fichasUpdate.controls.programa.value;
+    ficha.etapa = this.fichasUpdate.controls.etapa.value;
+    ficha.fechaFin = this.fichasUpdate.controls.fechaFin.value;
+    ficha.fechaInicio = this.fichasUpdate.controls.fechaInicio.value;
+    ficha.id = this.fichasUpdate.controls.id.value
+    ficha.instructor = this.fichasUpdate.controls.instructorCc.value;
+    ficha.modalidad = this.fichasUpdate.controls.modalidad.value;
+    ficha.enabled = (this.fichasUpdate.controls.estado.value =="Activo");
+    let data = new FormData()
+    Object.keys(ficha).forEach(key=> data.append(key,ficha[key]));
+    this.fichaService.updateFicha(this.fichasUpdate.controls.centro.value,data).subscribe(req => {console.log(req)})
   }
 
   public unabled(){

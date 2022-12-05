@@ -35,7 +35,7 @@ export class ProgramasService {
   }
 
   public updateProgramas( id:string|any, data:FormData):Observable<Programas>{
-    return this.http.put<Programas>(this.url, +"/"+ id + data);
+    return this.http.put<Programas>(this.url +"/"+ id, data);
   }
 
   public deleteProgramas(id:string):Observable<Programas>{

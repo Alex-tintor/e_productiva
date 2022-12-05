@@ -41,6 +41,17 @@ export class InstructoresComponent implements OnInit {
     enabled:new FormControl('',[Validators.required])
   })
 
+  updateInstructorData = new FormGroup({
+    documento:new FormControl('',[Validators.required,Validators.maxLength(11)]),
+    documentoType:new FormControl('CC',[Validators.required]),
+    nombre:new FormControl('',[Validators.required,Validators.maxLength(45)]),
+    apellido:new FormControl('',[Validators.required,Validators.maxLength(45)]),
+    email:new FormControl('',[Validators.required,Validators.email]),
+    telefono:new FormControl('',[Validators.required,Validators.maxLength(10),Validators.minLength(10)]),
+    centroId:new FormControl ('',[Validators.required,Validators.maxLength(36)]),
+    enabled:new FormControl('',[Validators.required])
+  })
+
   instructorDelete = new FormGroup({
     documento: new FormControl('',Validators.required)
   })
@@ -64,6 +75,22 @@ export class InstructoresComponent implements OnInit {
         console.log(req);
       }
     )
+  }
+
+  public updateInstructor(){
+    let instructor:Instructor|any= new  Instructor()
+    // instructor.uuId =  uuid;
+    instructor.documento = this.updateInstructorData.controls.documento.value
+    instructor.nombre = this.updateInstructorData.controls.nombre.value
+    instructor.apellido = this.updateInstructorData.controls.apellido.value
+    instructor.email = this.updateInstructorData.controls.email.value
+    instructor.telefono = this.updateInstructorData.controls.telefono.value
+    instructor.enabled = (this.updateInstructorData.controls.enabled.value == "Activo")
+    instructor.centro = this.updateInstructorData.controls.centroId.value;
+    instructor.documentoType = this.updateInstructorData.controls.documentoType.value
+   let data = new FormData()
+   Object.keys(instructor).forEach(key=> data.append(key,instructor[key]))
+   this.instructoresService.updateInstructor( this.updateInstructorData.controls.documento.value,data).subscribe(req => {console.log(req)})
   }
 
   unableInstructor(){

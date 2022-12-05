@@ -51,9 +51,9 @@ export class ProgramasComponent implements OnInit {
 
   updatePrograma(){
     let programa:Programas|any = new Programas()
-    programa.id = this.programasUpdate.controls.id.value;
+    programa.id = this.programasUpdate.controls.id.value
     programa.nombre = this.programasUpdate.controls.nombre.value
-    programa.enabled = (this.programasUpdate.controls.enabled.value =="Activo")
+    programa.enabled = (this.programasUpdate.controls.enabled.value == "Activo")
     let data = new FormData()
     Object.keys(programa).forEach(key => data.append(key,programa[key]))
     this.progrmaService.updateProgramas(this.programasUpdate.controls.id.value,data).subscribe(req => {console.log(req)})

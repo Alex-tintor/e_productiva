@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {CentroFormacion} from 'src/app/modules/Entidades/CentroFormacion'
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,8 @@ export class CentrosFormacionService {
     return this.http.post<CentroFormacion>(this.url,data);
   }
 
-  public updateCentrosFormacion(centro:CentroFormacion):Observable<CentroFormacion>{
-    return this.http.put<CentroFormacion>(this.url,centro);
+  public updateCentrosFormacion(id:string|any,data:FormData):Observable<CentroFormacion>{
+    return this.http.put<CentroFormacion>(this.url+"/"+id,data);
   }
 
   public deleteCentrosFormacion(id:string):Observable<CentroFormacion>{

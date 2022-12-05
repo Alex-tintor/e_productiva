@@ -22,6 +22,12 @@ export class CentrosFormacionComponent implements OnInit {
     enabled:new FormControl('',[Validators.required])
     });
 
+  centroUpdate = new FormGroup({
+    id:new FormControl('',Validators.required),
+    nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
+    enabled:new FormControl('',[Validators.required])
+  })
+
   centrosDelete = new FormGroup({
     uuId:new FormControl('',[Validators.required])
   });
@@ -45,12 +51,22 @@ export class CentrosFormacionComponent implements OnInit {
     })
   }
 
-  public enabled(enabled:boolean):string{
-    return  enabled ? "Activo":"Inactivo"
+  public updateCentro(){
+    let centro:CentroFormacion|any = new CentroFormacion()
+    centro.uuid = this.centroUpdate.controls.id.value
+    centro.nombre = this.centroUpdate.controls.nombre.value
+    centro.enabled = (this.centroUpdate.controls.enabled.value == "Activo")
+    let data = new FormData()
+    Object.keys(centro).forEach(key => data.append(key , centro[key]))
+    this.centrosService.updateCentrosFormacion(this.centroUpdate.controls.id.value,data).subscribe(req => console.log(req))
   }
-
+  
   public unabledCentro(){
     let id :string|any = this.centrosDelete.controls.uuId.value
     this.centrosService.deleteCentrosFormacion(id).subscribe(req => {console.log(req)})
+  }
+
+  public enabled(enabled:boolean):string{
+    return  enabled ? "Activo":"Inactivo"
   }
 }

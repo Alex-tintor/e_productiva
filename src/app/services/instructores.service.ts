@@ -34,8 +34,8 @@ export class InstructoresService {
     return this.http.post<Instructor>(this.url , data)
   }
 
-  public updateInstructor(instructor :Instructor):Observable<Instructor>{
-    return this.http.put<Instructor>(this.url + "/", instructor)
+  public updateInstructor(id:string|any,data:FormData):Observable<Instructor>{
+    return this.http.put<Instructor>(this.url + "/"+id,data)
   }
 
   public deleteInstructor(id : string):Observable<Instructor>{

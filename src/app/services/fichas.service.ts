@@ -34,19 +34,12 @@ export class FichaService {
     return this.http.post<Ficha>(this.url,data);
   }
 
-  public updateFicha(ficha:Ficha):Observable<Ficha>{
-    return this.http.put<Ficha>(this.url+"/",ficha);
+  public updateFicha(id:string|any,data:FormData):Observable<Ficha>{
+    return this.http.put<Ficha>(this.url+"/"+id ,data);
   }
 
   public deleteFicha(id:HttpParams):Observable<Ficha>{
     return this.http.delete<Ficha>(this.url + "/" + id);
   }
-
-  // public loadFichas(){
-  //   let ficha1 = new Ficha(2141342,'precencial','2022-10-30','10/09/2021',true);
-  //   let ficha2 = new Ficha(212445634,'precencial','10/09/2021','10/09/2021',true);
-  //   this._fichas.push(ficha1);
-  //   this._fichas.push(ficha2);
-  // }
 
 }
