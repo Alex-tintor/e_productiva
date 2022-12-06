@@ -1,7 +1,7 @@
 :root{
-    --principal-color:#ff7100;
-    --principal-color-disabled:#fc9f54;
-    --principal-color-opacity-10: #ffdabc;
-    --principal-color-shadow:#ff730041;
-    --text-color-bold: #c4691e;
+    --principal-color:rgb(57, 169, 0);
+    --principal-color-disabled:rgba(56, 169, 0, 0.585);
+    --principal-color-opacity-10: rgb(57, 169, 0);
+    --principal-color-shadow: rgba(56, 169, 0, 0.326);
+    --text-color-bold: rgb(57, 169, 0);
 }
