@@ -1,0 +1,40 @@
+<div class="row rounded-4 overflow-hidden ms-5 my-5 justify-content-between shadow w-100">
+  <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Centros de formacion</p>
+  <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
+  <div class="col-6 p-0 w-auto h-auto align-self-center">
+        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteCentro">Inhabilitar</button>
+            <!-- Modal -->
+      <div class="modal fade" id="deleteCentro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-white" id="exampleModalLabel">Inhabilitar Centro</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="centrosDelete">
+                <select formControlName="uuId"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <option  *ngFor="let centro of centros">{{centro.nombre}}</option>
+                </select>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" (click)="unabledCentro()" [disabled]="centrosDelete.invalid">Inhabilitar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  </div>
+  <div class="row row-cols-3 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
+      <p class="align-self-center fs-5 ">Id Centro</p>
+      <p class="align-self-center fs-5 ">Nombre Centro</p>
+      <p class="align-self-center fs-5 ">Estado</p>
+  </div>
+  <td *ngFor="let centro of centros" class="row row-cols-3 fs-6 fw-semibold mx-1 my-1 text-center w-100 " [ngClass]="{'d-none':!centro.enabled}">
+      <tr class="data-square rounded-3">{{centro.uuid}}</tr>
+      <tr>{{centro.nombre}}</tr>
+      <tr class="data-square rounded-3">{{enabled(centro.enabled)}}</tr>
+  </td>
+</div>

@@ -1,0 +1,47 @@
+<div class="row rounded-4 overflow-hidden ms-5 my-5 justify-content-between shadow w-100">
+  <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Instructores</p>
+  <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
+  <div class="col-6 p-0 w-auto h-auto align-self-center">
+     
+      <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteCentro">Inhabilitar</button>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteCentro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-white" id="exampleModalLabel">InhabilitarCentro</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="instructorDelete">
+                <select formControlName="documento"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <option  *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                </select>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="unableInstructor()">Inhabilitar</button>
+            </div>
+          </div>
+        </div>
+      </div>      
+  </div>
+  <div class="row row-cols-6 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
+      <p class="align-self-center fs-5 ">C.C</p>
+      <p class="align-self-center fs-5 ">Nombre</p>
+      <p class="align-self-center fs-5 ">Apellido</p>
+      <p class="align-self-center fs-5 ">Centro</p>
+      <p class="align-self-center fs-5 ">email</p>
+      <p class="align-self-center fs-5 ">telefono</p>
+  </div>
+  <td *ngFor="let instructor of instructores" class="row row-cols-6 fs-6 fw-semibold mx-1 my-1 text-center w-100 " [ngClass]="{'d-none':!instructor.enabled}">
+      <tr class="data-square rounded-3">{{instructor.documento}}</tr>
+      <tr>{{instructor.nombre}}</tr>
+      <tr class="data-square rounded-3">{{instructor.apellido}}</tr>
+      <tr>{{instructor.centro}}</tr>
+      <tr class="data-square rounded-3">{{instructor.email}}</tr>
+      <tr >{{instructor.telefono}}</tr>
+  </td>
+    
+</div>

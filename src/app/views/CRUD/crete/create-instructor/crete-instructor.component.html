@@ -1,0 +1,49 @@
+<div class=" row overflow-hidden ms-5 my-5 shadow rounded-2  w-100 p-0" >
+    <h1 class="text-center text-white  tittle-box p-2 rounded-2">Agregar Instructor</h1>
+    <div class="row row-cols-2 w-100 h-100 ps-5 pe-4 pt-2 pb-4">
+            <form [formGroup]=" instructorData">
+                <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
+                <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
+                  <option >CC</option>
+                  <option >CE</option>
+                </select>   
+            </form>
+            <form [formGroup]=" instructorData">
+                <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el C.C del Instructor <strong class="text-danger">*</strong></label>
+            <input formControlName="documento" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+            </form>
+            <form [formGroup]=" instructorData">
+                <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
+            <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
+            </form>
+            <form [formGroup]=" instructorData">
+                <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Instructor <strong class="text-danger">*</strong></label>
+            <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_A">
+            </form>
+            <form [formGroup]=" instructorData">
+                <label for="input_email" class="fw-bold mb-1 input-label">Ingrese el Correo electronico del Instructor <strong class="text-danger">*</strong></label>
+            <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
+            </form>
+            <form [formGroup]=" instructorData">
+                <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Instructor <strong class="text-danger">*</strong></label>
+            <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
+            </form>
+            <form [formGroup]=" instructorData">
+                <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="centroId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                  <option *ngFor="let centro of centros">{{centro.nombre}}</option>
+                </select>
+            </form>
+            <form [formGroup]=" instructorData">
+            <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Instructor <strong class="text-danger">*</strong></label>
+            <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+              <option>Activo</option>
+              <option>Inactivo</option>
+            </select>
+            </form>
+            <div class="col-12 row justify-content-center   m-0 p-3 h-auto">
+                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="addInstructor()" [disabled]="  instructorData.invalid" >Agregar Instructor</button>
+            </div>
+    </div>
+</div>
+

@@ -26,4 +26,12 @@ export class FormatoService {
     return this.http.get<any>(this.url,{headers:headers});
   }
 
+  public createFormato(data:FormData):Observable<Formato>{
+    return this.http.post<Formato>(this.url,data)
+  }
+
+  public updateFormato(id:string,data:FormData):Observable<Formato>{
+    return this.http.put<Formato>(this.url + "/" + id,data)
+  }
+
 }

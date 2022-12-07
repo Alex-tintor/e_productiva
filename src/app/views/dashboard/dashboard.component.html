@@ -1,0 +1,33 @@
+<div class="row justify-content-center vh-100 wh-100  m-0 p-0 principal-container">
+    <div class="row row-cols-2  bg-white  align-self-end  m-0 p-0 rounded-top general-container overflow-auto">
+        <app-slidebar class="col-1 p-0" (EventSeccion)="seccionValue($event)"></app-slidebar>
+        <div *ngIf="Seccion == 'TABLAS'" class=" col-10 p-0">
+            <app-aprendices></app-aprendices>
+            <app-centros-formacion></app-centros-formacion>
+            <app-fichas></app-fichas>
+            <app-formatos></app-formatos>
+            <app-instructores></app-instructores>
+            <app-programas></app-programas>
+        </div>
+        <div *ngIf="Seccion=='ACTUALIZAR'" class="col-10 p-0">
+            <app-update-aprendiz></app-update-aprendiz>
+            <app-update-centro></app-update-centro>
+            <app-update-ficha></app-update-ficha>
+            <app-update-formato></app-update-formato>
+            <app-update-instructor></app-update-instructor>
+            <app-update-programa></app-update-programa>
+        </div>
+        <div *ngIf="Seccion=='CREAR'" class="col-10 p-0">
+            <app-create-aprendiz></app-create-aprendiz>
+            <app-create-centro></app-create-centro>
+            <app-create-ficha></app-create-ficha>
+            <app-create-formato></app-create-formato>
+            <app-create-instructor></app-create-instructor>
+            <app-create-programa></app-create-programa>
+        </div>
+        <div *ngIf="Seccion=='BORRAR'">
+
+        </div>
+    </div>
+
+</div>

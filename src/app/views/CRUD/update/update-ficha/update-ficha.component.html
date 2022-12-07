@@ -1,0 +1,64 @@
+<div class=" row overflow-hidden ms-5 my-5 shadow rounded-2  w-100 p-0" >
+    <h1 class="text-center text-white  tittle-box p-2 rounded-2">Actualizar Ficha</h1>
+    <div class="row row-cols-2 w-100 h-100 ps-5 pe-4 pt-2 pb-4">
+            <form [formGroup]=" fichasUpdate">
+                <label for="inputId" class="fw-bold mb-1 input-label">Seleccione la Ficha <strong class="text-danger">*</strong></label>
+                <select formControlName="id"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="inputId">
+                    <option *ngFor="let ficha of fichas">{{ficha.id}}</option>
+                </select>
+            </form>
+            <form [formGroup]=" fichasUpdate">
+                <label for="input_nombre" class="fw-bold mb-1 input-label">Seleccione el Programa <strong class="text-danger">*</strong></label>
+                <select formControlName="programa" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre"  >
+                  <option *ngFor="let programa of programas">{{programa.id}}</option>
+                </select>
+            </form>
+            <form [formGroup]=" fichasUpdate">
+                <label for="input_modalidad" class="fw-bold mb-1 input-label">Seleccione la modalidad de la Ficha <strong class="text-danger">*</strong></label>
+                <select formControlName="modalidad" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_modalidad">
+                  <option>Precencial</option>
+                  <option>Virtual</option>
+                  <option>Alternancia</option>
+                </select>
+            </form>
+            <form [formGroup]=" fichasUpdate">
+                <label for="input_instructor" class="fw-bold mb-1 input-label">Seleccione la C.c del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="instructorCc" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_instructor" >
+                  <option *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                </select>
+            </form>
+            <form [formGroup]=" fichasUpdate">
+                <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion <strong class="text-danger">*</strong></label>
+                <select formControlName="centro" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro" >
+                  <option *ngFor="let centro of centros" value="">{{centro.nombre}}</option>
+                </select>
+            </form>
+            <form [formGroup]=" fichasUpdate">
+                <label for="input_fechaI" class="fw-bold mb-1 input-label">Ingrese la Fecha de Inicio <strong class="text-danger">*</strong></label>
+                <input formControlName="fechaInicio" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaI">
+            </form>
+            <form [formGroup]=" fichasUpdate">
+                <label for="input_fechaF" class="fw-bold mb-1 input-label">Ingrese la Fecha de Fin <strong class="text-danger">*</strong></label>
+                <input formControlName="fechaFin" type="text" placeholder="DD/MM/AAAA" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_fechaF">
+            </form>
+            <form [formGroup]=" fichasUpdate">
+                <label for="input_etapa" class="fw-bold mb-1 input-label">Seleccione la Etapa <strong class="text-danger">*</strong></label>
+                <select formControlName="etapa" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_etapa" >
+                  <option>Lectiva</option>
+                  <option>Productiva</option>
+                </select>
+            </form>
+            <form [formGroup]="fichasUpdate">
+                <label for="input_estado" class="fw-bold mb-1 input-label">seleccione el Estado <strong class="text-danger">*</strong></label>
+                <select formControlName="estado" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                </select>
+            </form>
+            <div class=" row justify-content-center   m-0 p-3 h-auto">
+                <!-- TODO error validacion del formulario -->
+                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="updateFicha()" [disabled]="fichasUpdate.invalid">Agregar Aprendiz</button>
+            </div>
+    </div>
+</div>
+

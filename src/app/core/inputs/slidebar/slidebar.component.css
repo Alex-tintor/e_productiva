@@ -4,6 +4,7 @@
     width: 50px;
     transition: .5s ease;
     overflow: hidden;
+    z-index: 10;
 }
 .principal-container.open{
     width: 180px;

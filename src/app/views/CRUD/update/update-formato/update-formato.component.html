@@ -1,0 +1,22 @@
+<div class=" row overflow-hidden ms-5 my-5 shadow rounded-2  w-100 p-0" >
+    <h1 class="text-center text-white  tittle-box p-2 rounded-2">Agregar Formato</h1>
+    <div class="row row-cols-2 w-100 h-100 ps-5 pe-4 pt-2 pb-4">
+        <form [formGroup]=" formatoUpdate">
+            <label for="selectId" class="fw-bold mb-1 input-label">Ingrese su Cedula <strong class="text-danger">*</strong></label>
+              <select  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="id">
+                <option *ngFor="let formato of formatos">{{formato.id}}</option>
+              </select>
+        </form>
+            <form [formGroup]=" formatoUpdate">
+                <label for="input_nombre" class="fw-bold mb-1 input-label">Ingrese su Cedula <strong class="text-danger">*</strong></label>
+                  <input name="id" formControlName="id" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre">
+            </form>
+            <form [formGroup]=" formatoUpdate">
+                <label for="fechaF" class="fw-bold mb-1 input-label">Ingrese la Fecha de la visita <strong class="text-danger">*</strong></label>
+                <input name="fecha" placeholder="DD/MM/AAAA" formControlName="fecha" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="fechaF">
+            </form>
+            <div class="col-12 row justify-content-center   m-0 p-3 h-auto">
+                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="updateFormato()" [disabled]="  formatoUpdate.invalid" >Agregar Aprendiz</button>
+            </div>
+    </div>
+</div>

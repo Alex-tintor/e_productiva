@@ -1,0 +1,20 @@
+<div class=" row overflow-hidden ms-5 my-5 shadow rounded-2  w-100 p-0" >
+    <h1 class="text-center text-white  tittle-box p-2 rounded-2">Agregar Centro</h1>
+    <div class="row row-cols-2 w-100 h-100 ps-5 pe-4 pt-2 pb-4">
+            <form [formGroup]=" centrosData">
+                <label for="input_nombre" class="fw-bold mb-1 input-label">Ingrese el nombre del Centro <strong class="text-danger">*</strong></label>
+                  <input name="nombre" formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombre">
+            </form>
+            <form [formGroup]=" centrosData">
+                <label for="input_estadoC" class="fw-bold mb-1 input-label">Estado del Centro <strong class="text-danger">*</strong></label>
+                <select name="enabled" formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estadoC">
+                  <option >Activo</option>
+                  <option >Inactivo</option>
+                </select>
+            </form>
+            <div class="col-12 row justify-content-center   m-0 p-3 h-auto">
+                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="addCentro()" [disabled]="  centrosData.invalid" >Agregar Formato</button>
+            </div>
+    </div>
+</div>
+
