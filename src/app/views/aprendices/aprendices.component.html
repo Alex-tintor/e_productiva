@@ -1,9 +1,9 @@
-<div class="row rounded-4 overflow-hidden ms-5 my-5 justify-content-between shadow w-100 pb-2">
+<!-- <div class="row rounded-4 overflow-hidden ms-5 my-5 justify-content-between shadow w-100 pb-2">
   <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Aprendices</p>
   <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
   <div class="col-6 p-0 w-auto h-auto align-self-center">
         <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteAprendiz">Inhabilitar</button>
-        <!-- Modal -->
+        Modal
         <div class="modal fade" id="deleteAprendiz" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -43,4 +43,49 @@
       <tr class="data-square rounded-3 resalt-over">{{aprendiz.email}}</tr>
       <tr>{{aprendiz.telefono}}</tr>
   </td>
+</div>
+</div> -->
+<div class="rounded-4 shadow bg-white mx-1 mt-2 mb-1 overflow-hidden">
+  <header class="row m-0">
+    <h1 class="text-success fw-bold col">Aprendices</h1>
+    <input type="text" class="col">
+    <em class="col-auto p-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-down-fill text-secondary" viewBox="0 0 16 16">
+        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+      </svg>
+    </em>
+    <hr class="m-0">
+  </header>
+  <div class="overflow-auto scroll-tabla m-2">
+    <table class="table" aria-describedby="Tabla de Aprendices">
+      <thead>
+        <tr class="align-self-center fs-5 text-secondary fw-bold">
+          <th scope="col" id="id"></th>
+          <th id="Nombre">Documento</th>
+          <th id="Nombre">Nombre</th>
+          <th id="Apellido">Apellido</th>
+          <th id="Ficha">Ficha</th>
+          <th id="Etapa">Etapa</th>
+          <th id="Correo">Correo</th>
+          <th id="Telefono">Telefono</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aprendiz of aprendices">
+          <th scope="row">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </div>
+          </th>
+          <td>{{aprendiz.documento}}</td>
+          <td>{{aprendiz.nombre}}</td>
+          <td>{{aprendiz.apellido}}</td>
+          <td>{{aprendiz.fichaId}}</td>
+          <td>{{aprendiz.etapa}}</td>
+          <td>{{aprendiz.email}}</td>
+          <td>{{aprendiz.telefono}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

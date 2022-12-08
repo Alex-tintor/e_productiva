@@ -1,7 +1,28 @@
 :root{
     --principal-color:rgb(57, 169, 0);
-    --principal-color-disabled:rgba(56, 169, 0, 0.585);
-    --principal-color-opacity-10: rgb(57, 169, 0);
+    --principal-color-disabled:rgba(56, 169, 0, 0.391);
+    --principal-color-opacity-10: rgba(56, 169, 0, 0.099);
     --principal-color-shadow: rgba(56, 169, 0, 0.326);
     --text-color-bold: rgb(57, 169, 0);
+}
+::-webkit-scrollbar{
+    width: 7px;
+    background: var(    --principal-color-opacity-10);
+}
+::-webkit-scrollbar-thumb{
+    background: var(--principal-color-disabled);
+    border-radius: 4px;
+}
+*{
+    font-family: Product Sans;
+}
+body{
+    
+    background-color: rgb(239, 245, 239);
+}
+@font-face {
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 }

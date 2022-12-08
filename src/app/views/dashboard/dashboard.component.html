@@ -1,15 +1,16 @@
-<div class="row justify-content-center vh-100 wh-100  m-0 p-0 principal-container">
-    <div class="row row-cols-2  bg-white  align-self-end  m-0 p-0 rounded-top general-container overflow-auto">
-        <app-slidebar class="col-1 p-0" (EventSeccion)="seccionValue($event)"></app-slidebar>
-        <div *ngIf="Seccion == 'TABLAS'" class=" col-10 p-0">
-            <app-aprendices></app-aprendices>
-            <app-centros-formacion></app-centros-formacion>
-            <app-fichas></app-fichas>
-            <app-formatos></app-formatos>
-            <app-instructores></app-instructores>
-            <app-programas></app-programas>
+<div class="row p-0 m-0 vh-100 ">
+    <app-slidebar class="col-auto p-0 h-100" (EventSeccion)="seccionValue($event)"></app-slidebar>
+    <div class="col scroll-section mh-100 px-2">
+        <div class="col-12 m-5"></div>
+        <div *ngIf="Seccion == 'TABLAS'" class="row m-0">
+            <app-aprendices class="col-12 col-xl-6"></app-aprendices>
+            <app-centros-formacion class="col-12 col-xl-6"></app-centros-formacion>
+            <app-fichas class="col-12 col-xl-6"></app-fichas>
+            <app-formatos class="col-12 col-xl-6"></app-formatos>
+            <app-instructores class="col-12 col-xl-6"></app-instructores>
+            <app-programas class="col-12 col-xl-6"></app-programas>
         </div>
-        <div *ngIf="Seccion=='ACTUALIZAR'" class="col-10 p-0">
+        <div *ngIf="Seccion=='ACTUALIZAR'" class="">
             <app-update-aprendiz></app-update-aprendiz>
             <app-update-centro></app-update-centro>
             <app-update-ficha></app-update-ficha>
@@ -17,7 +18,7 @@
             <app-update-instructor></app-update-instructor>
             <app-update-programa></app-update-programa>
         </div>
-        <div *ngIf="Seccion=='CREAR'" class="col-10 p-0">
+        <div *ngIf="Seccion=='CREAR'" class="">
             <app-create-aprendiz></app-create-aprendiz>
             <app-create-centro></app-create-centro>
             <app-create-ficha></app-create-ficha>
@@ -29,5 +30,4 @@
 
         </div>
     </div>
-
 </div>

@@ -3,7 +3,12 @@
 }
 
 .general-container{
-    /* background-color: var(--principal-color-shadow); */
     width: 95%;
     height: 90% ;
+}
+
+.scroll-section{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: transparent;
 }

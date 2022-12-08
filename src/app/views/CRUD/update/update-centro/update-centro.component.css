@@ -2,8 +2,7 @@
     z-index: -2;
 }
 .tittle-box{
-    background-color: var(--principal-color-disabled);
-}
+    background-color: var(--principal-color);}
 /* inputs */
 .input{
     outline: none;
