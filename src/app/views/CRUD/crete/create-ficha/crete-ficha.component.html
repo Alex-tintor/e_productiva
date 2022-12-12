@@ -1,10 +1,10 @@
-<div class=" row overflow-hidden ms-5 my-5 shadow rounded-2  w-100 p-0  bg-white" >
+<div class=" row overflow-hidden mx-1 my-2 shadow rounded-2  w-100 p-0  bg-white" >
     <h1 class="text-center text-white  tittle-box p-2 rounded-2">Agregar Ficha</h1>
     <div class="row row-cols-2 w-100 h-100 ps-5 pe-4 pt-2 pb-4">
             <form [formGroup]=" fichasDataCreate">
-                <label for="input_nombreF" class="fw-bold mb-1 input-label">ingrese el Nombre del Programa <strong class="text-danger">*</strong></label>
+                <label for="input_nombreF" class="fw-bold mb-1 input-label">Seleccione el Programa <strong class="text-danger">*</strong></label>
                 <select formControlName="programa" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_nombreF"  >
-                  <option *ngFor="let programa of programas">{{programa.id}}</option>
+                  <option *ngFor="let programa of programas">{{programa.nombre}}</option>
                 </select>
             </form>
             <form [formGroup]=" fichasDataCreate">

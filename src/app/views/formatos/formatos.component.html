@@ -1,23 +1,36 @@
-<div class="row rounded-4 overflow-hidden mx-1 my-3 shadow bg-white">
-    <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Formatos De Seguimiento</p>
-    <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
-    <div class="col-6 p-0 w-auto h-auto align-self-center">
-        <button class="btn btn-success w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" >Crear</button>
-        
-        <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Actualizar</button>
-        <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2">Borrar</button>
+ <div class="rounded-4 shadow bg-white mx-1 mt-2 mb-1 overflow-hidden principal-container" [ngClass]="{'minimize':minimize,'maximize':!minimize}">
+    <header class="row m-0">
+      <h1 class=" fw-bold col tittle-text">Formatos</h1>
+      <!-- TODO espacio para busqueda rapida -->
+      <em class="col-auto p-2 minimize-container" (click)="setMinimize()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-down-fill text-secondary minimize-icon" [ngClass]="{'minimize':minimize}"  viewBox="0 0 16 16">
+          <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+        </svg>
+      </em>
+      <hr class="m-0">
+    </header>
+    <div class="overflow-auto scroll-tabla m-2">
+      <table class="table" aria-describedby="Tabla de Aprendices">
+        <thead >
+          <tr class="align-self-center fs-5 text-secondary fw-bold">
+            <th scope="col" id="id"></th>
+            <th id="Id">Id</th>
+            <th id="Nombre">Instructor</th>
+            <th id="Estado">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let formato of formatos" >
+            <th scope="row">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  >
+              </div>
+            </th>
+            <td>{{formato.id}}</td>
+            <td>{{formato.instructor}}</td>
+            <td>{{formato.fecha}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="row row-cols-3 w-100 my-2 m-0 text-center rounded-2 text-white fw-bold justify-content-between order-data">
-        <p class="align-self-center fs-5 ">Id</p>
-        <p class="align-self-center fs-5 ">Instructor</p>
-        <p class="align-self-center fs-5 ">Fecha</p>
-    </div>
-    <td *ngFor="let formato of formatos" class="row row-cols-3 fs-6 fw-semibold mx-1 my-1 text-center text-break w-100 ">
-        <tr class="data-square rounded-3">{{formato.id}}</tr>
-        <tr>{{formato.instructor}}</tr>
-        <tr class="data-square rounded-3">{{formato.fecha}}</tr>
-        <!-- <tr>{{encuesta.contacto}}</tr>
-        <tr class="data-square rounded-3 ">{{encuesta.email}}</tr> -->
-    </td>
-</div>
-
+  

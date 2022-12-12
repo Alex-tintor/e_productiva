@@ -38,7 +38,7 @@ export class FichaService {
     return this.http.put<Ficha>(this.url+"/"+id ,data);
   }
 
-  public deleteFicha(id:HttpParams):Observable<Ficha>{
+  public deleteFicha(id:string):Observable<Ficha>{
     return this.http.delete<Ficha>(this.url + "/" + id);
   }
 

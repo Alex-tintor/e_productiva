@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupName, Validators } from '@angular/forms';
+import { min } from 'rxjs';
 
 import {Aprendiz} from 'src/app/modules/Entidades/Aprendiz';
 import { Ficha } from 'src/app/modules/Entidades/Ficha';
@@ -30,31 +31,21 @@ export class AprendicesComponent implements OnInit {
       req => this.fichas = req.content
     )
   }
-  aprendizData = new FormGroup({
-    documento:new FormControl('',[Validators.required,Validators.maxLength(11)]),
-    documentoType:new FormControl('TI',[Validators.required]),
-    nombre:new FormControl('',[Validators.required,Validators.maxLength(45)]),
-    apellido:new FormControl('',[Validators.required,Validators.maxLength(45)]),
-    email:new FormControl('',[Validators.required,Validators.email]),
-    telefono:new FormControl('',[Validators.required,Validators.maxLength(10),Validators.minLength(10)]),
-    fichaId:new FormControl ('',[Validators.required,Validators.maxLength(36)]),
-    etapa: new FormControl('',[Validators.required]),
-    enabled:new FormControl('',[Validators.required])
-  })
 
+  minimize:boolean=false
 
+  public setMinimize(){
+    this.minimize = this.minimize? false:true
+    console.log(this.minimize)
+  }
 
-  aprendizDelete = new FormGroup({
-    documento : new FormControl('',Validators.required)
-  })
-
-
-
-
-
-  public unableAprendiz(){
-    let documento:string|any = this.aprendizDelete.controls.documento.value
-    this.aprendizService.deleteAprendiz(documento).subscribe(req => {console.log(req)})
+  public unableAprendiz(documento:string){
+    this.aprendizService.deleteAprendiz(documento).subscribe(req => {
+        this.aprendizService.getAllAprendices().subscribe(aprendices =>{
+           this.aprendices = aprendices.content
+           console.log(req)
+          })
+    })
   }
 
 }

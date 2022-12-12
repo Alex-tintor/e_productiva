@@ -17,6 +17,13 @@ export class CentrosFormacionComponent implements OnInit {
     this.centros = centrosService.centros();
    }
 
+   minimize:boolean=false
+
+   public setMinimize(){
+     this.minimize = this.minimize? false:true
+     console.log(this.minimize)
+   }
+
    centrosData = new FormGroup({
     nombre:new FormControl('',[Validators.required,Validators.maxLength(85)]),
     enabled:new FormControl('',[Validators.required])
@@ -36,9 +43,13 @@ export class CentrosFormacionComponent implements OnInit {
  
 
   
-  public unabledCentro(){
-    let id :string|any = this.centrosDelete.controls.uuId.value
-    this.centrosService.deleteCentrosFormacion(id).subscribe(req => {console.log(req)})
+  public unabledCentro(id:string){
+  
+    this.centrosService.deleteCentrosFormacion(id).subscribe(req => {
+      this.centrosService.getAllCentrosFormacion().subscribe(
+        centros => {this.centros = centros.content}
+      )
+      console.log(req)})
   }
 
   public enabled(enabled:boolean):string{

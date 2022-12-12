@@ -30,19 +30,14 @@ export class InstructoresComponent implements OnInit {
     )
   }
 
+  minimize:boolean=false
 
+  public setMinimize(){
+    this.minimize = this.minimize? false:true
+    console.log(this.minimize)
+  }
 
-
-
-  instructorDelete = new FormGroup({
-    documento: new FormControl('',Validators.required)
-  })
-
-
-
-
-  unableInstructor(){
-    let documento:string | any = this.instructorDelete.controls.documento.value
+  unableInstructor(documento:string){
     this.instructoresService.deleteInstructor(documento).subscribe(req => console.log(req))
   }
 

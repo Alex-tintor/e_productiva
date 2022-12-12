@@ -22,7 +22,7 @@ export class AprendicesService {
   public getAllAprendices():Observable<any>{
     const headers = new HttpHeaders({
       'page-number':"0",
-      'page-size':"2"
+      'page-size':"20"
     })
     return this.http.get<any>(this.url,{headers:headers});
   }

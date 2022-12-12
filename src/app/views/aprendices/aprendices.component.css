@@ -1,6 +1,9 @@
 .tittle{
     background-color: var(--principal-color);
 }
+.tittle-text{
+    color: var(--principal-color);
+}
 .order-data{
     background-color: var(--principal-color);
 }
@@ -19,6 +22,20 @@
 .square-text{
     max-width: 200px;
 }
+.minimize-container .minimize-icon:hover{
+    cursor:pointer ;
+    transition: .3s ease;
+    transform: scale(1.1);
+}
+.minimize-container .minimize-icon.minimize{
+    transition: .3s;
+    transform: rotate(180deg);
+}
+.principal-container.minimize{
+    max-height: 56px;
+    transition: max-height .3s ease-out;
+}
+
 /* inputs */
 .input{
     outline: none;

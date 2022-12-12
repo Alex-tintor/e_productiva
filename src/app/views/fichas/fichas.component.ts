@@ -43,13 +43,21 @@ export class FichasComponent implements OnInit {
     nameId : new FormControl('',Validators.required)
   })
 
-  
+  minimize:boolean=false
+
+  public setMinimize(){
+    this.minimize = this.minimize? false:true
+    console.log(this.minimize)
+  }
 
 
 
-  public unabled(){
-    let id :string |any  = this.fichasDelete.controls.nameId.value;
-    this.fichaService.deleteFicha(id).subscribe(req => {console.log(req)})
+  public unabled(id:string){
+    this.fichaService.deleteFicha(id).subscribe(req => {
+      this.fichaService.getAllFichas().subscribe(
+        fichas => {this.fichas = fichas.content}
+      )
+      console.log(req)})
   }
 
   

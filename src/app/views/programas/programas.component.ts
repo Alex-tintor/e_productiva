@@ -21,6 +21,12 @@ export class ProgramasComponent implements OnInit {
     this.progrmaService.getAllProgramas().subscribe(req => this.programas = req.content);
   }
 
+  minimize:boolean=false
+
+  public setMinimize(){
+    this.minimize = this.minimize? false:true
+    console.log(this.minimize)
+  }
 
   programasDelete = new FormGroup({
     id : new FormControl('',Validators.required)
@@ -43,9 +49,7 @@ export class ProgramasComponent implements OnInit {
     this.progrmaService.updateProgramas(this.programasUpdate.controls.id.value,data).subscribe(req => {console.log(req)})
   }
 
-  unabePrograma(){
-    let id:string|any = this.programasDelete.controls.id.value;
-
+  unabePrograma(id:string){
     this.progrmaService.deleteProgramas(id).subscribe(req => {console.log(req)})
   }
 

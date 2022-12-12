@@ -23,6 +23,7 @@ export class CreteProgramaComponent implements OnInit {
 
   programaData = new FormGroup({
     nombre: new FormControl('',[Validators.required,Validators.maxLength(75)]),
+    nivel:new FormControl('',Validators.required),
     enabled:new FormControl('',Validators.required)
   })
 
@@ -32,6 +33,7 @@ export class CreteProgramaComponent implements OnInit {
     let programa:Programas | any = new Programas()
     programa.id = uuid;
     programa.nombre = this.programaData.controls.nombre.value
+    programa.nivel = this.programaData.controls.nivel.value
     programa.enabled = (this.programaData.controls.enabled.value == "Activo")
     let data = new FormData()
     Object.keys(programa).forEach(key => data.append(key, programa[key]) );

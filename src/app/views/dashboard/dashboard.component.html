@@ -10,21 +10,21 @@
             <app-instructores class="col-12 col-xl-6"></app-instructores>
             <app-programas class="col-12 col-xl-6"></app-programas>
         </div>
-        <div *ngIf="Seccion=='ACTUALIZAR'" class="">
-            <app-update-aprendiz></app-update-aprendiz>
-            <app-update-centro></app-update-centro>
-            <app-update-ficha></app-update-ficha>
-            <app-update-formato></app-update-formato>
-            <app-update-instructor></app-update-instructor>
-            <app-update-programa></app-update-programa>
+        <div *ngIf="Seccion=='ACTUALIZAR'" class="row m-0">
+            <app-update-aprendiz class="col-12 col-xl-6"></app-update-aprendiz>
+            <app-update-centro class="col-12 col-xl-6"></app-update-centro>
+            <app-update-ficha class="col-12 col-xl-6"></app-update-ficha>
+            <app-update-formato class="col-12 col-xl-6"></app-update-formato>
+            <app-update-instructor class="col-12 col-xl-6"></app-update-instructor>
+            <app-update-programa class="col-12 col-xl-6"></app-update-programa>
         </div>
-        <div *ngIf="Seccion=='CREAR'" class="">
-            <app-create-aprendiz></app-create-aprendiz>
-            <app-create-centro></app-create-centro>
-            <app-create-ficha></app-create-ficha>
-            <app-create-formato></app-create-formato>
-            <app-create-instructor></app-create-instructor>
-            <app-create-programa></app-create-programa>
+        <div *ngIf="Seccion=='CREAR'" class="row m-0">
+            <app-create-aprendiz class="col-12 col-xl-6"></app-create-aprendiz>
+            <app-create-centro class="col-12 col-xl-6"></app-create-centro>
+            <app-create-ficha class="col-12 col-xl-6"></app-create-ficha>
+            <app-create-formato class="col-12 col-xl-6"></app-create-formato>
+            <app-create-instructor class="col-12 col-xl-6"></app-create-instructor>
+            <app-create-programa class="col-12 col-xl-6"></app-create-programa>
         </div>
         <div *ngIf="Seccion=='BORRAR'">
 

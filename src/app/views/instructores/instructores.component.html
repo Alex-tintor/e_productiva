@@ -1,11 +1,11 @@
-<div class="row rounded-4 overflow-hidden mx-1 my-3 shadow bg-white">
+<!-- <div class="row rounded-4 overflow-hidden mx-1 my-3 shadow bg-white">
   <p class="col-12 w-100 text-center text-white fs-3 fw-bold tittle"> Instructores</p>
   <app-inputs Titlle="Buscar" class="col-5"></app-inputs>
-  <div class="col-6 p-0 w-auto h-auto align-self-center">
+  <div class="col-6 p-0 w-auto h-auto align-self-center"> -->
      
-      <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteCentro">Inhabilitar</button>
+      <!-- <button class="btn btn-danger w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#deleteCentro">Inhabilitar</button> -->
       <!-- Modal -->
-      <div class="modal fade" id="deleteCentro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="deleteCentro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -44,4 +44,55 @@
       <tr >{{instructor.telefono}}</tr>
   </td>
     
+</div> -->
+<div class="rounded-4 shadow bg-white mx-1 mt-2 mb-1 overflow-hidden principal-container" [ngClass]="{'minimize':minimize,'maximize':!minimize}">
+  <header class="row m-0">
+    <h1 class=" fw-bold col tittle-text">Instructores</h1>
+    <!-- TODO espacio para busqueda rapida -->
+    <em class="col-auto p-2 minimize-container" (click)="setMinimize()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-down-fill text-secondary minimize-icon" [ngClass]="{'minimize':minimize}"  viewBox="0 0 16 16">
+        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+      </svg>
+    </em>
+    <hr class="m-0">
+  </header>
+  <div class="overflow-auto scroll-tabla m-2">
+    <table class="table" aria-describedby="Tabla de Aprendices">
+      <thead >
+        <tr class="align-self-center fs-5 text-secondary fw-bold">
+          <th scope="col" id="id"></th>
+          <th id="Nombre">CC</th>
+          <th id="Nombre">Nombre</th>
+          <th id="Apellido">Apellido</th>
+          <th id="Ficha">Centro</th>
+          <th id="Correo">Correo</th>
+          <th id="Telefono">Telefono</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let instructor of instructores" [ngClass]="{'d-none':!instructor.enabled}">
+          <th scope="row">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  >
+            </div>
+          </th>
+          <td>{{instructor.documento}}</td>
+          <td>{{instructor.nombre}}</td>
+          <td>{{instructor.apellido}}</td>
+          <td>{{instructor.centro}}</td>
+          <td>{{instructor.email}}</td>
+          <td>{{instructor.telefono}}</td>
+          <td class="" >
+            <button class="btn btn-danger w-auto h-auto p-1" (click)="unableInstructor(instructor.documento)" >
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                width="16" height="16" 
+                fill="currentColor" class="bi bi-trash3-fill w-auto" viewBox="0 0 16 16">
+                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+              </svg>
+            </button >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

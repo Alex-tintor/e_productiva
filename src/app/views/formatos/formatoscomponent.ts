@@ -18,4 +18,12 @@ export class FormatosComponent implements OnInit {
     this.formatos = formatoService.formatos()
   }
 
+  minimize:boolean=false
+
+  public setMinimize(){
+    this.minimize = this.minimize? false:true
+    console.log(this.minimize)
+  }
+
+
 }
