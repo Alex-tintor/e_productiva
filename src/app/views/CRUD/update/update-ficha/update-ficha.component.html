@@ -30,7 +30,7 @@
             <form [formGroup]=" fichasUpdate">
                 <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion <strong class="text-danger">*</strong></label>
                 <select formControlName="centro" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro" >
-                  <option *ngFor="let centro of centros" value="">{{centro.nombre}}</option>
+                  <option *ngFor="let centro of centros" >{{centro.nombre}}</option>
                 </select>
             </form>
             <form [formGroup]=" fichasUpdate">
@@ -57,7 +57,7 @@
             </form>
             <div class=" row justify-content-center   m-0 p-3 h-auto">
                 <!-- TODO error validacion del formulario -->
-                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="updateFicha()" [disabled]="fichasUpdate.invalid">Agregar Aprendiz</button>
+                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="updateFicha()" [disabled]="fichasUpdate.invalid">Actualizar Ficha</button>
             </div>
     </div>
 </div>

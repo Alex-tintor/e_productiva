@@ -37,7 +37,7 @@ export class UpdateFichaComponent implements OnInit {
   }
 
   fichasUpdate = new FormGroup({
-    id:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+    id:new FormControl('',[Validators.required]),
     programa:new FormControl('',[Validators.required,Validators.maxLength(255)]),
     modalidad:new FormControl('',[Validators.required]),
     instructorCc:new FormControl('',[Validators.required,Validators.maxLength(45)]),

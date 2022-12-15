@@ -24,7 +24,7 @@
             <form [formGroup]=" fichasDataCreate">
                 <label for="input_centroF" class="fw-bold mb-1 input-label">Ingrese el Centro de Formacion <strong class="text-danger">*</strong></label>
                 <select formControlName="centro" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centroF" >
-                  <option *ngFor="let centro of centros" value="">{{centro.nombre}}</option>
+                  <option *ngFor="let centro of centros" >{{centro.nombre}}</option>
                 </select>
             </form>
             <form [formGroup]=" fichasDataCreate">
@@ -51,7 +51,7 @@
             </form>
             <div class="col-12 row justify-content-center   m-0 p-3 h-auto">
                 <!-- TODO error validacion del formulario -->
-                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="addFicha()" >Agregar Aprendiz</button>
+                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="addFicha()" [disabled]="fichasDataCreate.invalid">Agregar Ficha</button>
             </div>
     </div>
 </div>

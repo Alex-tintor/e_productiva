@@ -50,7 +50,9 @@ export class ProgramasComponent implements OnInit {
   }
 
   unabePrograma(id:string){
-    this.progrmaService.deleteProgramas(id).subscribe(req => {console.log(req)})
+    this.progrmaService.deleteProgramas(id).subscribe(req =>
+      {this.progrmaService.getAllProgramas().subscribe(req => 
+        {this.programas = req.content})})
   }
 
   public enabled(enabled:boolean):string{

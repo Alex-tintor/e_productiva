@@ -1,5 +1,5 @@
 <div class=" row overflow-hidden  mx-1 my-2 shadow rounded-2  w-100 p-0  bg-white" >
-    <h1 class="text-center text-white  tittle-box p-2">Agregar Instructor</h1>
+    <h1 class="text-center text-white  tittle-box p-2">Actualizar Instructor</h1>
     <div class="row row-cols-2 w-100 h-100 ps-5 pe-4 pt-2 pb-4">
             <form [formGroup]=" updateInstructorData">
                 <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
@@ -9,8 +9,10 @@
                 </select>   
             </form>
             <form [formGroup]=" updateInstructorData">
-                <label for="input_id" class="fw-bold mb-1 input-label">Ingrese el C.C del Instructor <strong class="text-danger">*</strong></label>
-            <input formControlName="documento" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
+                <label for="input_id" class="fw-bold mb-1 input-label">Seleccione C.C del Instructor <strong class="text-danger">*</strong></label>
+                <select formControlName="documento" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
+                  <option *ngFor="let instructor of instructores">{{instructor.documento}}</option>
+                </select>
             </form>
             <form [formGroup]=" updateInstructorData">
                 <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
@@ -42,55 +44,7 @@
             </select>
             </form>
             <div class="col-12 row justify-content-center   m-0 p-3 h-auto">
-                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="updateInstructor()" [disabled]="  updateInstructorData.invalid" >Agregar Instructor</button>
+                <button type="button" class="align-self-center btn w-auto btn-primary "(click)="updateInstructor()" [disabled]="  updateInstructorData.invalid" >Actualizar Instructor</button>
             </div>
     </div>
 </div>
-
-<!-- <button class="btn btn-primary w-auto h-auto fw-bold fs-5 py-0 mx-3 col-2" data-bs-toggle="modal" data-bs-target="#updateFicha">Actualizar</button> -->
-<!-- Modal -->
-<!-- <div class="modal fade" id="updateFicha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-white" id="exampleModalLabel">Agregar un Instructor</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="updateInstructorData">
-          <label for="input_id" class="fw-bold mb-1 input-label">Seleccione el Documento del Instructor <strong class="text-danger">*</strong></label>
-          <select formControlName="documento" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_id">
-            <option *ngFor="let instructor of instructores">{{instructor.documento}}</option>
-          </select>
-          <label for="input_tipo" class=" fw-bold mb-1 input-label">Tipo de Documento <strong>*</strong></label>
-          <select id="input_tipo" formControlName="documentoType"  class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input">
-            <option >CC</option>
-            <option >CE</option>
-          </select>
-          <label for="input_N" class="fw-bold mb-1 input-label">Ingrese el Nombre del Instructor <strong class="text-danger">*</strong></label>
-          <input formControlName="nombre" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_N">
-          <label for="input_A" class="fw-bold mb-1 input-label">Ingrese el Apellido del Instructor <strong class="text-danger">*</strong></label>
-          <input formControlName="apellido" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_A">
-          <label for="input_email" class="fw-bold mb-1 input-label">Ingrese el Correo electronico del Instructor <strong class="text-danger">*</strong></label>
-          <input formControlName="email" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_email">
-          <label for="input_phone" class="fw-bold mb-1 input-label">Ingrese el Telefono del Instructor <strong class="text-danger">*</strong></label>
-          <input formControlName="telefono" type="number" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_phone">
-          <label for="input_centro" class="fw-bold mb-1 input-label">Seleccione el Centro de Formacion del Instructor <strong class="text-danger">*</strong></label>
-          <select formControlName="centroId" type="text" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_centro">
-            <option *ngFor="let centro of centros">{{centro.nombre}}</option>
-          </select>
-          <label for="input_estado" class="fw-bold mb-1 input-label">Seleccione el Estado del Instructor <strong class="text-danger">*</strong></label>
-          <select formControlName="enabled" class="w-100 rounded-3 border border-1 p-2 text-secondary fs-4 input" id="input_estado">
-            <option>Activo</option>
-            <option>Inactivo</option>
-          </select>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
-        <button type="button" class="btn btn-primary"(click)="updateInstructor()" [disabled]="updateInstructorData.invalid" >Actualizar Instructor</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->

@@ -38,7 +38,9 @@ export class InstructoresComponent implements OnInit {
   }
 
   unableInstructor(documento:string){
-    this.instructoresService.deleteInstructor(documento).subscribe(req => console.log(req))
+    this.instructoresService.deleteInstructor(documento).subscribe(req => 
+      {this.instructoresService.getAllInstructores().subscribe(
+        req => this.instructores = req.content)})
   }
 
 }
