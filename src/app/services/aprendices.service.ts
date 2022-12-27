@@ -11,7 +11,7 @@ export class AprendicesService {
   constructor(private http:HttpClient ) { 
   }
 
-  private url:string="http://localhost:8080/api/aprendices"
+  private  url:string="http://localhost:8080/api/aprendices"
 
   private _aprendiz: Aprendiz[] =[];
 

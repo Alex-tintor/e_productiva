@@ -8,10 +8,10 @@ import { User } from '../modules/Entidades/User';
 })
 export class UserService {
 
-  private url:string ="http://localhost:8080/api/user";
+  private url:string ="http://localhost:8080/api/login";
   constructor(private htpp:HttpClient) {}
 
-  login(form:User){
-    return this.htpp.post(this.url,form);
+  login(data:FormData){
+    return this.htpp.post(this.url,data);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/modules/Entidades/User';
+import { UserLoginModule } from 'src/app/modules/Entidades/user-login/user-login.module';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class PrincipalComponent implements OnInit {
   constructor( private userService:UserService ) {
     this.loginForm = new FormGroup({
       user: new FormControl('',[Validators.required,Validators.minLength(5)]),
-      password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(16)]),
+      password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(25)]),
     })
   }
   ngOnInit(): void {
@@ -54,9 +55,15 @@ export class PrincipalComponent implements OnInit {
       this.isLoading = true;
       this.loginForm.disable()
       this.loginFailed = false;
-      // Invocamos el llamado a login de la api
-      console.log(this.loginForm.value)
       //Esta Linea se cambia por la Promesa de logeo login.subscribe(()=>{ // exito de loging},()=>{//fallo de login})
+      let login : UserLoginModule | any = new UserLoginModule();
+      login.email = this.loginForm.controls['user'].value
+      login.password = this.loginForm.controls['password'].value
+      let data = new FormData()
+      Object.keys(login).forEach(key => data.append(key,login[key]))
+      this.userService.login(data).subscribe(req =>{if(req == "Credenciales Validas"){
+        console.log("se puede redireccionar")
+      }})
       new Promise(resolve => setTimeout(resolve,10*1000)).then(()=>{
         //si fue exitoso redirecciona
         
@@ -71,7 +78,12 @@ export class PrincipalComponent implements OnInit {
   }
 
   public onLogin(form :User){
-    this.userService.login(form)
+    let login : UserLoginModule | any = new UserLoginModule();
+    login.email = this.loginForm.controls['user'].value
+    login.password = this.loginForm.controls['password'].value
+    let data = new FormData()
+    Object.keys(login).forEach(key => data.append(key,login[key]))
+    this.userService.login(data).subscribe()
   }
 
 }
